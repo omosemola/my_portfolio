@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { MessageSquare, Mail, Send, Check, Copy, ArrowUpRight, CheckCircle2 } from 'lucide-react';
-import { PERSONAL_INFO } from '../data/portfolioData';
+import { MessageSquare, Mail, Send, Check, Copy, CheckCircle2, Download, FileText, History } from 'lucide-react';
+import { PERSONAL_INFO, EXPERIENCE_TIMELINE } from '../data/portfolioData';
 
 interface FormState {
   name: string;
@@ -29,19 +29,18 @@ export const Contact: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
+  const [downloaded, setDownloaded] = useState(false);
 
   const validate = (): boolean => {
     const errs: FormErrors = {};
-    if (!formData.name.trim()) {
-      errs.name = 'Please enter your name.';
-    }
+    if (!formData.name.trim()) errs.name = 'Please enter your name.';
     if (!formData.email.trim()) {
-      errs.email = 'Please enter your email address.';
+      errs.email = 'Please enter your email.';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      errs.email = 'Please provide a valid email address.';
+      errs.email = 'Please enter a valid email.';
     }
     if (!formData.message.trim()) {
-      errs.message = 'Please provide a brief message about your project.';
+      errs.message = 'Please provide project details.';
     } else if (formData.message.trim().length < 10) {
       errs.message = 'Message must be at least 10 characters.';
     }
@@ -55,7 +54,6 @@ export const Contact: React.FC = () => {
     if (!validate()) return;
 
     setIsSubmitting(true);
-
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
@@ -66,8 +64,8 @@ export const Contact: React.FC = () => {
         budget: '$1,000 - $3,000',
         message: '',
       });
-      setTimeout(() => setIsSuccess(false), 6000);
-    }, 800);
+      setTimeout(() => setIsSuccess(false), 5000);
+    }, 600);
   };
 
   const handleCopyEmail = () => {
@@ -82,107 +80,99 @@ export const Contact: React.FC = () => {
         {/* Section Header */}
         <div className="section-header reveal-init">
           <div className="section-eyebrow">
-            <MessageSquare size={13} />
-            <span>GET IN TOUCH</span>
+            <MessageSquare size={12} />
+            <span>LET'S WORK TOGETHER</span>
           </div>
-          <h2 className="section-title">Have a project in mind?</h2>
+          <h2 className="section-title">Start a Project or Hire Me</h2>
           <p className="section-desc">
-            Let's turn your idea into something people can actually use. Reach out directly or fill out the project brief below.
+            Have a product to build or need a full-stack developer for your team? Send a message or download my resume below.
           </p>
         </div>
 
         {/* Contact Layout */}
         <div className="contact-grid">
-          {/* Left Column: Direct Info */}
+          {/* Left Column: Direct Info, Resume CTA & Experience Summary */}
           <div className="contact-info-col reveal-init delay-100">
+            {/* Email Box */}
             <div className="contact-card-box">
               <div className="contact-icon-box">
-                <Mail size={22} />
+                <Mail size={20} />
               </div>
               <div style={{ flexGrow: 1 }}>
                 <div className="contact-box-label">Direct Email</div>
-                <a
-                  href={`mailto:${PERSONAL_INFO.email}`}
-                  className="contact-box-val"
-                  style={{ color: '#FFFFFF', wordBreak: 'break-all' }}
-                >
+                <a href={`mailto:${PERSONAL_INFO.email}`} className="contact-box-val" style={{ color: '#FFFFFF' }}>
                   {PERSONAL_INFO.email}
                 </a>
               </div>
-              <button
-                className="btn-ghost"
-                onClick={handleCopyEmail}
-                title="Copy email address"
-                aria-label="Copy email"
-              >
+              <button className="btn-ghost" onClick={handleCopyEmail} title="Copy email">
                 {emailCopied ? <Check size={16} style={{ color: '#FFFFFF' }} /> : <Copy size={16} />}
               </button>
             </div>
 
-            <div className="glass-panel" style={{ padding: '2.25rem' }}>
-              <h3 style={{ fontSize: '1.2rem', color: '#FFFFFF', marginBottom: '0.6rem' }}>
-                Availability Status
-              </h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', marginBottom: '1.5rem', lineHeight: 1.7 }}>
-                Currently available for selected freelance development contracts, marketplace builds, and full-stack product development.
-              </p>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.85rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#FFFFFF' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#FFFFFF', boxShadow: '0 0 8px rgba(255, 255, 255, 0.8)' }}></span>
-                  <span>Average response time: &lt; 24 hours</span>
+            {/* Compact Resume CTA */}
+            <div className="glass-panel" style={{ padding: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.9rem', fontWeight: 700, color: '#FFFFFF', marginBottom: '2px' }}>
+                  <FileText size={15} />
+                  <span>Curriculum Vitae</span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#CBD5E1' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.4)' }}></span>
-                  <span>Timezone: GMT / Flexible for global collaboration</span>
+                <div style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)' }}>
+                  Download Richard Dairo's Resume (PDF)
                 </div>
               </div>
+
+              <a
+                href="/resume.pdf"
+                download="Richard_Dairo_Resume.pdf"
+                className="btn btn-secondary"
+                onClick={() => {
+                  setDownloaded(true);
+                  setTimeout(() => setDownloaded(false), 2500);
+                }}
+                style={{ padding: '0.5rem 1rem', fontSize: '0.8125rem', minHeight: '38px' }}
+              >
+                {downloaded ? <Check size={14} /> : <Download size={14} />}
+                <span>{downloaded ? 'Downloaded' : 'Resume'}</span>
+              </a>
             </div>
 
-            <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap' }}>
-              <a
-                href={`mailto:${PERSONAL_INFO.email}?subject=Project%20Inquiry%20from%20Portfolio`}
-                className="btn btn-secondary"
-                style={{ flexGrow: 1 }}
-              >
-                <Mail size={16} />
-                <span>Open Mail Client</span>
-              </a>
-              <a
-                href={PERSONAL_INFO.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-secondary"
-              >
-                <span>GitHub Profile</span>
-                <ArrowUpRight size={15} />
-              </a>
+            {/* Compact Career Timeline Brief */}
+            <div className="glass-panel" style={{ padding: '1.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', fontWeight: 700, color: '#FFFFFF', marginBottom: '1rem' }}>
+                <History size={15} />
+                <span>Experience Milestones</span>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                {EXPERIENCE_TIMELINE.map((item) => (
+                  <div key={item.id} style={{ borderLeft: '2px solid rgba(255, 255, 255, 0.2)', paddingLeft: '0.85rem' }}>
+                    <div style={{ fontSize: '0.875rem', fontWeight: 700, color: '#FFFFFF' }}>{item.role}</div>
+                    <div style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)' }}>{item.organization} • {item.period}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Right Column: Contact Form */}
-          <div className="contact-form-card reveal-init delay-200">
+          <div className="contact-form-card reveal-init delay-200" style={{ padding: '2rem' }}>
             {isSuccess && (
               <div className="form-feedback-toast" role="status">
-                <CheckCircle2 size={22} />
+                <CheckCircle2 size={20} />
                 <div>
-                  <strong>Message Sent Successfully!</strong>
-                  <div style={{ fontSize: '0.825rem', marginTop: '3px' }}>
-                    Thank you for reaching out, Richard will get back to you shortly.
-                  </div>
+                  <strong>Message Sent!</strong>
+                  <div style={{ fontSize: '0.8rem' }}>Richard will get back to you shortly.</div>
                 </div>
               </div>
             )}
 
             <form onSubmit={handleSubmit} noValidate>
-              <div className="form-group">
-                <label htmlFor="contact-name" className="form-label">
-                  Your Name <span style={{ color: '#FFFFFF' }}>*</span>
-                </label>
+              <div className="form-group" style={{ marginBottom: '1rem' }}>
+                <label htmlFor="contact-name" className="form-label">Name *</label>
                 <input
                   id="contact-name"
                   type="text"
-                  placeholder="e.g. Alex Morgan"
+                  placeholder="Your Name"
                   className="form-input"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -191,14 +181,12 @@ export const Contact: React.FC = () => {
                 {errors.name && <span className="form-error">{errors.name}</span>}
               </div>
 
-              <div className="form-group">
-                <label htmlFor="contact-email" className="form-label">
-                  Email Address <span style={{ color: '#FFFFFF' }}>*</span>
-                </label>
+              <div className="form-group" style={{ marginBottom: '1rem' }}>
+                <label htmlFor="contact-email" className="form-label">Email *</label>
                 <input
                   id="contact-email"
                   type="email"
-                  placeholder="e.g. alex@company.com"
+                  placeholder="alex@company.com"
                   className="form-input"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -207,53 +195,45 @@ export const Contact: React.FC = () => {
                 {errors.email && <span className="form-error">{errors.email}</span>}
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
-                <div className="form-group">
-                  <label htmlFor="contact-project-type" className="form-label">
-                    Project Type
-                  </label>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.85rem' }}>
+                <div className="form-group" style={{ marginBottom: '1rem' }}>
+                  <label htmlFor="contact-project-type" className="form-label">Project</label>
                   <select
                     id="contact-project-type"
                     className="form-select"
                     value={formData.projectType}
                     onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
                   >
-                    <option value="Marketplace Platform">Marketplace Platform</option>
-                    <option value="E-Commerce Store">E-Commerce Store</option>
-                    <option value="Web Application">Web Application</option>
-                    <option value="Mobile Application">Mobile Application (Flutter)</option>
-                    <option value="API / Payment Integration">API & Payment Integration</option>
-                    <option value="Other Consultation">Other Consultation</option>
+                    <option value="Marketplace Platform">Marketplace</option>
+                    <option value="E-Commerce Store">E-Commerce</option>
+                    <option value="Web Application">Web App</option>
+                    <option value="Mobile Application">Mobile App</option>
+                    <option value="Other Consultation">Other</option>
                   </select>
                 </div>
 
-                <div className="form-group">
-                  <label htmlFor="contact-budget" className="form-label">
-                    Approx. Scope / Budget
-                  </label>
+                <div className="form-group" style={{ marginBottom: '1rem' }}>
+                  <label htmlFor="contact-budget" className="form-label">Budget</label>
                   <select
                     id="contact-budget"
                     className="form-select"
                     value={formData.budget}
                     onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                   >
-                    <option value="<$1,000">Small Scope (&lt; $1,000)</option>
+                    <option value="<$1,000">&lt; $1,000</option>
                     <option value="$1,000 - $3,000">$1,000 – $3,000</option>
                     <option value="$3,000 - $5,000">$3,000 – $5,000</option>
                     <option value="$5,000+">$5,000+</option>
-                    <option value="Flexible">To be discussed</option>
                   </select>
                 </div>
               </div>
 
-              <div className="form-group">
-                <label htmlFor="contact-message" className="form-label">
-                  Project Details <span style={{ color: '#FFFFFF' }}>*</span>
-                </label>
+              <div className="form-group" style={{ marginBottom: '1rem' }}>
+                <label htmlFor="contact-message" className="form-label">Message *</label>
                 <textarea
                   id="contact-message"
-                  rows={4}
-                  placeholder="Tell me about your product requirements, desired features, and timeline..."
+                  rows={3}
+                  placeholder="Tell me about your product requirements..."
                   className="form-textarea"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -265,16 +245,16 @@ export const Contact: React.FC = () => {
               <button
                 type="submit"
                 className="btn btn-primary"
-                style={{ width: '100%', marginTop: '0.75rem' }}
+                style={{ width: '100%' }}
                 disabled={isSubmitting}
                 id="contact-submit-btn"
               >
                 {isSubmitting ? (
-                  <span>Sending Message...</span>
+                  <span>Sending...</span>
                 ) : (
                   <>
-                    <Send size={16} />
-                    <span>Send Project Inquiry</span>
+                    <Send size={15} />
+                    <span>Send Message</span>
                   </>
                 )}
               </button>

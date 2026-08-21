@@ -2,11 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
-import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
-import { Services } from './components/Services';
-import { Experience } from './components/Experience';
-import { ResumeCTA } from './components/ResumeCTA';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { CaseStudyModal } from './components/CaseStudyModal';
@@ -17,8 +13,8 @@ export const App: React.FC = () => {
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<Project | null>(null);
 
   useEffect(() => {
-    // 1. Track active navbar section on scroll
-    const sectionIds = ['hero', 'about', 'skills', 'projects', 'services', 'experience', 'contact'];
+    // Track active section on scroll across 4 main sections
+    const sectionIds = ['hero', 'projects', 'about', 'contact'];
     const sectionObservers: IntersectionObserver[] = [];
 
     sectionIds.forEach((id) => {
@@ -39,7 +35,7 @@ export const App: React.FC = () => {
       }
     });
 
-    // 2. Smooth reveal animation on scroll
+    // Smooth reveal animation on scroll
     const revealElements = document.querySelectorAll('.reveal-init');
     const revealObserver = new IntersectionObserver(
       (entries) => {
@@ -62,7 +58,7 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-base text-main relative">
-      {/* Ambient Animated Glow Mesh */}
+      {/* Ambient Backdrop Glow */}
       <div className="ambient-glow-bg" aria-hidden="true">
         <div className="glow-orb orb-1"></div>
         <div className="glow-orb orb-2"></div>
@@ -71,15 +67,18 @@ export const App: React.FC = () => {
       {/* Sticky Glass Navbar */}
       <Navbar activeSection={activeSection} />
 
-      {/* Main Content Sections - Compact & Streamlined */}
+      {/* Streamlined 4-Section Layout */}
       <main style={{ position: 'relative', zIndex: 1 }}>
+        {/* 1. Hero Introduction & Interactive Code Terminal */}
         <Hero />
-        <About />
-        <Skills />
+
+        {/* 2. Featured Projects & Case Studies */}
         <Projects onOpenCaseStudy={(proj) => setSelectedCaseStudy(proj)} />
-        <Services />
-        <Experience />
-        <ResumeCTA />
+
+        {/* 3. About & Core Tech Stack (Combined & Compact) */}
+        <About />
+
+        {/* 4. Experience & Contact Brief (Combined & Compact) */}
         <Contact />
       </main>
 

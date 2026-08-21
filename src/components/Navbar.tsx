@@ -8,11 +8,8 @@ interface NavbarProps {
 
 const NAV_ITEMS = [
   { id: 'hero', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Tech Stack' },
-  { id: 'projects', label: 'Projects' },
-  { id: 'services', label: 'Services' },
-  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Work' },
+  { id: 'about', label: 'About & Stack' },
   { id: 'contact', label: 'Contact' },
 ];
 
@@ -22,24 +19,15 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 40);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent background scroll when mobile drawer is open
   useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
   }, [mobileMenuOpen]);
 
   const handleNavClick = (id: string) => {
@@ -54,7 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
     <>
       <header className={`navbar-wrapper ${isScrolled ? 'scrolled' : ''}`}>
         <nav className="navbar-container" aria-label="Main Navigation">
-          {/* Brand Logo & Identifier */}
+          {/* Brand Logo */}
           <a
             href="#hero"
             className="nav-brand"
@@ -70,7 +58,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             </div>
           </a>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Links */}
           <div className="nav-desktop-links">
             {NAV_ITEMS.map((item) => (
               <a
@@ -87,7 +75,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             ))}
           </div>
 
-          {/* Right Action & Mobile Toggle */}
+          {/* Hire Me CTA */}
           <div className="nav-actions">
             <a
               href="#contact"
@@ -99,14 +87,14 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
               }}
             >
               <MessageSquare size={13} />
-              <span>Hire Me</span>
+              <span>Let's Talk</span>
             </a>
 
             <button
               type="button"
               className="mobile-menu-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+              aria-label={mobileMenuOpen ? 'Close Menu' : 'Open Menu'}
               aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -115,7 +103,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
         </nav>
       </header>
 
-      {/* Mobile Backdrop Overlay */}
+      {/* Mobile Backdrop */}
       {mobileMenuOpen && (
         <div
           className="mobile-drawer-backdrop"
@@ -124,7 +112,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
         />
       )}
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer */}
       <div className={`mobile-drawer ${mobileMenuOpen ? 'open' : ''}`} aria-hidden={!mobileMenuOpen}>
         <div className="mobile-drawer-header">
           <div className="nav-brand">
@@ -164,9 +152,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
         </div>
 
         <div style={{ marginTop: 'auto', paddingTop: '1.5rem', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
-          <div style={{ fontSize: '0.78rem', color: 'var(--color-text-subtle)', fontFamily: 'var(--font-mono)', marginBottom: '0.75rem' }}>
-            STATUS & CONTACT
-          </div>
           <div className="status-badge" style={{ width: '100%', justifyContent: 'center', marginBottom: '1rem' }}>
             <span className="status-dot"></span>
             <span>{PERSONAL_INFO.status}</span>
