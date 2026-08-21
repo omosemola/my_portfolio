@@ -7,7 +7,7 @@ export const Process: React.FC = () => {
     <section id="process" className="section-spacing" aria-label="Development Process">
       <div className="container-wide">
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header reveal-init">
           <div className="section-eyebrow">
             <GitMerge size={13} />
             <span>WORKFLOW</span>
@@ -20,16 +20,16 @@ export const Process: React.FC = () => {
 
         {/* Process Cards Grid */}
         <div className="process-grid">
-          {PROCESS_STEPS.map((step) => (
-            <div key={step.step} className="process-card">
+          {PROCESS_STEPS.map((step, idx) => (
+            <div key={step.step} className={`process-card reveal-init delay-${(idx + 1) * 100}`}>
               <div className="process-step-num">{step.step}</div>
               <h3 className="process-step-title">{step.title}</h3>
               <div className="process-step-subtitle">{step.subtitle}</div>
               <p className="process-step-desc">{step.description}</p>
 
               <div className="process-deliverables">
-                {step.deliverables.map((deliv, idx) => (
-                  <div key={idx} className="deliverable-tag">
+                {step.deliverables.map((deliv, dIdx) => (
+                  <div key={dIdx} className="deliverable-tag">
                     <span style={{ color: '#FFFFFF' }}>•</span>
                     <span>{deliv}</span>
                   </div>

@@ -60,7 +60,7 @@ export const Skills: React.FC = () => {
     <section id="skills" className="section-spacing" aria-label="Technical Skills and Stack">
       <div className="container">
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header reveal-init">
           <div className="section-eyebrow">
             <Wrench size={13} />
             <span>TECH STACK</span>
@@ -72,7 +72,7 @@ export const Skills: React.FC = () => {
         </div>
 
         {/* Category Filter Tabs */}
-        <div className="skills-nav-tabs" role="tablist">
+        <div className="skills-nav-tabs reveal-init delay-100" role="tablist">
           <button
             role="tab"
             aria-selected={activeCategoryId === 'all'}
@@ -95,7 +95,7 @@ export const Skills: React.FC = () => {
         </div>
 
         {/* Skills Grid */}
-        <div className="skills-grid">
+        <div className="skills-grid reveal-init delay-200">
           {displayedSkills.map((skill, idx) => {
             const IconComponent = iconMap[skill.iconName] || Code2;
             return (
@@ -116,9 +116,9 @@ export const Skills: React.FC = () => {
                   </p>
                 </div>
 
-                <div style={{ marginTop: '1rem', paddingTop: '0.65rem', borderTop: '1px solid rgba(255, 255, 255, 0.05)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.6875rem' }}>
+                <div style={{ marginTop: '1.25rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(255, 255, 255, 0.06)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.725rem' }}>
                   <span style={{ color: 'var(--color-text-subtle)', fontFamily: 'var(--font-mono)' }}>{skill.categoryName}</span>
-                  <span style={{ color: '#34D399', fontWeight: 600 }}>{skill.level}</span>
+                  <span style={{ color: '#FFFFFF', fontWeight: 600 }}>{skill.level}</span>
                 </div>
               </div>
             );

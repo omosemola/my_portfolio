@@ -7,7 +7,7 @@ export const About: React.FC = () => {
     <section id="about" className="section-spacing" aria-label="About Richard Dairo">
       <div className="container">
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header reveal-init">
           <div className="section-eyebrow">
             <UserCheck size={13} />
             <span>ABOUT ME</span>
@@ -20,7 +20,7 @@ export const About: React.FC = () => {
 
         <div className="about-grid">
           {/* Left Narrative */}
-          <div className="about-narrative">
+          <div className="about-narrative reveal-init delay-100">
             <p className="about-text">
               I am a <strong>Full-Stack Developer</strong> driven by a passion for solving real-world problems through pragmatic software engineering. My work spans from conceptual user flows and interface architecture down to relational database modeling and secure payment gateway integrations.
             </p>
@@ -28,29 +28,29 @@ export const About: React.FC = () => {
               Over the course of building production web and mobile software, I have developed deep hands-on expertise in:
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.85rem', marginBottom: '2rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'var(--color-text-main)' }}>
-                <CheckCircle size={15} style={{ color: '#FFFFFF', flexShrink: 0 }} />
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '2.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.925rem', color: 'var(--color-text-main)' }}>
+                <CheckCircle size={16} style={{ color: '#FFFFFF', flexShrink: 0 }} />
                 <span>Marketplace Platforms</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'var(--color-text-main)' }}>
-                <CheckCircle size={15} style={{ color: '#FFFFFF', flexShrink: 0 }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.925rem', color: 'var(--color-text-main)' }}>
+                <CheckCircle size={16} style={{ color: '#FFFFFF', flexShrink: 0 }} />
                 <span>E-Commerce Stores</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'var(--color-text-main)' }}>
-                <CheckCircle size={15} style={{ color: '#FFFFFF', flexShrink: 0 }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.925rem', color: 'var(--color-text-main)' }}>
+                <CheckCircle size={16} style={{ color: '#FFFFFF', flexShrink: 0 }} />
                 <span>Payment Gateways (Paystack)</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'var(--color-text-main)' }}>
-                <CheckCircle size={15} style={{ color: '#FFFFFF', flexShrink: 0 }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.925rem', color: 'var(--color-text-main)' }}>
+                <CheckCircle size={16} style={{ color: '#FFFFFF', flexShrink: 0 }} />
                 <span>Postgres & Supabase RLS</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'var(--color-text-main)' }}>
-                <CheckCircle size={15} style={{ color: '#FFFFFF', flexShrink: 0 }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.925rem', color: 'var(--color-text-main)' }}>
+                <CheckCircle size={16} style={{ color: '#FFFFFF', flexShrink: 0 }} />
                 <span>Mobile Apps (Flutter)</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'var(--color-text-main)' }}>
-                <CheckCircle size={15} style={{ color: '#FFFFFF', flexShrink: 0 }} />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.925rem', color: 'var(--color-text-main)' }}>
+                <CheckCircle size={16} style={{ color: '#FFFFFF', flexShrink: 0 }} />
                 <span>Automated CI/CD Deployments</span>
               </div>
             </div>
@@ -64,7 +64,7 @@ export const About: React.FC = () => {
           </div>
 
           {/* Right Stats & Highlights Grid */}
-          <div className="stats-grid">
+          <div className="stats-grid reveal-init delay-200">
             {STATS.map((stat, idx) => (
               <div key={idx} className="stat-card">
                 <div className="stat-value">{stat.value}</div>

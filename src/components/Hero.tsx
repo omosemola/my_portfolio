@@ -10,9 +10,9 @@ export const Hero: React.FC = () => {
       <div className="container-wide">
         <div className="hero-grid">
           {/* Left Column: Personal Brand & Intro */}
-          <div className="hero-content">
+          <div className="hero-content reveal-init">
             {/* Status Pill */}
-            <div className="status-badge" style={{ marginBottom: '1.25rem' }}>
+            <div className="status-badge" style={{ marginBottom: '1.5rem' }}>
               <span className="status-dot"></span>
               <span>{PERSONAL_INFO.status}</span>
             </div>
@@ -36,7 +36,7 @@ export const Hero: React.FC = () => {
 
             {/* Call to Actions */}
             <div className="hero-actions">
-              <a href="#projects" className="btn btn-accent" id="hero-cta-projects">
+              <a href="#projects" className="btn btn-primary" id="hero-cta-projects">
                 <span>View My Work</span>
                 <ArrowRight size={16} />
               </a>
@@ -98,7 +98,7 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Right Column: Interactive Terminal Visual Showcase */}
-          <div className="hero-visual">
+          <div className="hero-visual reveal-init delay-200">
             <InteractiveTerminal />
           </div>
         </div>

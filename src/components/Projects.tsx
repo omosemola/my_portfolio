@@ -15,7 +15,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenCaseStudy }) => {
     <section id="projects" className="section-spacing" aria-label="Featured Projects">
       <div className="container-wide">
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header reveal-init">
           <div className="section-eyebrow">
             <FolderGit2 size={13} />
             <span>PORTFOLIO</span>
@@ -30,20 +30,23 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenCaseStudy }) => {
         <div className="projects-container">
           {/* Primary Flagship Project */}
           {featuredProject && (
-            <ProjectCard
-              project={featuredProject}
-              onOpenCaseStudy={onOpenCaseStudy}
-            />
+            <div className="reveal-init delay-100">
+              <ProjectCard
+                project={featuredProject}
+                onOpenCaseStudy={onOpenCaseStudy}
+              />
+            </div>
           )}
 
           {/* Secondary Grid Projects */}
           <div className="project-secondary-grid">
-            {secondaryProjects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                onOpenCaseStudy={onOpenCaseStudy}
-              />
+            {secondaryProjects.map((project, idx) => (
+              <div key={project.id} className={`reveal-init delay-${(idx + 2) * 100}`}>
+                <ProjectCard
+                  project={project}
+                  onOpenCaseStudy={onOpenCaseStudy}
+                />
+              </div>
             ))}
           </div>
         </div>

@@ -56,7 +56,6 @@ export const Contact: React.FC = () => {
 
     setIsSubmitting(true);
 
-    // Simulate reliable dispatch
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
@@ -81,7 +80,7 @@ export const Contact: React.FC = () => {
     <section id="contact" className="section-spacing" aria-label="Contact and Inquiries">
       <div className="container">
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header reveal-init">
           <div className="section-eyebrow">
             <MessageSquare size={13} />
             <span>GET IN TOUCH</span>
@@ -95,7 +94,7 @@ export const Contact: React.FC = () => {
         {/* Contact Layout */}
         <div className="contact-grid">
           {/* Left Column: Direct Info */}
-          <div className="contact-info-col">
+          <div className="contact-info-col reveal-init delay-100">
             <div className="contact-card-box">
               <div className="contact-icon-box">
                 <Mail size={22} />
@@ -116,31 +115,31 @@ export const Contact: React.FC = () => {
                 title="Copy email address"
                 aria-label="Copy email"
               >
-                {emailCopied ? <Check size={16} className="text-emerald" /> : <Copy size={16} />}
+                {emailCopied ? <Check size={16} style={{ color: '#FFFFFF' }} /> : <Copy size={16} />}
               </button>
             </div>
 
-            <div className="glass-panel" style={{ padding: '1.75rem' }}>
-              <h3 style={{ fontSize: '1.1rem', color: '#FFFFFF', marginBottom: '0.5rem' }}>
+            <div className="glass-panel" style={{ padding: '2.25rem' }}>
+              <h3 style={{ fontSize: '1.2rem', color: '#FFFFFF', marginBottom: '0.6rem' }}>
                 Availability Status
               </h3>
-              <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', marginBottom: '1.25rem' }}>
+              <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', marginBottom: '1.5rem', lineHeight: 1.7 }}>
                 Currently available for selected freelance development contracts, marketplace builds, and full-stack product development.
               </p>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', fontSize: '0.8125rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#34D399' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10B981' }}></span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.85rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#FFFFFF' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#FFFFFF', boxShadow: '0 0 8px rgba(255, 255, 255, 0.8)' }}></span>
                   <span>Average response time: &lt; 24 hours</span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#CBD5E1' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--color-accent-yellow)' }}></span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', color: '#CBD5E1' }}>
+                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.4)' }}></span>
                   <span>Timezone: GMT / Flexible for global collaboration</span>
                 </div>
               </div>
             </div>
 
-            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '0.85rem', flexWrap: 'wrap' }}>
               <a
                 href={`mailto:${PERSONAL_INFO.email}?subject=Project%20Inquiry%20from%20Portfolio`}
                 className="btn btn-secondary"
@@ -162,13 +161,13 @@ export const Contact: React.FC = () => {
           </div>
 
           {/* Right Column: Contact Form */}
-          <div className="contact-form-card">
+          <div className="contact-form-card reveal-init delay-200">
             {isSuccess && (
-              <div className="form-feedback-toast success" role="status">
-                <CheckCircle2 size={20} />
+              <div className="form-feedback-toast" role="status">
+                <CheckCircle2 size={22} />
                 <div>
                   <strong>Message Sent Successfully!</strong>
-                  <div style={{ fontSize: '0.8125rem', marginTop: '2px' }}>
+                  <div style={{ fontSize: '0.825rem', marginTop: '3px' }}>
                     Thank you for reaching out, Richard will get back to you shortly.
                   </div>
                 </div>
@@ -178,7 +177,7 @@ export const Contact: React.FC = () => {
             <form onSubmit={handleSubmit} noValidate>
               <div className="form-group">
                 <label htmlFor="contact-name" className="form-label">
-                  Your Name <span style={{ color: 'var(--color-accent-yellow)' }}>*</span>
+                  Your Name <span style={{ color: '#FFFFFF' }}>*</span>
                 </label>
                 <input
                   id="contact-name"
@@ -194,7 +193,7 @@ export const Contact: React.FC = () => {
 
               <div className="form-group">
                 <label htmlFor="contact-email" className="form-label">
-                  Email Address <span style={{ color: 'var(--color-accent-yellow)' }}>*</span>
+                  Email Address <span style={{ color: '#FFFFFF' }}>*</span>
                 </label>
                 <input
                   id="contact-email"
@@ -208,7 +207,7 @@ export const Contact: React.FC = () => {
                 {errors.email && <span className="form-error">{errors.email}</span>}
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem' }}>
                 <div className="form-group">
                   <label htmlFor="contact-project-type" className="form-label">
                     Project Type
@@ -249,7 +248,7 @@ export const Contact: React.FC = () => {
 
               <div className="form-group">
                 <label htmlFor="contact-message" className="form-label">
-                  Project Details <span style={{ color: 'var(--color-accent-yellow)' }}>*</span>
+                  Project Details <span style={{ color: '#FFFFFF' }}>*</span>
                 </label>
                 <textarea
                   id="contact-message"
@@ -265,8 +264,8 @@ export const Contact: React.FC = () => {
 
               <button
                 type="submit"
-                className="btn btn-accent"
-                style={{ width: '100%', marginTop: '0.5rem' }}
+                className="btn btn-primary"
+                style={{ width: '100%', marginTop: '0.75rem' }}
                 disabled={isSubmitting}
                 id="contact-submit-btn"
               >

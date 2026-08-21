@@ -18,8 +18,9 @@ export const App: React.FC = () => {
   const [selectedCaseStudy, setSelectedCaseStudy] = useState<Project | null>(null);
 
   useEffect(() => {
+    // 1. Track active navbar section on scroll
     const sectionIds = ['hero', 'about', 'skills', 'projects', 'services', 'experience', 'process', 'contact'];
-    const observers: IntersectionObserver[] = [];
+    const sectionObservers: IntersectionObserver[] = [];
 
     sectionIds.forEach((id) => {
       const el = document.getElementById(id);
@@ -32,25 +33,48 @@ export const App: React.FC = () => {
               }
             });
           },
-          { threshold: 0.25, rootMargin: '-80px 0px -40% 0px' }
+          { threshold: 0.2, rootMargin: '-80px 0px -40% 0px' }
         );
         observer.observe(el);
-        observers.push(observer);
+        sectionObservers.push(observer);
       }
     });
 
+    // 2. Smooth reveal animation on scroll for all sections & cards
+    const revealElements = document.querySelectorAll('.reveal-init');
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    revealElements.forEach((el) => revealObserver.observe(el));
+
     return () => {
-      observers.forEach((obs) => obs.disconnect());
+      sectionObservers.forEach((obs) => obs.disconnect());
+      revealObserver.disconnect();
     };
   }, []);
 
   return (
-    <div className="min-h-screen bg-base text-main">
+    <div className="min-h-screen bg-base text-main relative">
+      {/* Ambient Animated Glow Mesh for Glassmorphism Depth */}
+      <div className="ambient-glow-bg" aria-hidden="true">
+        <div className="glow-orb orb-1"></div>
+        <div className="glow-orb orb-2"></div>
+        <div className="glow-orb orb-3"></div>
+      </div>
+
       {/* Sticky Glass Navbar */}
       <Navbar activeSection={activeSection} />
 
       {/* Main Content Sections */}
-      <main>
+      <main style={{ position: 'relative', zIndex: 1 }}>
         <Hero />
         <About />
         <Skills />
