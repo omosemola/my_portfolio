@@ -17,6 +17,7 @@ export const Hero: React.FC = () => {
                 <span className="status-dot"></span>
                 <span>{PERSONAL_INFO.status}</span>
               </div>
+
               <div className="section-eyebrow" style={{ marginBottom: 0 }}>
                 <Code2 size={12} />
                 <span>{PERSONAL_INFO.eyebrow}</span>
