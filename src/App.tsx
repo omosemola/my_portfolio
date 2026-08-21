@@ -5,7 +5,6 @@ import { About } from './components/About';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
 import { Services } from './components/Services';
-import { Process } from './components/Process';
 import { Experience } from './components/Experience';
 import { ResumeCTA } from './components/ResumeCTA';
 import { Contact } from './components/Contact';
@@ -19,7 +18,7 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     // 1. Track active navbar section on scroll
-    const sectionIds = ['hero', 'about', 'skills', 'projects', 'services', 'experience', 'process', 'contact'];
+    const sectionIds = ['hero', 'about', 'skills', 'projects', 'services', 'experience', 'contact'];
     const sectionObservers: IntersectionObserver[] = [];
 
     sectionIds.forEach((id) => {
@@ -40,7 +39,7 @@ export const App: React.FC = () => {
       }
     });
 
-    // 2. Smooth reveal animation on scroll for all sections & cards
+    // 2. Smooth reveal animation on scroll
     const revealElements = document.querySelectorAll('.reveal-init');
     const revealObserver = new IntersectionObserver(
       (entries) => {
@@ -63,24 +62,22 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-base text-main relative">
-      {/* Ambient Animated Glow Mesh for Glassmorphism Depth */}
+      {/* Ambient Animated Glow Mesh */}
       <div className="ambient-glow-bg" aria-hidden="true">
         <div className="glow-orb orb-1"></div>
         <div className="glow-orb orb-2"></div>
-        <div className="glow-orb orb-3"></div>
       </div>
 
       {/* Sticky Glass Navbar */}
       <Navbar activeSection={activeSection} />
 
-      {/* Main Content Sections */}
+      {/* Main Content Sections - Compact & Streamlined */}
       <main style={{ position: 'relative', zIndex: 1 }}>
         <Hero />
         <About />
         <Skills />
         <Projects onOpenCaseStudy={(proj) => setSelectedCaseStudy(proj)} />
         <Services />
-        <Process />
         <Experience />
         <ResumeCTA />
         <Contact />

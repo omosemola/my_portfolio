@@ -12,14 +12,14 @@ export const Hero: React.FC = () => {
           {/* Left Column: Personal Brand & Intro */}
           <div className="hero-content reveal-init">
             {/* Status Pill */}
-            <div className="status-badge" style={{ marginBottom: '1.5rem' }}>
+            <div className="status-badge" style={{ marginBottom: '1rem' }}>
               <span className="status-dot"></span>
               <span>{PERSONAL_INFO.status}</span>
             </div>
 
             {/* Eyebrow */}
-            <div className="section-eyebrow">
-              <Code2 size={13} />
+            <div className="section-eyebrow" style={{ marginBottom: '0.85rem' }}>
+              <Code2 size={12} />
               <span>{PERSONAL_INFO.eyebrow}</span>
             </div>
 
@@ -37,22 +37,18 @@ export const Hero: React.FC = () => {
             {/* Call to Actions */}
             <div className="hero-actions">
               <a href="#projects" className="btn btn-primary" id="hero-cta-projects">
-                <span>View My Work</span>
-                <ArrowRight size={16} />
+                <span>View Work</span>
+                <ArrowRight size={15} />
               </a>
 
               <a href="#contact" className="btn btn-secondary" id="hero-cta-contact">
-                <MessageSquare size={16} />
-                <span>Let's Talk</span>
+                <MessageSquare size={15} />
+                <span>Contact</span>
               </a>
             </div>
 
             {/* Social Links */}
             <div className="hero-socials">
-              <span style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', color: 'var(--color-text-subtle)', textTransform: 'uppercase' }}>
-                Connect:
-              </span>
-              
               <a
                 href={PERSONAL_INFO.github}
                 target="_blank"
@@ -97,8 +93,8 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Interactive Terminal Visual Showcase */}
-          <div className="hero-visual reveal-init delay-200">
+          {/* Right Column: Compact Interactive Terminal Visual Showcase */}
+          <div className="hero-visual reveal-init delay-100">
             <InteractiveTerminal />
           </div>
         </div>
