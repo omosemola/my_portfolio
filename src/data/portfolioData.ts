@@ -73,10 +73,10 @@ export const PERSONAL_INFO = {
   status: "Available for new projects & opportunities",
   location: "Remote / Global",
   email: "richarddairo.dev@gmail.com",
-  github: "https://github.com/richarddairo",
+  github: "https://github.com/omosemola",
   linkedin: "https://linkedin.com/in/richarddairo",
-  twitter: "https://twitter.com/richarddairo",
-  resumeUrl: "#resume",
+  twitter: "https://x.com/richarddairo",
+  resumeUrl: "/resume.pdf",
 };
 
 export const STATS = [
