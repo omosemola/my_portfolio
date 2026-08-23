@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, MessageSquare, ArrowUpRight } from 'lucide-react';
+import { Menu, X, MessageSquare, ArrowUpRight, Sun, Moon } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface NavbarProps {
   activeSection: string;
+  theme: 'dark' | 'light';
+  onToggleTheme: () => void;
 }
 
 const NAV_ITEMS = [
@@ -13,7 +15,7 @@ const NAV_ITEMS = [
   { id: 'contact', label: 'Contact' },
 ];
 
-export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
+export const Navbar: React.FC<NavbarProps> = ({ activeSection, theme, onToggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -75,8 +77,19 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             ))}
           </div>
 
-          {/* Hire Me CTA */}
+          {/* Right Action Bar (Theme Toggle + Hire Me + Mobile Hamburger) */}
           <div className="nav-actions">
+            {/* Theme Toggle Button */}
+            <button
+              type="button"
+              className="theme-toggle-btn"
+              onClick={onToggleTheme}
+              aria-label={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+              title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+            >
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+
             <a
               href="#contact"
               className="btn btn-primary"
@@ -123,15 +136,27 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection }) => {
             </div>
           </div>
 
-          <button
-            type="button"
-            className="btn-ghost"
-            onClick={() => setMobileMenuOpen(false)}
-            aria-label="Close Menu"
-            style={{ padding: '0.4rem' }}
-          >
-            <X size={20} />
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <button
+              type="button"
+              className="theme-toggle-btn"
+              onClick={onToggleTheme}
+              aria-label={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+              style={{ width: '36px', height: '36px' }}
+            >
+              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
+
+            <button
+              type="button"
+              className="btn-ghost"
+              onClick={() => setMobileMenuOpen(false)}
+              aria-label="Close Menu"
+              style={{ padding: '0.4rem' }}
+            >
+              <X size={20} />
+            </button>
+          </div>
         </div>
 
         <div className="mobile-drawer-links">
