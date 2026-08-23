@@ -19,9 +19,9 @@ export const Hero: React.FC = () => {
     <section id="hero" className="hero-section" aria-label="Hero Introduction">
       <div className="container-wide">
         <div className="hero-grid">
-          {/* Left Column: Personal Brand & Quick Navigation */}
+          {/* Left Column: Personal Brand & Intro */}
           <div className="hero-content reveal-init">
-            {/* Status & Role Badges */}
+            {/* Status & Eyebrow Badge Row */}
             <div className="hero-badge-row">
               <div className="status-badge">
                 <span className="status-dot"></span>
@@ -45,7 +45,7 @@ export const Hero: React.FC = () => {
               {PERSONAL_INFO.heroParagraph}
             </p>
 
-            {/* Primary Action Buttons */}
+            {/* Call to Action Buttons */}
             <div className="hero-actions">
               <a
                 href="#projects"
@@ -74,7 +74,7 @@ export const Hero: React.FC = () => {
               </a>
             </div>
 
-            {/* Mobile Quick-Navigation Chips (Easy Navigation for Smartphone Users) */}
+            {/* Quick Navigation Chips */}
             <div className="hero-mobile-nav-chips">
               <span className="quick-nav-label">Quick Jump:</span>
               <div className="quick-nav-pills">
@@ -116,7 +116,7 @@ export const Hero: React.FC = () => {
               </div>
             </div>
 
-            {/* Social Connect Strip */}
+            {/* Social Links Bar */}
             <div className="hero-socials">
               <span className="socials-lead-text">Connect:</span>
               
@@ -164,9 +164,9 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Desktop Terminal & Mobile Interactive Stack Showcase */}
+          {/* Right Column: Desktop Terminal & Mobile Touch Showcase Card */}
           <div className="hero-visual reveal-init delay-100">
-            {/* Desktop View: Full Terminal */}
+            {/* Desktop View: Full Interactive Terminal */}
             <div className="hero-desktop-visual">
               <InteractiveTerminal />
             </div>
