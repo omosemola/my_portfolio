@@ -34,12 +34,12 @@ export const Footer: React.FC = () => {
               <div className="brand-badge">RD</div>
               <div className="brand-text">
                 <span className="brand-name">{PERSONAL_INFO.name}</span>
-                <span className="brand-role">FULL-STACK DEVELOPER</span>
+                <span className="brand-role">SOFTWARE DEVELOPER</span>
               </div>
             </a>
 
             <p className="footer-brand-bio">
-              Full-Stack Developer & Digital Product Builder. Designing clean interfaces, reliable databases, and scalable payment pipelines for modern web & mobile products.
+              Software Developer & Digital Product Builder. Designing clean interfaces, reliable databases, and scalable payment pipelines for modern web & mobile products.
             </p>
 
             <div className="status-badge" style={{ marginTop: '1.25rem', width: 'fit-content' }}>

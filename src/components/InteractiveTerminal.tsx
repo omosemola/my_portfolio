@@ -119,7 +119,7 @@ export const InteractiveTerminal: React.FC = () => {
             <div className="code-line">
               <span className="code-num">4</span>
               <span className="code-content" style={{ paddingLeft: '1rem' }}>
-                specialty: <span className="code-str">"Full-Stack Web & Mobile Systems"</span>,
+                specialty: <span className="code-str">"Web, Mobile & Backend Software Systems"</span>,
               </span>
             </div>
             <div className="code-line">

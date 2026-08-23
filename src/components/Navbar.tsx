@@ -56,7 +56,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, theme, onToggleTh
             <div className="brand-badge">RD</div>
             <div className="brand-text">
               <span className="brand-name">Richard Dairo</span>
-              <span className="brand-role">FULL-STACK DEV</span>
+              <span className="brand-role">SOFTWARE DEVELOPER</span>
             </div>
           </a>
 
@@ -132,7 +132,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, theme, onToggleTh
             <div className="brand-badge">RD</div>
             <div className="brand-text">
               <span className="brand-name">Richard Dairo</span>
-              <span className="brand-role">FULL-STACK DEV</span>
+              <span className="brand-role">SOFTWARE DEVELOPER</span>
             </div>
           </div>
 

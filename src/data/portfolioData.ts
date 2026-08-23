@@ -64,11 +64,11 @@ export interface ExperienceItem {
 
 export const PERSONAL_INFO = {
   name: "Richard Dairo",
-  role: "Full-Stack Developer & Digital Product Builder",
-  eyebrow: "FULL-STACK DEVELOPER",
+  role: "Software Developer & Digital Product Builder",
+  eyebrow: "SOFTWARE DEVELOPER",
   heroHeading: "Building digital products that ",
   heroHighlight: "solve real problems.",
-  heroSubtitle: "Full-Stack Developer & Digital Product Builder",
+  heroSubtitle: "Software Developer & Digital Product Builder",
   heroParagraph: "I design and build modern web applications, marketplaces, and digital products with clean interfaces, reliable functionality, and scalable technologies — from the interface users see to the backend systems that make them work.",
   status: "Available for new projects & opportunities",
   location: "Remote / Global",
@@ -82,7 +82,7 @@ export const PERSONAL_INFO = {
 export const STATS = [
   { value: "3+", label: "Flagship Products Built", desc: "From conceptualization to live architecture" },
   { value: "100%", label: "Type-Safe & Scalable", desc: "TypeScript, Supabase & clean architectures" },
-  { value: "Full-Stack", label: "End-to-End Delivery", desc: "UI, DB, Authentication & Payment Gateways" },
+  { value: "Full Lifecycle", label: "End-to-End Delivery", desc: "UI, DB, Authentication & Payment Gateways" },
   { value: "0ms", label: "Zero Compromise on UX", desc: "Fast, accessible, and responsive across devices" },
 ];
 

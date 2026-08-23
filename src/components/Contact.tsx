@@ -85,7 +85,7 @@ export const Contact: React.FC = () => {
           </div>
           <h2 className="section-title">Start a Project or Hire Me</h2>
           <p className="section-desc">
-            Have a product to build or need a full-stack developer for your team? Send a message or download my resume below.
+            Have a product to build or need a software developer for your team? Send a message or download my resume below.
           </p>
         </div>
 

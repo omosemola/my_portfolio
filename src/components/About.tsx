@@ -128,7 +128,7 @@ const TOOLS_DATA: ToolItem[] = [
 
 const WORKFLOW_PIPELINE = [
   { step: '01', title: 'Architecture & Schema', desc: 'Database ERDs, API contract specs, and UI wireframes.' },
-  { step: '02', title: 'Full-Stack Execution', desc: 'Next.js components, typed API endpoints, and Supabase RLS.' },
+  { step: '02', title: 'Software Execution', desc: 'Next.js components, typed API endpoints, and Supabase RLS.' },
   { step: '03', title: 'Fintech & Security', desc: 'Paystack webhook verification and escrow balance safeguards.' },
   { step: '04', title: 'Automated CI/CD', desc: 'GitHub Actions test pipelines and instant edge deployment.' },
 ];
@@ -151,7 +151,7 @@ export const About: React.FC = () => {
           </div>
           <h2 className="section-title">Built for Production, Scaled for Growth</h2>
           <p className="section-desc">
-            Full-stack product developer blending clean frontend interfaces with resilient backend architecture and secure fintech payment pipelines.
+            Software developer blending clean frontend interfaces with resilient backend architecture and secure fintech payment pipelines.
           </p>
         </div>
 
@@ -162,7 +162,7 @@ export const About: React.FC = () => {
             <div className="card-header-badge-row">
               <div className="status-badge" style={{ padding: '0.3rem 0.75rem', fontSize: '0.75rem' }}>
                 <span className="status-dot"></span>
-                <span>Full-Stack Mindset</span>
+                <span>Software Engineering Mindset</span>
               </div>
               <span className="code-pill-tag">Production-Ready</span>
             </div>
@@ -178,7 +178,7 @@ export const About: React.FC = () => {
               <div className="pillar-item">
                 <div className="pillar-icon"><Zap size={16} /></div>
                 <div>
-                  <div className="pillar-title">Full-Stack Execution</div>
+                  <div className="pillar-title">Web & Mobile Engineering</div>
                   <div className="pillar-desc">Next.js 18, React SSR, TypeScript & modular component architecture.</div>
                 </div>
               </div>
