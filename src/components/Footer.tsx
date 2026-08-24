@@ -32,7 +32,7 @@ export const Footer: React.FC = () => {
               }}
             >
               <div className="brand-badge brand-badge-img">
-                <img src="/logo.jpg" alt={PERSONAL_INFO.name} className="brand-logo-img" />
+                <img src="/logo.png" alt={PERSONAL_INFO.name} className="brand-logo-img" />
               </div>
               <div className="brand-text">
                 <span className="brand-name">{PERSONAL_INFO.name}</span>

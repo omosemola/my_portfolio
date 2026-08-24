@@ -54,7 +54,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, theme, onToggleTh
             }}
           >
             <div className="brand-badge brand-badge-img">
-              <img src="/logo.jpg" alt="Richard Dairo" className="brand-logo-img" />
+              <img src="/logo.png" alt="Richard Dairo" className="brand-logo-img" />
             </div>
             <div className="brand-text">
               <span className="brand-name">Richard Dairo</span>
@@ -132,7 +132,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, theme, onToggleTh
         <div className="mobile-drawer-header">
           <div className="nav-brand">
             <div className="brand-badge brand-badge-img">
-              <img src="/logo.jpg" alt="Richard Dairo" className="brand-logo-img" />
+              <img src="/logo.png" alt="Richard Dairo" className="brand-logo-img" />
             </div>
             <div className="brand-text">
               <span className="brand-name">Richard Dairo</span>
