@@ -42,9 +42,9 @@
   --brand-badge-text: #090B11;
 
   /* Typography Fonts */
-  --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-heading: 'Plus Jakarta Sans', 'Geist Mono', system-ui, -apple-system, sans-serif;
+  --font-body: 'Geist Mono', monospace;
+  --font-mono: 'Geist Mono', 'JetBrains Mono', 'Fira Code', monospace;
 
   /* Layout Bounds */
   --max-width-container: 1140px;
@@ -322,7 +322,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .section-title {
-  font-size: clamp(2rem, 4.5vw, 2.75rem);
+  font-size: clamp(2.1rem, 5.2vw, 2.85rem);
   font-weight: 800;
   letter-spacing: -0.035em;
   margin-bottom: 0.85rem;
@@ -467,6 +467,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .status-badge:hover {
   border-color: var(--glass-border-hover);
+}
+
+@media (max-width: 768px) {
+  .drawer-status-badge,
+  .footer-status-badge {
+    display: none !important;
+  }
 }
 
 .status-dot {

@@ -24,6 +24,15 @@ export const TypeScriptIcon: React.FC<IconProps> = ({ size = 20, className = '' 
   </svg>
 );
 
+// JavaScript - Official JS Yellow (#F7DF1E) & Black JS Letters (#000000)
+export const JavaScriptIcon: React.FC<IconProps> = ({ size = 20, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <rect width="100" height="100" rx="18" fill="#F7DF1E" />
+    <path d="M28 62C28 69 33 74 41 74C49 74 53 69 53 61V36M41 74C37 74 32 72 29 68" stroke="#000000" strokeWidth="8" strokeLinecap="round" />
+    <path d="M60 68C63 72 69 74 76 74C84 74 89 70 89 63C89 54 78 51 72 48C64 44 61 40 61 34C61 27 67 22 76 22C82 22 87 25 90 28M72 48C80 51 91 55 91 64" stroke="#000000" strokeWidth="8" strokeLinecap="round" />
+  </svg>
+);
+
 // Next.js - Official Monochrome / Dark Disc (#000000) with Stylized N (#FFFFFF)
 export const NextJsIcon: React.FC<IconProps> = ({ size = 20, className = '' }) => (
   <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>

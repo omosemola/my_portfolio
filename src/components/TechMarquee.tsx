@@ -2,6 +2,7 @@ import React from 'react';
 import {
   ReactIcon,
   TypeScriptIcon,
+  JavaScriptIcon,
   NextJsIcon,
   TailwindIcon,
   FlutterIcon,
@@ -24,6 +25,7 @@ interface TechLogoItem {
 const TECH_LOGOS: TechLogoItem[] = [
   { id: 'react', name: 'React 18 & Next.js', icon: <ReactIcon size={58} /> },
   { id: 'typescript', name: 'TypeScript', icon: <TypeScriptIcon size={58} /> },
+  { id: 'javascript', name: 'JavaScript (ES6+)', icon: <JavaScriptIcon size={58} /> },
   { id: 'nextjs', name: 'Next.js', icon: <NextJsIcon size={58} /> },
   { id: 'tailwind', name: 'Tailwind CSS', icon: <TailwindIcon size={58} /> },
   { id: 'flutter', name: 'Flutter & Dart', icon: <FlutterIcon size={58} /> },

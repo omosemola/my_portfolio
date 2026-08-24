@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ShoppingBag, ShieldCheck, CheckCircle2, CreditCard, Tag, Wifi, Battery, Zap, ChevronRight, ChevronLeft, User } from 'lucide-react';
+import { ShoppingBag, ShieldCheck, CheckCircle2, CreditCard, Tag, Wifi, Battery, Zap, ChevronRight, User } from 'lucide-react';
 
 interface MockupProps {
   type: 'marketplace' | 'ecommerce' | 'mobile';
@@ -45,16 +45,6 @@ export const ProjectMockup: React.FC<MockupProps> = ({ type }) => {
 
     return () => clearInterval(interval);
   }, [type, isPaused]);
-
-  const handlePrev = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setActiveMarketplaceTab((prev) => (prev - 1 + MARKETPLACE_PREVIEWS.length) % MARKETPLACE_PREVIEWS.length);
-  };
-
-  const handleNext = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setActiveMarketplaceTab((prev) => (prev + 1) % MARKETPLACE_PREVIEWS.length);
-  };
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.targetTouches[0].clientX;
@@ -139,25 +129,6 @@ export const ProjectMockup: React.FC<MockupProps> = ({ type }) => {
                 </div>
               ))}
             </div>
-
-            {/* Left & Right Chevron Navigation Buttons */}
-            <button
-              type="button"
-              className="marketplace-arrow-btn prev"
-              onClick={handlePrev}
-              aria-label="Previous screenshot"
-            >
-              <ChevronLeft size={18} />
-            </button>
-
-            <button
-              type="button"
-              className="marketplace-arrow-btn next"
-              onClick={handleNext}
-              aria-label="Next screenshot"
-            >
-              <ChevronRight size={18} />
-            </button>
 
             {/* Floating Info Overlay Pill */}
             <div className="marketplace-floating-info">

@@ -44,7 +44,7 @@ export const Footer: React.FC = () => {
               Software Developer & Digital Product Builder. Designing clean interfaces, reliable databases, and scalable payment pipelines for modern web & mobile products.
             </p>
 
-            <div className="status-badge" style={{ marginTop: '1.25rem', width: 'fit-content' }}>
+            <div className="status-badge footer-status-badge" style={{ marginTop: '1.25rem', width: 'fit-content' }}>
               <span className="status-dot"></span>
               <span>{PERSONAL_INFO.status}</span>
             </div>

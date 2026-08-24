@@ -181,7 +181,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, theme, onToggleTh
         </div>
 
         <div style={{ marginTop: 'auto', paddingTop: '1.5rem', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
-          <div className="status-badge" style={{ width: '100%', justifyContent: 'center', marginBottom: '1rem' }}>
+          <div className="status-badge drawer-status-badge" style={{ width: '100%', justifyContent: 'center', marginBottom: '1rem' }}>
             <span className="status-dot"></span>
             <span>{PERSONAL_INFO.status}</span>
           </div>
