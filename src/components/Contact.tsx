@@ -49,13 +49,33 @@ export const Contact: React.FC = () => {
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/rdairo175@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: `New Portfolio Inquiry from ${formData.name} (${formData.projectType})`,
+          _replyto: formData.email,
+          name: formData.name,
+          email: formData.email,
+          projectType: formData.projectType,
+          budget: formData.budget,
+          message: formData.message,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send via endpoint');
+      }
+
       setIsSuccess(true);
       setFormData({
         name: '',
@@ -64,8 +84,20 @@ export const Contact: React.FC = () => {
         budget: '$1,000 - $3,000',
         message: '',
       });
-      setTimeout(() => setIsSuccess(false), 5000);
-    }, 600);
+      setTimeout(() => setIsSuccess(false), 7000);
+    } catch {
+      // Direct mailto trigger fallback
+      const mailtoUrl = `mailto:rdairo175@gmail.com?subject=${encodeURIComponent(
+        `Project Inquiry: ${formData.projectType} - ${formData.name}`
+      )}&body=${encodeURIComponent(
+        `Hi Richard,\n\nName: ${formData.name}\nEmail: ${formData.email}\nProject: ${formData.projectType}\nBudget: ${formData.budget}\n\nMessage:\n${formData.message}`
+      )}`;
+      window.location.href = mailtoUrl;
+      setIsSuccess(true);
+      setTimeout(() => setIsSuccess(false), 7000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleCopyEmail = () => {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ShoppingBag, ShieldCheck, CheckCircle2, CreditCard, Tag, Wifi, Battery, Zap, ChevronRight, User } from 'lucide-react';
+import { ShieldCheck, CheckCircle2, Wifi, Battery, Zap, ChevronRight, User } from 'lucide-react';
 
 interface MockupProps {
-  type: 'marketplace' | 'ecommerce' | 'mobile';
+  type: 'marketplace' | 'ecommerce' | 'mobile' | 'pastry';
 }
 
 const MARKETPLACE_PREVIEWS = [
@@ -29,18 +29,81 @@ const MARKETPLACE_PREVIEWS = [
   }
 ];
 
+const ECOMMERCE_PREVIEWS = [
+  {
+    id: 'hero',
+    title: 'Bespoke Atelier Hero',
+    badge: 'Luxury Kaftans & Agbadas',
+    url: 'frankiestylesng.com',
+    image: '/projects/ecommerce-1.png'
+  },
+  {
+    id: 'catalogue',
+    title: 'The Catalogue',
+    badge: 'Category Filters & Sizing',
+    url: 'frankiestylesng.com/shop',
+    image: '/projects/ecommerce-2.png'
+  },
+  {
+    id: 'arrivals',
+    title: 'New Arrivals',
+    badge: 'Luxury Kaftan Sets & Lace',
+    url: 'frankiestylesng.com/collections',
+    image: '/projects/ecommerce-3.png'
+  },
+  {
+    id: 'product',
+    title: 'Product & Bag Checkout',
+    badge: 'Custom Sizing & Paystack',
+    url: 'frankiestylesng.com/product/2',
+    image: '/projects/ecommerce-4.png'
+  }
+];
+
+const PASTRY_PREVIEWS = [
+  {
+    id: 'hero',
+    title: 'Bakery Home & Taste Hero',
+    badge: 'Artisanal Cakes & Pastries',
+    url: 'pastryhomebylayo.shop',
+    image: '/projects/pastry-1.png'
+  },
+  {
+    id: 'catalog',
+    title: 'Fresh From The Oven Catalog',
+    badge: 'Small Chops, Cakes & Meat Pies',
+    url: 'pastryhomebylayo.shop/shop',
+    image: '/projects/pastry-2.png'
+  },
+  {
+    id: 'checkout',
+    title: 'Fast Checkout & Order Summary',
+    badge: 'Location Delivery & Paystack',
+    url: 'pastryhomebylayo.shop/checkout.html',
+    image: '/projects/pastry-3.png'
+  }
+];
+
 export const ProjectMockup: React.FC<MockupProps> = ({ type }) => {
   const [activeMarketplaceTab, setActiveMarketplaceTab] = useState(0);
+  const [activeEcommerceTab, setActiveEcommerceTab] = useState(0);
+  const [activePastryTab, setActivePastryTab] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const touchStartX = useRef<number>(0);
   const touchEndX = useRef<number>(0);
 
-  // Auto-swipe every 4 seconds unless paused by user interaction
+  // Auto-swipe every 4.2 seconds unless paused by user interaction
   useEffect(() => {
-    if (type !== 'marketplace' || isPaused) return;
+    if (isPaused) return;
 
     const interval = setInterval(() => {
-      setActiveMarketplaceTab((prev) => (prev + 1) % MARKETPLACE_PREVIEWS.length);
+      if (type === 'marketplace') {
+        setActiveMarketplaceTab((prev) => (prev + 1) % MARKETPLACE_PREVIEWS.length);
+      } else if (type === 'ecommerce') {
+        setActiveEcommerceTab((prev) => (prev + 1) % ECOMMERCE_PREVIEWS.length);
+      } else if (type === 'pastry') {
+        setActivePastryTab((prev) => (prev + 1) % PASTRY_PREVIEWS.length);
+      }
     }, 4200);
 
     return () => clearInterval(interval);
@@ -63,12 +126,24 @@ export const ProjectMockup: React.FC<MockupProps> = ({ type }) => {
     const diff = touchStartX.current - touchEndX.current;
     const threshold = 35; // minimum px for swipe gesture
 
-    if (diff > threshold) {
-      // Swiped Left -> Next Image
-      setActiveMarketplaceTab((prev) => (prev + 1) % MARKETPLACE_PREVIEWS.length);
-    } else if (diff < -threshold) {
-      // Swiped Right -> Previous Image
-      setActiveMarketplaceTab((prev) => (prev - 1 + MARKETPLACE_PREVIEWS.length) % MARKETPLACE_PREVIEWS.length);
+    if (type === 'marketplace') {
+      if (diff > threshold) {
+        setActiveMarketplaceTab((prev) => (prev + 1) % MARKETPLACE_PREVIEWS.length);
+      } else if (diff < -threshold) {
+        setActiveMarketplaceTab((prev) => (prev - 1 + MARKETPLACE_PREVIEWS.length) % MARKETPLACE_PREVIEWS.length);
+      }
+    } else if (type === 'ecommerce') {
+      if (diff > threshold) {
+        setActiveEcommerceTab((prev) => (prev + 1) % ECOMMERCE_PREVIEWS.length);
+      } else if (diff < -threshold) {
+        setActiveEcommerceTab((prev) => (prev - 1 + ECOMMERCE_PREVIEWS.length) % ECOMMERCE_PREVIEWS.length);
+      }
+    } else if (type === 'pastry') {
+      if (diff > threshold) {
+        setActivePastryTab((prev) => (prev + 1) % PASTRY_PREVIEWS.length);
+      } else if (diff < -threshold) {
+        setActivePastryTab((prev) => (prev - 1 + PASTRY_PREVIEWS.length) % PASTRY_PREVIEWS.length);
+      }
     }
 
     touchStartX.current = 0;
@@ -171,8 +246,14 @@ export const ProjectMockup: React.FC<MockupProps> = ({ type }) => {
   }
 
   if (type === 'ecommerce') {
+    const currentView = ECOMMERCE_PREVIEWS[activeEcommerceTab];
+
     return (
-      <div className="mockup-window ecommerce-mockup">
+      <div
+        className="mockup-window marketplace-real-mockup"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         {/* Browser Top Bar */}
         <div className="mockup-header">
           <div className="mockup-dots">
@@ -180,76 +261,172 @@ export const ProjectMockup: React.FC<MockupProps> = ({ type }) => {
             <span className="dot yellow"></span>
             <span className="dot green"></span>
           </div>
+
           <div className="mockup-url-bar">
             <ShieldCheck size={12} className="text-emerald" />
-            <span>shop.digitalstorefront.io/cart</span>
+            <span>{currentView.url}</span>
           </div>
-          <div className="mockup-badge-live">CART ENGINE</div>
+
+          <div className="mockup-badge-live">
+            <span className="live-dot-pulse"></span>
+            LIVE STORE
+          </div>
         </div>
 
-        {/* E-commerce Mockup Content */}
-        <div className="mockup-body ecom-body">
-          <div className="ecom-left">
-            <div className="ecom-section-header">
-              <span>Featured Catalog</span>
-              <span className="ecom-filter-badge"><Tag size={10} /> Active Filter: Essentials</span>
+        {/* Real Screenshot Display Area with Touch Swiping */}
+        <div
+          className="marketplace-display-area"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div className="marketplace-img-wrapper">
+            {/* Sliding Image Track */}
+            <div
+              className="marketplace-slider-track"
+              style={{ transform: `translateX(-${activeEcommerceTab * 100}%)` }}
+            >
+              {ECOMMERCE_PREVIEWS.map((preview, index) => (
+                <div key={preview.id} className="marketplace-slide">
+                  <img
+                    src={preview.image}
+                    alt={preview.title}
+                    className="marketplace-screenshot"
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    draggable={false}
+                  />
+                </div>
+              ))}
             </div>
-            <div className="ecom-catalog-row">
-              <div className="ecom-prod-card">
-                <div className="prod-thumb prod-1"></div>
-                <div className="prod-info">
-                  <span className="prod-name">Minimal Desk Mat Pro</span>
-                  <span className="prod-price">₦18,500</span>
-                </div>
-              </div>
-              <div className="ecom-prod-card">
-                <div className="prod-thumb prod-2"></div>
-                <div className="prod-info">
-                  <span className="prod-name">Alloy Laptop Riser</span>
-                  <span className="prod-price">₦26,000</span>
-                </div>
-              </div>
+
+            {/* Floating Info Overlay Pill */}
+            <div className="marketplace-floating-info">
+              <span className="floating-title">{currentView.title}</span>
+              <span className="floating-sub">• {currentView.badge}</span>
+            </div>
+
+            {/* Swipe Dot Indicators */}
+            <div className="marketplace-dot-indicators">
+              {ECOMMERCE_PREVIEWS.map((_, dotIdx) => (
+                <span
+                  key={dotIdx}
+                  className={`swipe-dot ${dotIdx === activeEcommerceTab ? 'active' : ''}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveEcommerceTab(dotIdx);
+                  }}
+                />
+              ))}
             </div>
           </div>
 
-          {/* Slide-out Cart Drawer Preview */}
-          <div className="ecom-cart-drawer">
-            <div className="cart-drawer-header">
-              <div className="cart-title">
-                <ShoppingBag size={14} className="text-yellow" />
-                <span>Your Cart (2 items)</span>
-              </div>
-            </div>
+          {/* Interactive Screen Selector Strip */}
+          <div className="marketplace-nav-strip">
+            {ECOMMERCE_PREVIEWS.map((view, idx) => (
+              <button
+                key={view.id}
+                type="button"
+                className={`marketplace-nav-tab ${idx === activeEcommerceTab ? 'active' : ''}`}
+                onClick={() => setActiveEcommerceTab(idx)}
+              >
+                <span className="tab-number">0{idx + 1}</span>
+                <span className="tab-name">{view.title}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
-            <div className="cart-items-list">
-              <div className="cart-mini-item">
-                <div className="cart-thumb"></div>
-                <div className="cart-desc">
-                  <div className="c-name">Minimal Desk Mat Pro</div>
-                  <div className="c-sub">Qty: 1 • Slate Gray</div>
+  if (type === 'pastry') {
+    const currentView = PASTRY_PREVIEWS[activePastryTab];
+
+    return (
+      <div
+        className="mockup-window marketplace-real-mockup"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {/* Browser Top Bar */}
+        <div className="mockup-header">
+          <div className="mockup-dots">
+            <span className="dot red"></span>
+            <span className="dot yellow"></span>
+            <span className="dot green"></span>
+          </div>
+
+          <div className="mockup-url-bar">
+            <ShieldCheck size={12} className="text-emerald" />
+            <span>{currentView.url}</span>
+          </div>
+
+          <div className="mockup-badge-live">
+            <span className="live-dot-pulse"></span>
+            LIVE BAKERY
+          </div>
+        </div>
+
+        {/* Real Screenshot Display Area with Touch Swiping */}
+        <div
+          className="marketplace-display-area"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div className="marketplace-img-wrapper">
+            {/* Sliding Image Track */}
+            <div
+              className="marketplace-slider-track"
+              style={{ transform: `translateX(-${activePastryTab * 100}%)` }}
+            >
+              {PASTRY_PREVIEWS.map((preview, index) => (
+                <div key={preview.id} className="marketplace-slide">
+                  <img
+                    src={preview.image}
+                    alt={preview.title}
+                    className="marketplace-screenshot"
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    draggable={false}
+                  />
                 </div>
-                <div className="c-price">₦18,500</div>
-              </div>
+              ))}
             </div>
 
-            <div className="cart-summary-box">
-              <div className="summary-line">
-                <span>Subtotal</span>
-                <span>₦18,500</span>
-              </div>
-              <div className="summary-line">
-                <span>Shipping</span>
-                <span className="text-emerald">Free</span>
-              </div>
-              <div className="summary-line total">
-                <span>Total</span>
-                <span className="text-yellow font-bold">₦18,500</span>
-              </div>
-              <div className="checkout-btn-preview">
-                <CreditCard size={13} />
-                <span>Pay via Paystack</span>
-              </div>
+            {/* Floating Info Overlay Pill */}
+            <div className="marketplace-floating-info">
+              <span className="floating-title">{currentView.title}</span>
+              <span className="floating-sub">• {currentView.badge}</span>
             </div>
+
+            {/* Swipe Dot Indicators */}
+            <div className="marketplace-dot-indicators">
+              {PASTRY_PREVIEWS.map((_, dotIdx) => (
+                <span
+                  key={dotIdx}
+                  className={`swipe-dot ${dotIdx === activePastryTab ? 'active' : ''}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActivePastryTab(dotIdx);
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Interactive Screen Selector Strip */}
+          <div className="marketplace-nav-strip">
+            {PASTRY_PREVIEWS.map((view, idx) => (
+              <button
+                key={view.id}
+                type="button"
+                className={`marketplace-nav-tab ${idx === activePastryTab ? 'active' : ''}`}
+                onClick={() => setActivePastryTab(idx)}
+              >
+                <span className="tab-number">0{idx + 1}</span>
+                <span className="tab-name">{view.title}</span>
+              </button>
+            ))}
           </div>
         </div>
       </div>

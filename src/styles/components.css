@@ -398,12 +398,12 @@
 }
 
 .hero-description {
-  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-  line-height: 1.68;
+  font-size: clamp(0.85rem, 1.3vw, 0.95rem);
+  line-height: 1.52;
   color: var(--color-text-muted);
-  max-width: 540px;
+  max-width: 500px;
   width: 100%;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.5rem;
   word-break: break-word;
   overflow-wrap: break-word;
   box-sizing: border-box;
@@ -593,9 +593,9 @@
     min-width: 0;
   }
   .hero-description {
-    font-size: 0.88rem;
-    line-height: 1.6;
-    margin-bottom: 1.25rem;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    margin-bottom: 1.15rem;
     width: 100%;
     max-width: 100%;
     min-width: 0;
@@ -1362,19 +1362,19 @@
 }
 
 .project-tagline {
-  font-size: 0.925rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: var(--color-text-body);
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.75rem;
   word-break: break-word;
   overflow-wrap: break-word;
 }
 
 .project-desc {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--color-text-muted);
-  line-height: 1.68;
-  margin-bottom: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: 1.15rem;
   word-break: break-word;
   overflow-wrap: break-word;
 }
@@ -2464,7 +2464,8 @@
 }
 
 .bullet-desc {
-  font-size: 0.825rem;
+  font-size: 0.78rem;
+  line-height: 1.48;
   color: var(--color-text-muted);
 }
 
@@ -2500,10 +2501,10 @@
 }
 
 .about-text {
-  font-size: clamp(0.95rem, 1.8vw, 1.08rem);
-  line-height: 1.75;
+  font-size: clamp(0.85rem, 1.4vw, 0.92rem);
+  line-height: 1.52;
   color: var(--color-text-body);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.15rem;
   word-break: break-word;
   overflow-wrap: break-word;
 }
@@ -2577,10 +2578,10 @@
 }
 
 .about-narrative-text {
-  font-size: clamp(0.9rem, 1.6vw, 1.05rem);
-  line-height: 1.75;
+  font-size: clamp(0.82rem, 1.3vw, 0.88rem);
+  line-height: 1.5;
   color: var(--color-text-body);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   word-break: break-word;
   overflow-wrap: break-word;
 }
@@ -2635,9 +2636,9 @@
 }
 
 .pillar-desc {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   color: var(--color-text-muted);
-  line-height: 1.55;
+  line-height: 1.42;
   word-break: break-word;
 }
 
@@ -2999,9 +3000,9 @@
 }
 
 .tool-note-text {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--color-text-muted);
-  line-height: 1.55;
+  line-height: 1.45;
 }
 
 /* --------------------------------------------------------------------------
@@ -3065,8 +3066,8 @@
   width: 44px;
   height: 44px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.08);
-  color: #FFFFFF;
+  background: var(--glass-bg);
+  color: var(--color-text-main);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3084,7 +3085,7 @@
 .contact-box-val {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: var(--color-text-main);
   word-break: break-word;
 }
 
@@ -3125,7 +3126,7 @@
 .form-label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #E2E8F0;
+  color: var(--color-text-main);
 }
 
 .form-input, .form-textarea, .form-select {
@@ -3134,7 +3135,7 @@
   background: rgba(9, 11, 17, 0.7);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
-  color: #FFFFFF;
+  color: var(--color-text-main);
   font-family: inherit;
   font-size: 0.925rem;
   transition: all var(--transition-fast);
@@ -3143,10 +3144,21 @@
   max-width: 100%;
 }
 
+.form-input::placeholder, .form-textarea::placeholder {
+  color: var(--color-text-subtle);
+  opacity: 0.7;
+}
+
+.form-select option {
+  background: #0F172A;
+  color: #FFFFFF;
+}
+
 .form-input:focus, .form-textarea:focus, .form-select:focus {
-  border-color: #FFFFFF;
+  border-color: var(--color-text-main);
   background: rgba(15, 19, 29, 0.9);
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+  color: var(--color-text-main);
 }
 
 .form-error {
@@ -3163,9 +3175,9 @@
   align-items: center;
   gap: 0.75rem;
   font-size: 0.85rem;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #FFFFFF;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  color: #4ADE80;
   animation: fadeIn 0.3s ease-out;
   box-sizing: border-box;
   max-width: 100%;
@@ -3210,9 +3222,29 @@
 
 @media (max-width: 640px) {
   .footer-grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.75rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem 1rem;
     margin-bottom: 2rem;
+  }
+  .footer-brand-col {
+    grid-column: 1 / -1;
+  }
+  .footer-nav-col {
+    grid-column: 1 / -1;
+  }
+  .footer-work-col {
+    grid-column: 1;
+    min-width: 0;
+  }
+  .footer-connect-col {
+    grid-column: 2;
+    min-width: 0;
+  }
+  .footer-links-list {
+    gap: 0.65rem;
+  }
+  .footer-link-item {
+    font-size: 0.82rem;
   }
 }
 
@@ -3224,12 +3256,12 @@
 }
 
 .footer-brand-bio {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--color-text-muted);
   max-width: 360px;
   width: 100%;
   margin-top: 0.5rem;
-  line-height: 1.65;
+  line-height: 1.5;
   word-break: break-word;
 }
 
@@ -4298,4 +4330,70 @@
   border-top-color: rgba(15, 23, 42, 0.08);
   color: #0F172A;
 }
+
+/* Contact Section & Form Light Mode Overrides */
+[data-theme="light"] .contact-card-box {
+  background: #FFFFFF;
+  border-color: rgba(15, 23, 42, 0.1);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="light"] .contact-box-label {
+  color: #64748B;
+}
+
+[data-theme="light"] .contact-box-val {
+  color: #0F172A;
+}
+
+[data-theme="light"] .contact-icon-box {
+  background: rgba(15, 23, 42, 0.06);
+  color: #0F172A;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+[data-theme="light"] .contact-form-card {
+  background: #FFFFFF;
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+[data-theme="light"] .form-label {
+  color: #0F172A;
+}
+
+[data-theme="light"] .form-input,
+[data-theme="light"] .form-textarea,
+[data-theme="light"] .form-select {
+  background: #F8FAFC;
+  border-color: rgba(15, 23, 42, 0.16);
+  color: #0F172A;
+}
+
+[data-theme="light"] .form-input::placeholder,
+[data-theme="light"] .form-textarea::placeholder {
+  color: #94A3B8;
+  opacity: 1;
+}
+
+[data-theme="light"] .form-select option {
+  background: #FFFFFF;
+  color: #0F172A;
+}
+
+[data-theme="light"] .form-input:focus,
+[data-theme="light"] .form-textarea:focus,
+[data-theme="light"] .form-select:focus {
+  background: #FFFFFF;
+  border-color: #0F172A;
+  color: #0F172A;
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1);
+}
+
+[data-theme="light"] .form-feedback-toast {
+  background: #F0FDF4;
+  border-color: #86EFAC;
+  color: #166534;
+}
+
 

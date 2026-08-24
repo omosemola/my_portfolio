@@ -181,7 +181,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
                   <div key={idx} className="case-study-gallery-card">
                     <img src={img} alt={`${project.title} screenshot ${idx + 1}`} loading="lazy" />
                     <div className="case-study-gallery-label">
-                      <span>{idx === 0 ? 'Student Onboarding & Study Essentials' : idx === 1 ? 'Customer Storefront & Food Ordering' : 'Merchant Partner Portal & POS Terminal'}</span>
+                      <span>{project.imageLabels?.[idx] || `Production View 0${idx + 1}`}</span>
                     </div>
                   </div>
                 ))}

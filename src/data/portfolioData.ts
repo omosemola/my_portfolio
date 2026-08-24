@@ -8,8 +8,9 @@ export interface Project {
   technologies: string[];
   githubUrl?: string;
   liveUrl?: string;
-  mockupType: 'marketplace' | 'ecommerce' | 'mobile';
+  mockupType: 'marketplace' | 'ecommerce' | 'mobile' | 'pastry';
   images?: string[];
+  imageLabels?: string[];
   caseStudy: {
     overview: string;
     problem: string;
@@ -73,7 +74,7 @@ export const PERSONAL_INFO = {
   heroParagraph: "I design and build modern web applications, marketplaces, and digital products with clean interfaces, reliable functionality, and scalable technologies — from the interface users see to the backend systems that make them work.",
   status: "Available for new projects & opportunities",
   location: "Remote / Global",
-  email: "richarddairo.dev@gmail.com",
+  email: "rdairo175@gmail.com",
   github: "https://github.com/omosemola",
   linkedin: "https://linkedin.com/in/richarddairo",
   twitter: "https://x.com/richarddairo",
@@ -81,10 +82,10 @@ export const PERSONAL_INFO = {
 };
 
 export const STATS = [
-  { value: "3+", label: "Flagship Products Built", desc: "From conceptualization to live architecture" },
+  { value: "5+ Years", label: "Engineering Journey", desc: "Software dev & frontend engineering since 2021" },
   { value: "100%", label: "Type-Safe & Scalable", desc: "TypeScript, Supabase & clean architectures" },
-  { value: "Full Lifecycle", label: "End-to-End Delivery", desc: "UI, DB, Authentication & Payment Gateways" },
-  { value: "0ms", label: "Zero Compromise on UX", desc: "Fast, accessible, and responsive across devices" },
+  { value: "Full Stack", label: "End-to-End Delivery", desc: "UI, DB, Authentication & Payment Gateways" },
+  { value: "0ms", label: "Zero Compromise UX", desc: "Fast, accessible, and responsive across devices" },
 ];
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
@@ -159,6 +160,11 @@ export const PROJECTS: Project[] = [
       "/projects/marketplace-2.png",
       "/projects/marketplace-3.png"
     ],
+    imageLabels: [
+      "Student Onboarding & Study Essentials",
+      "Customer Storefront & Food Ordering",
+      "Merchant Partner Portal & POS Terminal"
+    ],
     caseStudy: {
       overview: "Lightson Marketplace bridges the gap between student entrepreneurs, campus kitchens, and the campus student body. Students frequently trade meals, groceries, gadgets, and services through fragmented social chat groups without payment protection or catalog search. This platform delivers a complete authenticated commerce and delivery ecosystem.",
       problem: "Trading within university communities was fragmented across WhatsApp groups, high risk of unverified cash transactions, lack of order visibility, zero catalog search capability, and no streamlined payout tracking for student vendors.",
@@ -188,38 +194,50 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "ecommerce-store",
-    title: "Modern E-Commerce Platform",
-    tagline: "High-performance digital storefront with real-time cart, filtering, and seamless checkout.",
-    description: "A fast, modern e-commerce web application engineered for smooth product browsing, multi-attribute filtering, cart persistence, responsive UI, and secure payment processing.",
+    title: "Frankie Styles — Luxury E-Commerce Atelier",
+    tagline: "Bespoke fashion storefront with dynamic category filtering, custom measurement sizing, and Paystack checkout.",
+    description: "A luxury digital storefront engineered for Frankie Styles, a high-end menswear and traditional couture atelier. Features dynamic collection browsing, multi-category filtering (Agbadas, Kaftans, Dry Lace, Jalabiya, Isi Agu), custom sizing specifications, persistent cart bag, and Paystack payment gateway integration.",
     category: "E-Commerce",
     featured: false,
-    technologies: ["React", "TypeScript", "PostgreSQL", "Paystack", "REST APIs", "CSS Modules", "Netlify"],
-    githubUrl: "https://github.com/richarddairo/ecommerce-platform",
-    liveUrl: "https://ecommerce-store-demo.netlify.app",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Paystack", "PostgreSQL", "REST APIs", "Vercel"],
+    githubUrl: "https://github.com/richarddairo/frankie-styles-ecommerce",
+    liveUrl: "https://frankiestylesng.com",
     mockupType: "ecommerce",
+    images: [
+      "/projects/ecommerce-1.png",
+      "/projects/ecommerce-2.png",
+      "/projects/ecommerce-3.png",
+      "/projects/ecommerce-4.png"
+    ],
+    imageLabels: [
+      "Bespoke Couture Atelier Hero & Brand Story",
+      "The Catalogue & Category Filtering Engine",
+      "New Arrivals Luxury Kaftan Collection Grid",
+      "Interactive Product Detail, Custom Sizing & Bag"
+    ],
     caseStudy: {
-      overview: "A sleek, conversion-focused online retail storefront designed to deliver instant page transitions, intuitive product filtering, and an optimized single-page checkout flow.",
-      problem: "Many small brand e-commerce stores suffer from slow initial load times, clunky cart drawers, and non-responsive mobile checkout forms that hurt customer conversion rates.",
-      solution: "Created an ultra-lightweight, SEO-optimized e-commerce storefront with client-side state caching, instant category filtering, slide-out cart drawer, and frictionless payment gateway integrations.",
+      overview: "Frankie Styles is an exclusive luxury fashion and menswear atelier specializing in masterfully structured Agbadas, refined Kaftans, Dry Lace, and bespoke African couture. The e-commerce platform was engineered to reflect the brand's haute couture identity with fast browsing, custom tailoring measurements, and seamless checkout.",
+      problem: "High-end fashion brands often struggle with generic template stores that fail to convey couture prestige, lack proper custom measurement size workflows for bespoke attire, and suffer from sluggish catalog loading speeds.",
+      solution: "Engineered a bespoke, high-performance luxury storefront featuring curated editorial galleries, multi-category taxonomy (Agbadas, Kaftans, Dry Lace, Jalabiya, Isi Agu), interactive size and custom-measure selectors, persistent cart bag, and direct Paystack payment verification.",
       keyFeatures: [
-        { title: "Interactive Product Catalog", desc: "Dynamic filtering by categories, tags, price sorting, and search." },
-        { title: "Persistent Shopping Cart", desc: "Local state sync ensures shopping carts persist across page reloads and browser sessions." },
-        { title: "Fast Checkout Flow", desc: "Streamlined address collection and card/bank transfer integration via Paystack." },
-        { title: "Responsive Mobile Experience", desc: "Mobile-first UI tailored for single-thumb navigation and fast mobile checkouts." },
-        { title: "SEO & OpenGraph Meta", desc: "Dynamic semantic tags and structured schema for rich search engine indexing." }
+        { title: "Curated Luxury Catalog", desc: "Browse high-resolution editorial collections with dynamic category and two-piece set filters." },
+        { title: "Bespoke Sizing & Custom Measure", desc: "Interactive size selection covering standard chest sizing through to custom tailor measurements." },
+        { title: "Instant Add to Bag & Persistent Cart", desc: "Frictionless slide-out shopping bag with real-time currency calculation and local storage recovery." },
+        { title: "Paystack Payment Gateway", desc: "Direct card, bank transfer, and USSD payment processing with automated order confirmation." },
+        { title: "Editorial Lookbook & Fitting Booking", desc: "Integrated booking funnel for private atelier fitting sessions and custom couture appointments." }
       ],
       architecture: [
-        "Frontend: React + TypeScript with custom CSS design tokens for zero layout shifts",
-        "State Management: React Context with local storage persistence",
-        "Payments: Paystack API with callback validation",
-        "Deployment: Netlify with automated continuous deployment from GitHub"
+        "Frontend: React + TypeScript with luxury editorial typography and responsive glassmorphism UI",
+        "State Management: React Context with persistent shopping bag state",
+        "Payments: Paystack API with serverless transaction verification",
+        "Hosting: Vercel Edge Network with global CDN image delivery"
       ],
-      challenges: "Maintaining fast first-contentful-paint (FCP) and smooth 60fps animations while dynamically loading high-resolution product imagery across mobile viewports.",
-      outcome: "Built an e-commerce platform that loads in under 1 second, provides a frictionless shopping experience, and simplifies store administration.",
+      challenges: "Delivering crisp, ultra-high-resolution apparel photography with instant load times while supporting custom multi-parameter sizing specifications for bespoke orders.",
+      outcome: "Launched a prestigious luxury storefront with sub-second page transitions, increasing order volume and international customer inquiries.",
       stats: [
-        { label: "Performance", value: "98+ Lighthouse" },
-        { label: "Responsiveness", value: "Mobile First" },
-        { label: "Checkout", value: "< 3 Steps" },
+        { label: "Catalog Speed", value: "< 1.0s FCP" },
+        { label: "Checkout Engine", value: "Paystack Verified" },
+        { label: "Design Style", value: "Luxury Atelier" },
       ]
     }
   },
@@ -257,6 +275,53 @@ export const PROJECTS: Project[] = [
         { label: "Platforms", value: "Android & iOS" },
         { label: "Architecture", value: "Clean Architecture" },
         { label: "CI/CD", value: "Codemagic" },
+      ]
+    }
+  },
+  {
+    id: "pastry-home",
+    title: "Pastry Home by Layo — Confectionery & Ordering Platform",
+    tagline: "Gourmet bakery storefront with dynamic cart, location-based delivery calculation, and frictionless checkout.",
+    description: "A fast, appetizing digital bakery and pastry ordering web application engineered for Pastry Home by Layo. Features fresh oven pastry catalogs (Small Chops, Custom Cakes, Banana Breads, Meat Pies, Chin Chin), persistent cart state, dynamic location-based delivery fee calculations, WhatsApp instant ordering, and seamless Paystack checkout.",
+    category: "E-Commerce",
+    featured: false,
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Paystack", "REST APIs", "Vercel"],
+    githubUrl: "https://github.com/richarddairo/pastry-home-store",
+    liveUrl: "https://pastryhomebylayo.shop",
+    mockupType: "pastry",
+    images: [
+      "/projects/pastry-1.png",
+      "/projects/pastry-2.png",
+      "/projects/pastry-3.png"
+    ],
+    imageLabels: [
+      "Artisanal Bakery Hero & Instant Ordering",
+      "Fresh From The Oven Pastry Catalog",
+      "Dynamic Delivery Calculation & Fast Checkout"
+    ],
+    caseStudy: {
+      overview: "Pastry Home by Layo is a boutique artisanal bakery renowned for gourmet pastries, celebratory cakes, small chops, and fresh-baked confectioneries. The platform was built to transition direct social media order intake into a high-conversion, automated digital ordering storefront.",
+      problem: "Handling high-volume daily bakery and catering orders over instant messaging led to order mix-ups, delayed delivery fee calculations for different regional zones, and friction during peak order hours.",
+      solution: "Engineered a responsive, mouth-watering e-commerce storefront with categorized menu browsing, real-time cart persistence, automatic regional delivery fee calculation (e.g. Lekki, Magboro, Mainland), WhatsApp order dispatch, and direct Paystack payment verification.",
+      keyFeatures: [
+        { title: "Fresh From The Oven Catalog", desc: "Showcases artisanal cakes, small chops boxes, cheese steaks, and banana breads with instant price tags." },
+        { title: "Location-Based Delivery Engine", desc: "Dynamic shipping fee calculator mapping specific delivery zones across Lagos and Ogun states." },
+        { title: "Real-Time Cart Drawer", desc: "Persistent shopping cart preserving item selections, quantities, and subtotal computations." },
+        { title: "Dual Checkout Channels", desc: "Frictionless card/transfer checkout via Paystack alongside direct WhatsApp order confirmation." },
+        { title: "Mobile-First Ordering UI", desc: "Optimized for one-thumb mobile browsing and rapid checkout completion in under 60 seconds." }
+      ],
+      architecture: [
+        "Frontend: React + TypeScript with responsive glassmorphic UI and fast image delivery",
+        "State Management: Custom React hooks with persistent localStorage synchronization",
+        "Payments: Paystack checkout integration with serverless transaction verification",
+        "Hosting: Vercel Edge Network with high-availability asset caching"
+      ],
+      challenges: "Implementing dynamic zonal delivery fee calculations based on customer neighborhood selection while maintaining instant single-page checkout responsiveness.",
+      outcome: "Streamlined daily bakery operations, reduced order processing time by 75%, and unlocked a seamless online shopping experience for pastry lovers.",
+      stats: [
+        { label: "Order Velocity", value: "< 60s Checkout" },
+        { label: "Delivery Logic", value: "Zone-Based Dynamic" },
+        { label: "Conversion", value: "Paystack + WhatsApp" },
       ]
     }
   }
@@ -367,34 +432,49 @@ export const EXPERIENCE_TIMELINE: ExperienceItem[] = [
   {
     id: "exp-1",
     period: "2024 — Present",
-    role: "Independent Full-Stack Developer & Product Builder",
-    organization: "Self-Directed & Client Projects",
+    role: "Full-Stack Product Engineer & Atelier Builder",
+    organization: "Independent Products & Client Platforms",
     location: "Remote",
     badge: "Current",
-    description: "Architecting and shipping production web applications, multi-vendor marketplace systems, and custom e-commerce storefronts with modern stacks.",
+    description: "Architecting and shipping production web applications, multi-vendor marketplace engines, and bespoke luxury e-commerce platforms.",
     highlights: [
-      "Engineered Campus Marketplace from conceptual design to full-stack implementation with Supabase, PostgreSQL, and Paystack.",
-      "Integrated real-time authentication, Row Level Security policies, and secure multi-vendor payment settlement workflows.",
-      "Developed responsive web and mobile application interfaces with TypeScript, React, and Flutter.",
-      "Managed CI/CD deployment pipelines on Vercel, Netlify, and GitHub Actions with zero-downtime releases."
+      "Engineered Lightson Marketplace with Supabase, PostgreSQL, and Paystack split-payment settlements.",
+      "Shipped Frankie Styles luxury couture atelier with dynamic category taxonomies and custom sizing selectors.",
+      "Integrated Row Level Security policies, token authentication, and serverless webhook pipelines.",
+      "Maintained automated CI/CD deployments across Vercel and Netlify with zero layout shifts."
     ],
     techStack: ["React", "TypeScript", "Supabase", "PostgreSQL", "Paystack", "Flutter", "Vercel"]
   },
   {
     id: "exp-2",
-    period: "2023 — 2024",
-    role: "Software Developer & Frontend Engineer",
+    period: "2022 — 2024",
+    role: "Frontend Engineer & Web App Developer",
     organization: "Digital Product Initiatives",
     location: "Remote",
     badge: "Milestone",
-    description: "Focused on building interactive web interfaces, RESTful API integrations, responsive design systems, and mobile prototypes.",
+    description: "Constructed high-performance web applications, interactive checkout flows, and cross-platform mobile apps with Flutter.",
     highlights: [
-      "Built modern e-commerce product catalogs, cart engines, and checkout systems with clean state architecture.",
-      "Developed cross-platform mobile apps with Flutter, integrating REST APIs and offline caching.",
-      "Implemented OAuth authentication workflows and database schemas with relational data integrity.",
-      "Optimized frontend performance, achieving 95+ scores on mobile web audits."
+      "Built modern e-commerce storefronts with persistent carts and Paystack gateway integrations.",
+      "Engineered cross-platform mobile apps with Flutter, integrating REST endpoints and offline state caching.",
+      "Designed reusable glassmorphism UI components and scalable design token systems.",
+      "Achieved 98+ Lighthouse scores across mobile and desktop web audits."
     ],
-    techStack: ["JavaScript", "TypeScript", "React", "HTML5/CSS3", "REST APIs", "Git", "Flutter"]
+    techStack: ["React", "TypeScript", "JavaScript (ES6+)", "Flutter", "REST APIs", "Git", "Tailwind CSS"]
+  },
+  {
+    id: "exp-3",
+    period: "2021 — 2022",
+    role: "Frontend Developer & UI Engineer",
+    organization: "Web Development & Frontend Inception",
+    location: "Remote",
+    badge: "Inception",
+    description: "Commenced software development and frontend engineering journey, building responsive web layouts, interactive dashboards, and client-side logic.",
+    highlights: [
+      "Mastered modern JavaScript (ES6+), React component lifecycles, and asynchronous API integrations.",
+      "Developed responsive, accessible web interfaces utilizing semantic HTML5 and modern CSS3 Grid/Flexbox.",
+      "Established foundational mastery of Git version control, branching workflows, and clean code principles."
+    ],
+    techStack: ["JavaScript", "HTML5", "CSS3", "React", "Git", "REST APIs"]
   }
 ];
 

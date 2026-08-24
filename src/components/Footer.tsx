@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Column 2: Navigation Links */}
-          <div>
+          <div className="footer-nav-col">
             <h4 className="footer-col-title">Navigation</h4>
             <ul className="footer-links-list">
               <li>
@@ -106,7 +106,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Column 3: Featured Work & Downloads */}
-          <div>
+          <div className="footer-work-col">
             <h4 className="footer-col-title">Featured Work</h4>
             <ul className="footer-links-list">
               <li>
@@ -130,7 +130,19 @@ export const Footer: React.FC = () => {
                     scrollToSection('projects');
                   }}
                 >
-                  <span>E-Commerce Platform</span>
+                  <span>Frankie Styles E-Com</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#projects"
+                  className="footer-link-item"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection('projects');
+                  }}
+                >
+                  <span>Pastry Home by Layo</span>
                 </a>
               </li>
               <li>
@@ -160,7 +172,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Column 4: Social & Direct Connect */}
-          <div>
+          <div className="footer-connect-col">
             <h4 className="footer-col-title">Connect</h4>
             <ul className="footer-links-list">
               <li>
