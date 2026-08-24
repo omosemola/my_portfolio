@@ -77,6 +77,18 @@ export const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-base text-main relative">
+      {/* Sticky Fixed Background Graphic Layer for whole page */}
+      <div className="page-sticky-bg" aria-hidden="true">
+        <img
+          src="/hero-bg.jpg"
+          alt=""
+          className="page-sticky-bg-img"
+          loading="eager"
+          decoding="async"
+        />
+        <div className="page-sticky-bg-overlay" />
+      </div>
+
       {/* Ambient Backdrop Glow Mesh */}
       <div className="ambient-glow-bg" aria-hidden="true">
         <div className="glow-orb orb-1"></div>

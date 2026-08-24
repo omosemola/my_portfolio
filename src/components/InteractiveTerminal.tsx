@@ -87,12 +87,12 @@ export const InteractiveTerminal: React.FC = () => {
         </div>
 
         <button
-          className="btn-ghost"
+          className="btn-ghost terminal-copy-btn"
           style={{ padding: '0.2rem 0.4rem', fontSize: '0.75rem' }}
           onClick={() => copyToClipboard('npx richard-dairo --skills')}
           title="Copy command"
         >
-          {copied ? <Check size={14} style={{ color: '#FFFFFF' }} /> : <Copy size={14} />}
+          {copied ? <Check size={14} className="copy-check-icon" /> : <Copy size={14} />}
         </button>
       </div>
 
@@ -161,9 +161,14 @@ export const InteractiveTerminal: React.FC = () => {
 
             {/* Dynamic Command Output */}
             {commandOutput.length > 0 && (
-              <div style={{ marginTop: '0.75rem', padding: '0.5rem 0', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+              <div className="terminal-output-box">
                 {commandOutput.map((line, idx) => (
-                  <div key={idx} style={{ color: line.startsWith('✓') ? '#FFFFFF' : line.startsWith('✨') ? '#E5E5E5' : '#888888', fontSize: '0.75rem' }}>
+                  <div
+                    key={idx}
+                    className={`output-line ${
+                      line.startsWith('✓') ? 'success' : line.startsWith('✨') ? 'highlight' : 'dim'
+                    }`}
+                  >
                     {line}
                   </div>
                 ))}
@@ -171,9 +176,9 @@ export const InteractiveTerminal: React.FC = () => {
             )}
 
             <div className="terminal-cmd-prompt">
-              <span>➜</span>
-              <span style={{ color: '#FFFFFF' }}>~/richard-dairo</span>
-              <span style={{ color: '#888888' }}>(main)</span>
+              <span className="prompt-arrow">➜</span>
+              <span className="prompt-path">~/richard-dairo</span>
+              <span className="prompt-branch">(main)</span>
               <span className="terminal-cursor"></span>
             </div>
           </div>
@@ -267,25 +272,25 @@ export const InteractiveTerminal: React.FC = () => {
             </div>
             <div className="code-line">
               <span className="code-num">2</span>
-              <span className="code-content" style={{ color: '#FFFFFF' }}>
+              <span className="code-content code-status-ok">
                 ● PostgreSQL Cluster: CONNECTED (0 errors, 99.9% uptime)
               </span>
             </div>
             <div className="code-line">
               <span className="code-num">3</span>
-              <span className="code-content" style={{ color: '#FFFFFF' }}>
+              <span className="code-content code-status-ok">
                 ● Supabase RLS Policies: ENFORCED (100% active tables)
               </span>
             </div>
             <div className="code-line">
               <span className="code-num">4</span>
-              <span className="code-content" style={{ color: '#FFFFFF' }}>
+              <span className="code-content code-status-ok">
                 ● Paystack Webhook Listener: HEALTHY
               </span>
             </div>
             <div className="code-line">
               <span className="code-num">5</span>
-              <span className="code-content" style={{ color: '#AAAAAA' }}>
+              <span className="code-content code-status-edge">
                 ● Edge Network: 28 PoPs active, avg latency 18ms
               </span>
             </div>

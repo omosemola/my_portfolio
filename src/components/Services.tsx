@@ -70,7 +70,7 @@ export const Services: React.FC = () => {
                   <ul className="service-features-list">
                     {service.features.map((feat, fIdx) => (
                       <li key={fIdx} className="service-feature-item">
-                        <Check size={13} style={{ color: '#FFFFFF', flexShrink: 0 }} />
+                        <Check size={13} style={{ color: 'var(--color-text-main)', flexShrink: 0 }} />
                         <span>{feat}</span>
                       </li>
                     ))}
@@ -94,7 +94,7 @@ export const Services: React.FC = () => {
                 <div className="process-deliverables">
                   {step.deliverables.map((deliv, dIdx) => (
                     <div key={dIdx} className="deliverable-tag">
-                      <span style={{ color: '#FFFFFF' }}>•</span>
+                      <span style={{ color: 'var(--color-text-main)' }}>•</span>
                       <span>{deliv}</span>
                     </div>
                   ))}

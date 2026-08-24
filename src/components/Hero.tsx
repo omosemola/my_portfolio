@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
-import { ArrowRight, MessageSquare, Mail, Code2, FolderGit2, Wrench, FileText, Terminal, Sparkles, ChevronRight } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, MessageSquare, Mail, Code2, FolderGit2, Wrench, FileText } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { InteractiveTerminal } from './InteractiveTerminal';
+import { TechMarquee } from './TechMarquee';
 import { GithubIcon, LinkedinIcon, TwitterIcon } from './SocialIcons';
-import { ReactIcon, TypeScriptIcon, SupabaseIcon, PaystackIcon, FlutterIcon } from './TechIcons';
 
 export const Hero: React.FC = () => {
-  const [mobileTab, setMobileTab] = useState<'stack' | 'terminal'>('stack');
-
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -17,17 +15,12 @@ export const Hero: React.FC = () => {
 
   return (
     <section id="hero" className="hero-section" aria-label="Hero Introduction">
-      <div className="container-wide">
+      <div className="container-wide" style={{ position: 'relative', zIndex: 2 }}>
         <div className="hero-grid">
           {/* Left Column: Personal Brand & Intro */}
           <div className="hero-content reveal-init">
-            {/* Status & Eyebrow Badge Row */}
+            {/* Eyebrow Badge */}
             <div className="hero-badge-row">
-              <div className="status-badge">
-                <span className="status-dot"></span>
-                <span>{PERSONAL_INFO.status}</span>
-              </div>
-
               <div className="section-eyebrow" style={{ marginBottom: 0 }}>
                 <Code2 size={12} />
                 <span>{PERSONAL_INFO.eyebrow}</span>
@@ -164,96 +157,15 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Desktop Terminal & Mobile Touch Showcase Card */}
+          {/* Right Column: Interactive Terminal (Desktop & Mobile Responsive) */}
           <div className="hero-visual reveal-init delay-100">
-            {/* Desktop View: Full Interactive Terminal */}
-            <div className="hero-desktop-visual">
-              <InteractiveTerminal />
-            </div>
-
-            {/* Mobile View: High-Impact Touch Showcase Card */}
-            <div className="hero-mobile-visual glass-panel">
-              <div className="mobile-visual-header">
-                <div className="visual-header-brand">
-                  <div className="brand-dot active"></div>
-                  <span>Core Production Stack</span>
-                </div>
-
-                <div className="mobile-tab-switch">
-                  <button
-                    type="button"
-                    className={`mini-tab-btn ${mobileTab === 'stack' ? 'active' : ''}`}
-                    onClick={() => setMobileTab('stack')}
-                  >
-                    <Sparkles size={11} />
-                    <span>Stack</span>
-                  </button>
-                  <button
-                    type="button"
-                    className={`mini-tab-btn ${mobileTab === 'terminal' ? 'active' : ''}`}
-                    onClick={() => setMobileTab('terminal')}
-                  >
-                    <Terminal size={11} />
-                    <span>Terminal</span>
-                  </button>
-                </div>
-              </div>
-
-              {mobileTab === 'stack' ? (
-                <div className="mobile-stack-grid">
-                  <div className="mobile-tech-card" onClick={() => scrollToSection('projects')}>
-                    <div className="tech-icon-circle"><ReactIcon size={18} /></div>
-                    <div className="tech-text-wrap">
-                      <span className="tech-main">React 18 & Next.js</span>
-                      <span className="tech-sub">SSR Web Apps</span>
-                    </div>
-                  </div>
-
-                  <div className="mobile-tech-card" onClick={() => scrollToSection('projects')}>
-                    <div className="tech-icon-circle"><TypeScriptIcon size={18} /></div>
-                    <div className="tech-text-wrap">
-                      <span className="tech-main">TypeScript</span>
-                      <span className="tech-sub">Strict Type Safety</span>
-                    </div>
-                  </div>
-
-                  <div className="mobile-tech-card" onClick={() => scrollToSection('projects')}>
-                    <div className="tech-icon-circle"><SupabaseIcon size={18} /></div>
-                    <div className="tech-text-wrap">
-                      <span className="tech-main">Supabase & Postgres</span>
-                      <span className="tech-sub">Database & Auth RLS</span>
-                    </div>
-                  </div>
-
-                  <div className="mobile-tech-card" onClick={() => scrollToSection('projects')}>
-                    <div className="tech-icon-circle"><PaystackIcon size={18} /></div>
-                    <div className="tech-text-wrap">
-                      <span className="tech-main">Paystack Gateway</span>
-                      <span className="tech-sub">Fintech & Webhooks</span>
-                    </div>
-                  </div>
-
-                  <div className="mobile-stack-bottom-banner" onClick={() => scrollToSection('projects')}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      <FlutterIcon size={16} />
-                      <span style={{ fontSize: '0.8rem', color: '#FFFFFF', fontWeight: 600 }}>
-                        Flutter & Dart Mobile Apps
-                      </span>
-                    </div>
-                    <ChevronRight size={14} style={{ color: 'var(--color-text-subtle)' }} />
-                  </div>
-                </div>
-              ) : (
-                <div className="mobile-terminal-snippet">
-                  <div className="snippet-line"><span className="kw">const</span> dev = <span className="str">"Richard Dairo"</span>;</div>
-                  <div className="snippet-line"><span className="kw">const</span> status = <span className="str">"Available for contracts"</span>;</div>
-                  <div className="snippet-line"><span className="fn">deploy</span>(<span className="str">"production"</span>);</div>
-                  <div className="snippet-output">✔ Campus Marketplace: Online</div>
-                  <div className="snippet-output">✔ Paystack Webhook: Verified</div>
-                </div>
-              )}
-            </div>
+            <InteractiveTerminal />
           </div>
+        </div>
+
+        {/* Horizontal Moving Tech Stack Display Board (Logos Only) */}
+        <div className="hero-marquee-wrapper reveal-init delay-200">
+          <TechMarquee label="CORE PRODUCTION TECH STACK" />
         </div>
       </div>
     </section>

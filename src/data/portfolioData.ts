@@ -9,6 +9,7 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   mockupType: 'marketplace' | 'ecommerce' | 'mobile';
+  images?: string[];
   caseStudy: {
     overview: string;
     problem: string;
@@ -144,40 +145,44 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 export const PROJECTS: Project[] = [
   {
     id: "campus-marketplace",
-    title: "Campus Marketplace",
-    tagline: "Multi-vendor campus commerce connecting student buyers with trusted student vendors.",
-    description: "A full-stack marketplace platform built for university students to discover, buy, and sell products and services directly around their campus environment. Features vendor storefronts, real-time search, cart management, checkout with local payment gateways, and commission-based settlements.",
+    title: "Lightson Marketplace",
+    tagline: "Multi-vendor campus commerce connecting student buyers with food vendors, groceries, and trusted campus merchants.",
+    description: "A full-stack marketplace web application built for campus ecosystems featuring authenticated vendor storefronts, categorized discovery with instant search, interactive carts, merchant partner onboarding, real-time dispatch tracking, and automated Paystack payment settlements.",
     category: "Marketplace",
     featured: true,
     technologies: ["React", "TypeScript", "Supabase", "PostgreSQL", "Paystack", "Row Level Security", "Vercel"],
     githubUrl: "https://github.com/richarddairo/campus-marketplace",
     liveUrl: "https://campus-marketplace-demo.vercel.app",
     mockupType: "marketplace",
+    images: [
+      "/projects/marketplace-1.png",
+      "/projects/marketplace-2.png",
+      "/projects/marketplace-3.png"
+    ],
     caseStudy: {
-      overview: "Campus Marketplace bridges the gap between student entrepreneurs and the campus student body. Students frequently trade textbooks, electronics, fashion items, and campus services through fragmented social chat groups without payment security or catalog search. This platform provides a centralized, authenticated marketplace.",
-      problem: "Trading within universities was chaotic: fragmented WhatsApp group chats, high risk of unverified transactions, zero search capability, and no streamlined order fulfillment or payment tracking for student vendors.",
-      solution: "Engineered a dedicated marketplace web application featuring authenticated vendor storefronts, categorized product discovery with instant text search, interactive cart system, secure escrow-style checkout with Paystack, and vendor analytics.",
+      overview: "Lightson Marketplace bridges the gap between student entrepreneurs, campus kitchens, and the campus student body. Students frequently trade meals, groceries, gadgets, and services through fragmented social chat groups without payment protection or catalog search. This platform delivers a complete authenticated commerce and delivery ecosystem.",
+      problem: "Trading within university communities was fragmented across WhatsApp groups, high risk of unverified cash transactions, lack of order visibility, zero catalog search capability, and no streamlined payout tracking for student vendors.",
+      solution: "Engineered a production-ready marketplace platform featuring verified student & merchant storefronts, instant food & grocery catalog discovery, smart cart system, merchant partner onboarding portal, live dispatch tracking, and secure Paystack settlement webhooks.",
       keyFeatures: [
-        { title: "Vendor Storefronts & Catalog", desc: "Vendors can register, manage product inventories, set prices, and upload product media." },
-        { title: "Smart Discovery & Search", desc: "Filter by campus zones, product categories, and price ranges with instant search." },
-        { title: "Shopping Cart & Checkout", desc: "Multi-item cart with automated subtotal calculation and vendor-split checkout." },
-        { title: "Payment Integration & Webhooks", desc: "Integrated Paystack popup and verified serverless webhooks to ensure idempotent order creation." },
-        { title: "Role-Based Auth & RLS", desc: "PostgreSQL Row Level Security ensures vendors can only edit their own listings and view their orders." },
-        { title: "Commission Architecture", desc: "Automated platform fee calculation on successful order settlement." }
+        { title: "Customer Storefront & Fast Ordering", desc: "Browse hot meals, snacks, groceries, stationery, and tech gadgets with instant keyword filtering." },
+        { title: "Merchant Partner Portal & POS", desc: "Automated onboarding for campus stores with stock management, order alerts, and merchant terminals." },
+        { title: "Student Deals & Live Tracking", desc: "Real-time dispatch tracking with rewards and automated order progress updates." },
+        { title: "Escrow Payment & Split Payouts", desc: "Integrated Paystack multi-split checkout with serverless webhooks for automated vendor disbursements." },
+        { title: "Role-Based Auth & PostgreSQL RLS", desc: "Supabase authentication with Row-Level Security ensuring strict isolation between customer carts and merchant stores." }
       ],
       architecture: [
-        "Frontend: React + TypeScript with responsive CSS and clean modular component architecture",
-        "Backend: Supabase with PostgreSQL database, Row Level Security (RLS) policies",
-        "Auth: Supabase Auth supporting student email verification and Google OAuth",
-        "Payments: Paystack checkout integration with verified webhook handlers for order fulfillment",
-        "Hosting: Vercel with edge-cached assets and custom domain configuration"
+        "Frontend: React + TypeScript with modular components, responsive glassmorphism UI, and zero layout shifts",
+        "Backend: Supabase with PostgreSQL database, Row-Level Security policies, and realtime subscription events",
+        "Auth: Supabase Auth supporting student authentication and Google OAuth single sign-on",
+        "Payments: Paystack API with verified webhook handlers for idempotent order capture and multi-split settlements",
+        "Hosting: Vercel Edge Network with global asset optimization"
       ],
-      challenges: "Handling multi-vendor transactions where a single student cart might contain items from multiple campus vendors, requiring atomic database transactions and distinct order notifications.",
-      outcome: "Delivered a production-ready, highly responsive marketplace platform that simplifies campus trade, reduces transaction friction, and empowers student micro-businesses.",
+      challenges: "Handling multi-vendor cart checkout where students order from different kitchens or vendors in a single session, requiring atomic database transactions and distinct webhook notification channels.",
+      outcome: "Shipped a full-stack campus commerce engine empowering dozens of student businesses, speeding up daily dorm food delivery, and safeguarding transactions.",
       stats: [
-        { label: "Architecture", value: "Multi-Vendor" },
+        { label: "Architecture", value: "Multi-Vendor Hub" },
         { label: "Data Security", value: "100% RLS Protected" },
-        { label: "Payment Method", value: "Paystack Gateway" },
+        { label: "Payment Gateway", value: "Paystack Multi-Split" },
       ]
     }
   },

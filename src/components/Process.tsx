@@ -30,7 +30,7 @@ export const Process: React.FC = () => {
               <div className="process-deliverables">
                 {step.deliverables.map((deliv, dIdx) => (
                   <div key={dIdx} className="deliverable-tag">
-                    <span style={{ color: '#FFFFFF' }}>•</span>
+                    <span style={{ color: 'var(--color-text-main)' }}>•</span>
                     <span>{deliv}</span>
                   </div>
                 ))}

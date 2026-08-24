@@ -100,19 +100,19 @@ export const Contact: React.FC = () => {
               </div>
               <div style={{ flexGrow: 1 }}>
                 <div className="contact-box-label">Direct Email</div>
-                <a href={`mailto:${PERSONAL_INFO.email}`} className="contact-box-val" style={{ color: '#FFFFFF' }}>
+                <a href={`mailto:${PERSONAL_INFO.email}`} className="contact-box-val">
                   {PERSONAL_INFO.email}
                 </a>
               </div>
               <button className="btn-ghost" onClick={handleCopyEmail} title="Copy email">
-                {emailCopied ? <Check size={16} style={{ color: '#FFFFFF' }} /> : <Copy size={16} />}
+                {emailCopied ? <Check size={16} style={{ color: '#22C55E' }} /> : <Copy size={16} />}
               </button>
             </div>
 
             {/* Compact Resume CTA */}
             <div className="glass-panel" style={{ padding: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.9rem', fontWeight: 700, color: '#FFFFFF', marginBottom: '2px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.9rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '2px' }}>
                   <FileText size={15} />
                   <span>Curriculum Vitae</span>
                 </div>
@@ -138,15 +138,15 @@ export const Contact: React.FC = () => {
 
             {/* Compact Career Timeline Brief */}
             <div className="glass-panel" style={{ padding: '1.5rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', fontWeight: 700, color: '#FFFFFF', marginBottom: '1rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', fontWeight: 700, color: 'var(--color-text-main)', marginBottom: '1rem' }}>
                 <History size={15} />
                 <span>Experience Milestones</span>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                 {EXPERIENCE_TIMELINE.map((item) => (
-                  <div key={item.id} style={{ borderLeft: '2px solid rgba(255, 255, 255, 0.2)', paddingLeft: '0.85rem' }}>
-                    <div style={{ fontSize: '0.875rem', fontWeight: 700, color: '#FFFFFF' }}>{item.role}</div>
+                  <div key={item.id} style={{ borderLeft: '2px solid var(--glass-border-hover)', paddingLeft: '0.85rem' }}>
+                    <div style={{ fontSize: '0.875rem', fontWeight: 700, color: 'var(--color-text-main)' }}>{item.role}</div>
                     <div style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)' }}>{item.organization} • {item.period}</div>
                   </div>
                 ))}

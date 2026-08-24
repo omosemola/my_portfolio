@@ -1,115 +1,198 @@
-import React from 'react';
-import { ShoppingBag, Search, ShieldCheck, CheckCircle2, CreditCard, Layers, Tag, Wifi, Battery, Zap, ChevronRight, User } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ShoppingBag, ShieldCheck, CheckCircle2, CreditCard, Tag, Wifi, Battery, Zap, ChevronRight, ChevronLeft, User } from 'lucide-react';
 
 interface MockupProps {
   type: 'marketplace' | 'ecommerce' | 'mobile';
 }
 
+const MARKETPLACE_PREVIEWS = [
+  {
+    id: 'onboarding',
+    title: 'Student Onboarding',
+    badge: 'Stationery, Tech Gadgets & Essentials',
+    url: 'lightson-marketplace.app/welcome',
+    image: '/projects/marketplace-1.png'
+  },
+  {
+    id: 'storefront',
+    title: 'Customer Storefront',
+    badge: 'Food Ordering & Category Discovery',
+    url: 'lightson-marketplace.app/explore',
+    image: '/projects/marketplace-2.png'
+  },
+  {
+    id: 'merchant',
+    title: 'Merchant Partner Portal',
+    badge: 'Store Onboarding & POS Terminal',
+    url: 'lightson-marketplace.app/merchant/onboarding',
+    image: '/projects/marketplace-3.png'
+  }
+];
+
 export const ProjectMockup: React.FC<MockupProps> = ({ type }) => {
+  const [activeMarketplaceTab, setActiveMarketplaceTab] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
+
+  // Auto-swipe every 4 seconds unless paused by user interaction
+  useEffect(() => {
+    if (type !== 'marketplace' || isPaused) return;
+
+    const interval = setInterval(() => {
+      setActiveMarketplaceTab((prev) => (prev + 1) % MARKETPLACE_PREVIEWS.length);
+    }, 4200);
+
+    return () => clearInterval(interval);
+  }, [type, isPaused]);
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActiveMarketplaceTab((prev) => (prev - 1 + MARKETPLACE_PREVIEWS.length) % MARKETPLACE_PREVIEWS.length);
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setActiveMarketplaceTab((prev) => (prev + 1) % MARKETPLACE_PREVIEWS.length);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+    setIsPaused(true);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) {
+      setIsPaused(false);
+      return;
+    }
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 35; // minimum px for swipe gesture
+
+    if (diff > threshold) {
+      // Swiped Left -> Next Image
+      setActiveMarketplaceTab((prev) => (prev + 1) % MARKETPLACE_PREVIEWS.length);
+    } else if (diff < -threshold) {
+      // Swiped Right -> Previous Image
+      setActiveMarketplaceTab((prev) => (prev - 1 + MARKETPLACE_PREVIEWS.length) % MARKETPLACE_PREVIEWS.length);
+    }
+
+    touchStartX.current = 0;
+    touchEndX.current = 0;
+    setTimeout(() => setIsPaused(false), 2000);
+  };
+
   if (type === 'marketplace') {
+    const currentView = MARKETPLACE_PREVIEWS[activeMarketplaceTab];
+
     return (
-      <div className="mockup-window marketplace-mockup">
-        {/* Browser Top Bar */}
+      <div
+        className="mockup-window marketplace-real-mockup"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {/* Browser Top Window Bar */}
         <div className="mockup-header">
           <div className="mockup-dots">
             <span className="dot red"></span>
             <span className="dot yellow"></span>
             <span className="dot green"></span>
           </div>
+
           <div className="mockup-url-bar">
             <ShieldCheck size={12} className="text-emerald" />
-            <span>campus-marketplace.live/explore?campus=main-campus</span>
+            <span>{currentView.url}</span>
           </div>
-          <div className="mockup-badge-live">LIVE SYSTEM</div>
+
+          <div className="mockup-badge-live">
+            <span className="live-dot-pulse"></span>
+            LIVE PLATFORM
+          </div>
         </div>
 
-        {/* Mockup Content Area */}
-        <div className="mockup-body">
-          {/* Header Sub-bar */}
-          <div className="mockup-nav-row">
-            <div className="mockup-brand">
-              <div className="mockup-logo-icon">CM</div>
-              <span>CampusMarket</span>
+        {/* Real Screenshot Display Area with Touch Swiping */}
+        <div
+          className="marketplace-display-area"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div className="marketplace-img-wrapper">
+            {/* Sliding Image Track */}
+            <div
+              className="marketplace-slider-track"
+              style={{ transform: `translateX(-${activeMarketplaceTab * 100}%)` }}
+            >
+              {MARKETPLACE_PREVIEWS.map((preview, index) => (
+                <div key={preview.id} className="marketplace-slide">
+                  <img
+                    src={preview.image}
+                    alt={preview.title}
+                    className="marketplace-screenshot"
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    draggable={false}
+                  />
+                </div>
+              ))}
             </div>
-            <div className="mockup-search-pill">
-              <Search size={12} />
-              <span>Search engineering books, dorm essentials...</span>
+
+            {/* Left & Right Chevron Navigation Buttons */}
+            <button
+              type="button"
+              className="marketplace-arrow-btn prev"
+              onClick={handlePrev}
+              aria-label="Previous screenshot"
+            >
+              <ChevronLeft size={18} />
+            </button>
+
+            <button
+              type="button"
+              className="marketplace-arrow-btn next"
+              onClick={handleNext}
+              aria-label="Next screenshot"
+            >
+              <ChevronRight size={18} />
+            </button>
+
+            {/* Floating Info Overlay Pill */}
+            <div className="marketplace-floating-info">
+              <span className="floating-title">{currentView.title}</span>
+              <span className="floating-sub">• {currentView.badge}</span>
             </div>
-            <div className="mockup-cart-indicator">
-              <ShoppingBag size={14} />
-              <span className="cart-count">2</span>
+
+            {/* Swipe Dot Indicators */}
+            <div className="marketplace-dot-indicators">
+              {MARKETPLACE_PREVIEWS.map((_, dotIdx) => (
+                <span
+                  key={dotIdx}
+                  className={`swipe-dot ${dotIdx === activeMarketplaceTab ? 'active' : ''}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveMarketplaceTab(dotIdx);
+                  }}
+                />
+              ))}
             </div>
           </div>
 
-          {/* Categories Pill List */}
-          <div className="mockup-pill-strip">
-            <span className="pill active">All Items</span>
-            <span className="pill">Textbooks & Notes</span>
-            <span className="pill">Electronics</span>
-            <span className="pill">Dorm Life</span>
-            <span className="pill">Services</span>
-          </div>
-
-          {/* Product Grid Mockup */}
-          <div className="mockup-card-grid">
-            {/* Card 1 */}
-            <div className="mockup-item-card featured-item">
-              <div className="mockup-item-img book-gradient">
-                <span className="category-tag">Textbooks</span>
-                <span className="vendor-tag">Verified Student Vendor</span>
-              </div>
-              <div className="mockup-item-details">
-                <div className="mockup-item-title">Engineering Mechanics (8th Ed)</div>
-                <div className="mockup-item-row">
-                  <span className="price">₦14,500</span>
-                  <span className="condition">Like New</span>
-                </div>
-                <div className="mockup-item-footer">
-                  <span className="campus-zone">📍 East Hall Campus</span>
-                  <span className="status-avail">In Stock</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="mockup-item-card">
-              <div className="mockup-item-img tech-gradient">
-                <span className="category-tag">Electronics</span>
-              </div>
-              <div className="mockup-item-details">
-                <div className="mockup-item-title">Wireless ANC Headphones</div>
-                <div className="mockup-item-row">
-                  <span className="price">₦38,000</span>
-                  <span className="condition">Open Box</span>
-                </div>
-                <div className="mockup-item-footer">
-                  <span className="campus-zone">📍 Quad Center</span>
-                  <span className="status-avail">1 left</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 3 (Vendor Dashboard Pill) */}
-            <div className="mockup-item-card mini-dash">
-              <div className="dash-header">
-                <Layers size={13} className="text-yellow" />
-                <span>Vendor Multi-Split Escrow</span>
-              </div>
-              <div className="dash-stat-row">
-                <div className="dash-stat">
-                  <span className="stat-label">Vendor Payout</span>
-                  <span className="stat-val">95%</span>
-                </div>
-                <div className="dash-stat">
-                  <span className="stat-label">Platform Fee</span>
-                  <span className="stat-val">5%</span>
-                </div>
-              </div>
-              <div className="dash-badge">
-                <CreditCard size={12} />
-                <span>Paystack Instant Settlement</span>
-              </div>
-            </div>
+          {/* Interactive Screen Selector Strip */}
+          <div className="marketplace-nav-strip">
+            {MARKETPLACE_PREVIEWS.map((view, idx) => (
+              <button
+                key={view.id}
+                type="button"
+                className={`marketplace-nav-tab ${idx === activeMarketplaceTab ? 'active' : ''}`}
+                onClick={() => setActiveMarketplaceTab(idx)}
+              >
+                <span className="tab-number">0{idx + 1}</span>
+                <span className="tab-name">{view.title}</span>
+              </button>
+            ))}
           </div>
         </div>
       </div>
@@ -275,3 +358,5 @@ export const ProjectMockup: React.FC<MockupProps> = ({ type }) => {
     </div>
   );
 };
+
+export default ProjectMockup;
