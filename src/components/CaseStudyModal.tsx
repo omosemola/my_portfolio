@@ -86,13 +86,13 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
 
           {/* Key Metrics Stats if available */}
           {caseStudy.stats && (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.75rem' }}>
               {caseStudy.stats.map((s, idx) => (
-                <div key={idx} style={{ background: 'var(--glass-bg)', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--glass-border)', textAlign: 'center' }}>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', fontFamily: 'var(--font-mono)', marginBottom: '0.25rem' }}>
+                <div key={idx} style={{ background: 'var(--glass-bg)', padding: '0.65rem 0.75rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--glass-border)', textAlign: 'center' }}>
+                  <div style={{ fontSize: '0.68rem', color: 'var(--color-text-muted)', fontFamily: 'var(--font-mono)', marginBottom: '0.15rem' }}>
                     {s.label}
                   </div>
-                  <div style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--color-text-main)' }}>
+                  <div style={{ fontSize: '0.92rem', fontWeight: 800, color: 'var(--color-text-main)' }}>
                     {s.value}
                   </div>
                 </div>
@@ -102,11 +102,11 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
 
           {/* Overview */}
           <div>
-            <h3 style={{ fontSize: '1.15rem', color: 'var(--color-text-main)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Sparkles size={16} style={{ color: 'var(--color-text-main)' }} />
+            <h3 style={{ fontSize: '0.92rem', color: 'var(--color-text-main)', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+              <Sparkles size={14} style={{ color: 'var(--color-text-main)' }} />
               Executive Overview
             </h3>
-            <p style={{ color: 'var(--color-text-body)', lineHeight: 1.7, fontSize: '0.9375rem' }}>
+            <p style={{ color: 'var(--color-text-body)', lineHeight: 1.5, fontSize: '0.78rem' }}>
               {caseStudy.overview}
             </p>
           </div>
@@ -115,20 +115,20 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           <div className="modal-grid-2col">
             <div className="case-card">
               <div className="case-card-title">
-                <AlertCircle size={18} />
+                <AlertCircle size={15} />
                 <span>The Problem</span>
               </div>
-              <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.74rem', color: 'var(--color-text-muted)', lineHeight: 1.48 }}>
                 {caseStudy.problem}
               </p>
             </div>
 
             <div className="case-card">
               <div className="case-card-title">
-                <CheckCircle2 size={18} />
+                <CheckCircle2 size={15} />
                 <span>The Engineering Solution</span>
               </div>
-              <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.74rem', color: 'var(--color-text-muted)', lineHeight: 1.48 }}>
                 {caseStudy.solution}
               </p>
             </div>
@@ -136,14 +136,14 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
 
           {/* Key Features */}
           <div>
-            <h3 style={{ fontSize: '1.15rem', color: 'var(--color-text-main)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Layers size={16} style={{ color: 'var(--color-text-main)' }} />
+            <h3 style={{ fontSize: '0.92rem', color: 'var(--color-text-main)', marginBottom: '0.65rem', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+              <Layers size={14} style={{ color: 'var(--color-text-main)' }} />
               Core Architecture Features
             </h3>
             <div className="features-list">
               {caseStudy.keyFeatures.map((feat, idx) => (
                 <div key={idx} className="feature-bullet">
-                  <CheckCircle2 size={16} className="bullet-icon" />
+                  <CheckCircle2 size={14} className="bullet-icon" />
                   <div>
                     <div className="bullet-title">{feat.title}</div>
                     <div className="bullet-desc">{feat.desc}</div>
@@ -156,12 +156,12 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           {/* Technical Architecture Breakdown */}
           <div className="case-card">
             <div className="case-card-title">
-              <Cpu size={18} />
+              <Cpu size={15} />
               <span>Technical Architecture Stack</span>
             </div>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.5rem' }}>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.35rem', marginTop: '0.35rem' }}>
               {caseStudy.architecture.map((item, idx) => (
-                <li key={idx} style={{ fontSize: '0.875rem', color: 'var(--color-text-body)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <li key={idx} style={{ fontSize: '0.74rem', color: 'var(--color-text-body)', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
                   <span style={{ color: 'var(--color-text-main)', fontFamily: 'var(--font-mono)' }}>→</span>
                   <span>{item}</span>
                 </li>
@@ -172,8 +172,8 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           {/* Production UI Screenshot Gallery if available */}
           {project.images && project.images.length > 0 && (
             <div>
-              <h3 style={{ fontSize: '1.15rem', color: 'var(--color-text-main)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <Sparkles size={16} style={{ color: 'var(--color-text-main)' }} />
+              <h3 style={{ fontSize: '0.92rem', color: 'var(--color-text-main)', marginBottom: '0.65rem', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                <Sparkles size={14} style={{ color: 'var(--color-text-main)' }} />
                 Production Application Screens
               </h3>
               <div className="case-study-gallery-grid">
@@ -195,7 +195,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
               <div className="case-card-title">
                 <span>Key Challenge & Resolution</span>
               </div>
-              <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.74rem', color: 'var(--color-text-muted)', lineHeight: 1.48 }}>
                 {caseStudy.challenges}
               </p>
             </div>
@@ -204,7 +204,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
               <div className="case-card-title">
                 <span>Final Outcome</span>
               </div>
-              <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.6 }}>
+              <p style={{ fontSize: '0.74rem', color: 'var(--color-text-muted)', lineHeight: 1.48 }}>
                 {caseStudy.outcome}
               </p>
             </div>
