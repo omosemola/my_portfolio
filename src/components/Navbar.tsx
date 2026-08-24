@@ -53,7 +53,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, theme, onToggleTh
               handleNavClick('hero');
             }}
           >
-            <div className="brand-badge">RD</div>
+            <div className="brand-badge brand-badge-img">
+              <img src="/logo.jpg" alt="Richard Dairo" className="brand-logo-img" />
+            </div>
             <div className="brand-text">
               <span className="brand-name">Richard Dairo</span>
               <span className="brand-role">SOFTWARE DEVELOPER</span>
@@ -92,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, theme, onToggleTh
 
             <a
               href="#contact"
-              className="btn btn-primary"
+              className="btn btn-primary nav-cta-desktop"
               style={{ minHeight: '40px', padding: '0.5rem 1.15rem', fontSize: '0.8125rem' }}
               onClick={(e) => {
                 e.preventDefault();
@@ -129,7 +131,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, theme, onToggleTh
       <div className={`mobile-drawer ${mobileMenuOpen ? 'open' : ''}`} aria-hidden={!mobileMenuOpen}>
         <div className="mobile-drawer-header">
           <div className="nav-brand">
-            <div className="brand-badge">RD</div>
+            <div className="brand-badge brand-badge-img">
+              <img src="/logo.jpg" alt="Richard Dairo" className="brand-logo-img" />
+            </div>
             <div className="brand-text">
               <span className="brand-name">Richard Dairo</span>
               <span className="brand-role">SOFTWARE DEVELOPER</span>

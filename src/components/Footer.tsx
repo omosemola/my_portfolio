@@ -31,7 +31,9 @@ export const Footer: React.FC = () => {
                 scrollToTop();
               }}
             >
-              <div className="brand-badge">RD</div>
+              <div className="brand-badge brand-badge-img">
+                <img src="/logo.jpg" alt={PERSONAL_INFO.name} className="brand-logo-img" />
+              </div>
               <div className="brand-text">
                 <span className="brand-name">{PERSONAL_INFO.name}</span>
                 <span className="brand-role">SOFTWARE DEVELOPER</span>
