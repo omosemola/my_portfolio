@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowUp, Mail, FileText, ArrowUpRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { GithubIcon, LinkedinIcon, TwitterIcon } from './SocialIcons';
+import { GithubIcon, TwitterIcon } from './SocialIcons';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
       <div className="container-wide">
         {/* Main Footer Bento Grid */}
         <div className="footer-grid">
-          {/* Column 1: Brand & Status Identity */}
+          {/* Column 1: Brand Identity */}
           <div className="footer-brand-col">
             <a
               href="#hero"
@@ -43,11 +43,6 @@ export const Footer: React.FC = () => {
             <p className="footer-brand-bio">
               Software Developer & Digital Product Builder. Designing clean interfaces, reliable databases, and scalable payment pipelines for modern web & mobile products.
             </p>
-
-            <div className="status-badge footer-status-badge" style={{ marginTop: '1.25rem', width: 'fit-content' }}>
-              <span className="status-dot"></span>
-              <span>{PERSONAL_INFO.status}</span>
-            </div>
           </div>
 
           {/* Column 2: Navigation Links */}
@@ -102,67 +97,12 @@ export const Footer: React.FC = () => {
                   Contact & Inquiries
                 </a>
               </li>
-            </ul>
-          </div>
-
-          {/* Column 3: Featured Work & Downloads */}
-          <div className="footer-work-col">
-            <h4 className="footer-col-title">Featured Work</h4>
-            <ul className="footer-links-list">
-              <li>
-                <a
-                  href="#projects"
-                  className="footer-link-item"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection('projects');
-                  }}
-                >
-                  <span>Campus Marketplace</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#projects"
-                  className="footer-link-item"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection('projects');
-                  }}
-                >
-                  <span>Frankie Styles E-Com</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#projects"
-                  className="footer-link-item"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection('projects');
-                  }}
-                >
-                  <span>Pastry Home by Layo</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#projects"
-                  className="footer-link-item"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection('projects');
-                  }}
-                >
-                  <span>Flutter Mobile App</span>
-                </a>
-              </li>
               <li>
                 <a
                   href="/resume.pdf"
                   download="Richard_Dairo_Resume.pdf"
                   className="footer-link-item"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-text-main)', fontWeight: 600 }}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', color: 'var(--color-text-main)', fontWeight: 600, marginTop: '0.25rem' }}
                 >
                   <FileText size={13} />
                   <span>Resume (PDF)</span>
@@ -171,7 +111,7 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 4: Social & Direct Connect */}
+          {/* Column 3: Social & Direct Connect */}
           <div className="footer-connect-col">
             <h4 className="footer-col-title">Connect</h4>
             <ul className="footer-links-list">
@@ -185,19 +125,6 @@ export const Footer: React.FC = () => {
                 >
                   <GithubIcon size={14} />
                   <span>GitHub</span>
-                  <ArrowUpRight size={12} style={{ opacity: 0.5 }} />
-                </a>
-              </li>
-              <li>
-                <a
-                  href={PERSONAL_INFO.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-link-item"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
-                >
-                  <LinkedinIcon size={14} />
-                  <span>LinkedIn</span>
                   <ArrowUpRight size={12} style={{ opacity: 0.5 }} />
                 </a>
               </li>

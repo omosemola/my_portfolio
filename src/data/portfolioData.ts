@@ -76,7 +76,6 @@ export const PERSONAL_INFO = {
   location: "Remote / Global",
   email: "rdairo175@gmail.com",
   github: "https://github.com/omosemola",
-  linkedin: "https://linkedin.com/in/richarddairo",
   twitter: "https://x.com/richarddairo",
   resumeUrl: "/resume.pdf",
 };
@@ -97,6 +96,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       { name: "React", level: "Advanced", iconName: "Atom", practicalNote: "Component hierarchies, custom hooks, and state management", tag: "Core" },
       { name: "TypeScript", level: "Advanced", iconName: "FileCode", practicalNote: "End-to-end type safety, interfaces, and strict tooling", tag: "Language" },
       { name: "JavaScript (ES6+)", level: "Advanced", iconName: "Code2", practicalNote: "Modern async/await patterns, DOM, and event handling", tag: "Language" },
+      { name: "Vanilla CSS", level: "Expert", iconName: "Layout", practicalNote: "CSS Grid, Flexbox layouts, CSS variables, and modern keyframe animations", tag: "Core" },
       { name: "HTML5 & CSS3", level: "Expert", iconName: "Layout", practicalNote: "Semantic markup, CSS variables, Flexbox & Grid layouts", tag: "Design" },
       { name: "Flutter", level: "Proficient", iconName: "Smartphone", practicalNote: "Cross-platform mobile UI and client state management", tag: "Mobile" },
     ],
@@ -152,7 +152,7 @@ export const PROJECTS: Project[] = [
     category: "Marketplace",
     featured: true,
     technologies: ["React", "TypeScript", "Supabase", "PostgreSQL", "Paystack", "Row Level Security", "Vercel"],
-    githubUrl: "https://github.com/richarddairo/campus-marketplace",
+    githubUrl: "https://github.com/omosemola/campus-marketplace",
     liveUrl: "https://campus-marketplace-demo.vercel.app",
     mockupType: "marketplace",
     images: [
@@ -200,7 +200,7 @@ export const PROJECTS: Project[] = [
     category: "E-Commerce",
     featured: false,
     technologies: ["React", "TypeScript", "Tailwind CSS", "Paystack", "PostgreSQL", "REST APIs", "Vercel"],
-    githubUrl: "https://github.com/richarddairo/frankie-styles-ecommerce",
+    githubUrl: "https://github.com/omosemola/frankie-styles-ecommerce",
     liveUrl: "https://frankiestylesng.com",
     mockupType: "ecommerce",
     images: [
@@ -249,8 +249,8 @@ export const PROJECTS: Project[] = [
     category: "Mobile App",
     featured: false,
     technologies: ["Flutter", "Dart", "REST APIs", "Supabase Auth", "Codemagic", "Git"],
-    githubUrl: "https://github.com/richarddairo/flutter-mobile-app",
-    liveUrl: "https://github.com/richarddairo/flutter-mobile-app#readme",
+    githubUrl: "https://github.com/omosemola/flutter-mobile-app",
+    liveUrl: "https://github.com/omosemola/flutter-mobile-app#readme",
     mockupType: "mobile",
     caseStudy: {
       overview: "A cross-platform mobile application built to provide a fluid, native mobile experience across Android and iOS devices, with a focus on responsive UI, structured state management, and offline resilience.",
@@ -286,7 +286,7 @@ export const PROJECTS: Project[] = [
     category: "E-Commerce",
     featured: false,
     technologies: ["React", "TypeScript", "Tailwind CSS", "Paystack", "REST APIs", "Vercel"],
-    githubUrl: "https://github.com/richarddairo/pastry-home-store",
+    githubUrl: "https://github.com/omosemola/pastry-home-store",
     liveUrl: "https://pastryhomebylayo.shop",
     mockupType: "pastry",
     images: [

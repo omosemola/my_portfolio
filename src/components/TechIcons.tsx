@@ -57,6 +57,15 @@ export const TailwindIcon: React.FC<IconProps> = ({ size = 20, className = '' })
   </svg>
 );
 
+// Vanilla CSS / CSS3 - Official Shield Blue (#264DE4 & #2965F1)
+export const VanillaCssIcon: React.FC<IconProps> = ({ size = 20, className = '' }) => (
+  <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <path d="M18 10L24 78L50 90L76 78L82 10H18Z" fill="#264DE4" />
+    <path d="M50 16V83.5L70.5 74L75.5 16H50Z" fill="#2965F1" />
+    <path d="M32 28H68L66.5 40H33.5L34.5 52H65L63.5 68L50 72.5L36.5 68L35.5 59H26L28 76L50 83L72 76L74.5 22H25.5L32 28Z" fill="#FFFFFF" />
+  </svg>
+);
+
 // Flutter - Official Multi-tone Flutter Blues (#54C5F8, #29B6F6, #01579B, #02569B)
 export const FlutterIcon: React.FC<IconProps> = ({ size = 20, className = '' }) => (
   <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>

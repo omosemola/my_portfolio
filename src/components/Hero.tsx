@@ -3,7 +3,7 @@ import { ArrowRight, MessageSquare, Mail, Code2, FolderGit2, Wrench, FileText } 
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { InteractiveTerminal } from './InteractiveTerminal';
 import { TechMarquee } from './TechMarquee';
-import { GithubIcon, LinkedinIcon, TwitterIcon } from './SocialIcons';
+import { GithubIcon, TwitterIcon } from './SocialIcons';
 
 export const Hero: React.FC = () => {
   const scrollToSection = (id: string) => {
@@ -122,17 +122,6 @@ export const Hero: React.FC = () => {
               >
                 <GithubIcon size={14} />
                 <span>GitHub</span>
-              </a>
-
-              <a
-                href={PERSONAL_INFO.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link"
-                aria-label="LinkedIn Profile"
-              >
-                <LinkedinIcon size={14} />
-                <span>LinkedIn</span>
               </a>
 
               <a

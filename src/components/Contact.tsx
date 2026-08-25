@@ -5,8 +5,6 @@ import { PERSONAL_INFO, EXPERIENCE_TIMELINE } from '../data/portfolioData';
 interface FormState {
   name: string;
   email: string;
-  projectType: string;
-  budget: string;
   message: string;
 }
 
@@ -20,8 +18,6 @@ export const Contact: React.FC = () => {
   const [formData, setFormData] = useState<FormState>({
     name: '',
     email: '',
-    projectType: 'Marketplace Platform',
-    budget: '$1,000 - $3,000',
     message: '',
   });
 
@@ -62,12 +58,10 @@ export const Contact: React.FC = () => {
           'Accept': 'application/json',
         },
         body: JSON.stringify({
-          _subject: `New Portfolio Inquiry from ${formData.name} (${formData.projectType})`,
+          _subject: `New Portfolio Inquiry from ${formData.name}`,
           _replyto: formData.email,
           name: formData.name,
           email: formData.email,
-          projectType: formData.projectType,
-          budget: formData.budget,
           message: formData.message,
         }),
       });
@@ -80,17 +74,15 @@ export const Contact: React.FC = () => {
       setFormData({
         name: '',
         email: '',
-        projectType: 'Marketplace Platform',
-        budget: '$1,000 - $3,000',
         message: '',
       });
       setTimeout(() => setIsSuccess(false), 7000);
     } catch {
       // Direct mailto trigger fallback
       const mailtoUrl = `mailto:rdairo175@gmail.com?subject=${encodeURIComponent(
-        `Project Inquiry: ${formData.projectType} - ${formData.name}`
+        `Portfolio Inquiry from ${formData.name}`
       )}&body=${encodeURIComponent(
-        `Hi Richard,\n\nName: ${formData.name}\nEmail: ${formData.email}\nProject: ${formData.projectType}\nBudget: ${formData.budget}\n\nMessage:\n${formData.message}`
+        `Hi Richard,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       )}`;
       window.location.href = mailtoUrl;
       setIsSuccess(true);
@@ -225,39 +217,6 @@ export const Contact: React.FC = () => {
                   required
                 />
                 {errors.email && <span className="form-error">{errors.email}</span>}
-              </div>
-
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.85rem' }}>
-                <div className="form-group" style={{ marginBottom: '1rem' }}>
-                  <label htmlFor="contact-project-type" className="form-label">Project</label>
-                  <select
-                    id="contact-project-type"
-                    className="form-select"
-                    value={formData.projectType}
-                    onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                  >
-                    <option value="Marketplace Platform">Marketplace</option>
-                    <option value="E-Commerce Store">E-Commerce</option>
-                    <option value="Web Application">Web App</option>
-                    <option value="Mobile Application">Mobile App</option>
-                    <option value="Other Consultation">Other</option>
-                  </select>
-                </div>
-
-                <div className="form-group" style={{ marginBottom: '1rem' }}>
-                  <label htmlFor="contact-budget" className="form-label">Budget</label>
-                  <select
-                    id="contact-budget"
-                    className="form-select"
-                    value={formData.budget}
-                    onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                  >
-                    <option value="<$1,000">&lt; $1,000</option>
-                    <option value="$1,000 - $3,000">$1,000 – $3,000</option>
-                    <option value="$3,000 - $5,000">$3,000 – $5,000</option>
-                    <option value="$5,000+">$5,000+</option>
-                  </select>
-                </div>
               </div>
 
               <div className="form-group" style={{ marginBottom: '1rem' }}>

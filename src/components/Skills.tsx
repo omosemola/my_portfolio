@@ -19,6 +19,7 @@ import {
   TypeScriptIcon, 
   NextJsIcon, 
   TailwindIcon, 
+  VanillaCssIcon, 
   FlutterIcon, 
   NodeIcon, 
   PostgresIcon, 
@@ -37,6 +38,7 @@ const getTechIcon = (name: string, size = 22) => {
   if (n.includes('typescript')) return <TypeScriptIcon size={size} />;
   if (n.includes('next.js') || n.includes('nextjs')) return <NextJsIcon size={size} />;
   if (n.includes('tailwind')) return <TailwindIcon size={size} />;
+  if (n.includes('css') || n.includes('styling')) return <VanillaCssIcon size={size} />;
   if (n.includes('flutter') || n.includes('dart')) return <FlutterIcon size={size} />;
   if (n.includes('node') || n.includes('express')) return <NodeIcon size={size} />;
   if (n.includes('postgres') || n.includes('sql')) return <PostgresIcon size={size} />;
