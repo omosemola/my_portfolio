@@ -1,6 +1,10 @@
 import React from 'react';
 import { 
   UserCheck, 
+  ShieldCheck, 
+  Zap, 
+  Smartphone, 
+  Database, 
   GitBranch, 
   Sparkles 
 } from 'lucide-react';
@@ -29,43 +33,98 @@ export const About: React.FC = () => {
           </p>
         </div>
 
-        {/* Bento Grid: Impact Metrics + Delivery Pipeline */}
+        {/* Bento Grid: Philosophy + Impact Metrics + Delivery Pipeline */}
         <div className="about-bento-grid reveal-init delay-100">
-          {/* Impact Metrics (Stats Grid) */}
-          <div className="glass-panel about-metrics-card">
-            <div className="metrics-card-header">
-              <Sparkles size={16} />
-              <span>Verified Impact Metrics</span>
+          {/* Card 1: Core Philosophy & Execution (Large Card) */}
+          <div className="glass-panel about-philosophy-card">
+            <div className="card-header-badge-row">
+              <div className="status-badge" style={{ padding: '0.3rem 0.75rem', fontSize: '0.75rem' }}>
+                <span className="status-dot"></span>
+                <span>Software Engineering Mindset</span>
+              </div>
+              <span className="code-pill-tag">Production-Ready</span>
             </div>
 
-            <div className="metrics-2x2-grid">
-              {STATS.map((stat, idx) => (
-                <div key={idx} className="metric-box">
-                  <div className="metric-number">{stat.value}</div>
-                  <div className="metric-label">{stat.label}</div>
-                  <div className="metric-sub">{stat.desc}</div>
+            <h3 className="about-card-heading">Engineering Digital Products That Deliver Real Business Value</h3>
+
+            <p className="about-narrative-text">
+              I specialize in taking complex product roadmaps and translating them into robust, performant software. From designing normalized PostgreSQL schemas and setting up secure Paystack webhook split-payments down to building responsive, accessible client interfaces in React and Flutter, I engineer with longevity and user delight in mind.
+            </p>
+
+            {/* 4 Core Pillars */}
+            <div className="engineering-pillars-grid">
+              <div className="pillar-item">
+                <div className="pillar-icon"><Zap size={16} /></div>
+                <div>
+                  <div className="pillar-title">Web & Mobile Engineering</div>
+                  <div className="pillar-desc">Next.js 18, React SSR, TypeScript & modular component architecture.</div>
                 </div>
-              ))}
+              </div>
+
+              <div className="pillar-item">
+                <div className="pillar-icon"><ShieldCheck size={16} /></div>
+                <div>
+                  <div className="pillar-title">Fintech & Security</div>
+                  <div className="pillar-desc">Paystack webhook listeners, Supabase RLS & cryptographic hash verification.</div>
+                </div>
+              </div>
+
+              <div className="pillar-item">
+                <div className="pillar-icon"><Smartphone size={16} /></div>
+                <div>
+                  <div className="pillar-title">Mobile Engineering</div>
+                  <div className="pillar-desc">Cross-platform Flutter & Dart apps with offline SQLite caching.</div>
+                </div>
+              </div>
+
+              <div className="pillar-item">
+                <div className="pillar-icon"><Database size={16} /></div>
+                <div>
+                  <div className="pillar-title">Relational Databases</div>
+                  <div className="pillar-desc">Postgres indexing, transactional integrity & automated Supabase migrations.</div>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Delivery Workflow Pipeline */}
-          <div className="glass-panel about-pipeline-card">
-            <div className="pipeline-card-header">
-              <GitBranch size={16} />
-              <span>4-Stage Delivery Pipeline</span>
+          {/* Card 2 & 3 Right Column Wrapper */}
+          <div className="about-side-cards-col">
+            {/* Impact Metrics (Stats Grid) */}
+            <div className="glass-panel about-metrics-card">
+              <div className="metrics-card-header">
+                <Sparkles size={16} />
+                <span>Verified Impact Metrics</span>
+              </div>
+
+              <div className="metrics-2x2-grid">
+                {STATS.map((stat, idx) => (
+                  <div key={idx} className="metric-box">
+                    <div className="metric-number">{stat.value}</div>
+                    <div className="metric-label">{stat.label}</div>
+                    <div className="metric-sub">{stat.desc}</div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="pipeline-steps-list">
-              {WORKFLOW_PIPELINE.map((item, idx) => (
-                <div key={idx} className="pipeline-step-item">
-                  <div className="pipeline-step-num">{item.step}</div>
-                  <div className="pipeline-step-info">
-                    <div className="pipeline-step-title">{item.title}</div>
-                    <div className="pipeline-step-desc">{item.desc}</div>
+            {/* Delivery Workflow Pipeline */}
+            <div className="glass-panel about-pipeline-card">
+              <div className="pipeline-card-header">
+                <GitBranch size={16} />
+                <span>4-Stage Delivery Pipeline</span>
+              </div>
+
+              <div className="pipeline-steps-list">
+                {WORKFLOW_PIPELINE.map((item, idx) => (
+                  <div key={idx} className="pipeline-step-item">
+                    <div className="pipeline-step-num">{item.step}</div>
+                    <div className="pipeline-step-info">
+                      <div className="pipeline-step-title">{item.title}</div>
+                      <div className="pipeline-step-desc">{item.desc}</div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
