@@ -243,38 +243,39 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "rent9ja",
-    title: "Rent9ja — Smart Property & Apartment Rental Platform",
-    tagline: "Modern real estate marketplace connecting tenants with verified rental apartments, scheduled inspections, and escrow payment protection.",
-    description: "A full-stack property rental and apartment marketplace built for Nigerian urban centers. Features verified landlord & property listings, categorized neighborhood discovery, automated inspection booking, tenant identity verification, digital tenancy agreements, and secure Paystack rental payment processing.",
-    category: "Marketplace",
+    title: "Rent9ja — Smart Property & Apartment Rental Mobile App",
+    tagline: "Cross-platform mobile application connecting tenants with verified rental apartments, instant inspection scheduling, and secure escrow rent payments.",
+    description: "A cross-platform mobile application engineered with Flutter and Dart for iOS and Android, dedicated to streamlining apartment rentals across Nigerian urban centers. Features verified property feeds, interactive neighborhood filters, biometric tenant authentication, push notifications for inspection bookings, offline-first caching, digital tenancy agreements, and secure Paystack payment gateway integration.",
+    category: "Mobile App",
     featured: false,
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "Paystack", "REST APIs", "Vercel"],
+    technologies: ["Flutter", "Dart", "Supabase", "PostgreSQL", "Paystack", "REST APIs", "Codemagic", "Git"],
     githubUrl: "https://github.com/omosemola/rent9ja",
     liveUrl: "https://github.com/omosemola/rent9ja#readme",
     mockupType: "mobile",
     caseStudy: {
-      overview: "Rent9ja is a digital property rental platform engineered to modernize apartment searching, landlord verification, and lease management in Nigerian metropolitan cities like Lagos, Abuja, and Ibadan. By eliminating unauthorized middlemen agents, verifying landlords, and securing payment deposits in escrow, Rent9ja simplifies finding homes.",
-      problem: "Finding apartments in major Nigerian cities is plagued by unverified agency fees, ghost listings, multiple agents fighting over the same property, and lack of transaction safety for security deposits.",
-      solution: "Engineered a transparent property rental portal featuring verified apartment listings, neighborhood filters, instant inspection date scheduling, direct messaging between tenants and landlords, and automated rent escrow via Paystack.",
+      overview: "Rent9ja is a native-feel mobile application designed to modernize urban apartment search, tenant-landlord communication, and lease payments across Nigeria. By providing direct access to verified listings with offline caching and mobile push alerts, Rent9ja eliminates unauthorized agents and secures tenant caution deposits in escrow.",
+      problem: "Searching for rental apartments on mobile web or through fragmented social chat groups is inefficient, high risk for rental fraud, and lacks real-time mobile push notifications for inspection availability and payment confirmations.",
+      solution: "Developed a high-performance cross-platform mobile app featuring GPS-enabled neighborhood search, offline listing caching, direct landlord in-app chat, instant inspection calendar scheduling, and biometric-secured Paystack escrow checkout.",
       keyFeatures: [
-        { title: "Verified Listings & Neighborhood Filters", desc: "Explore self-contained units, 2-bedroom flats, and serviced apartments with verified landlord documents and neighborhood amenities." },
-        { title: "Inspection Booking Engine", desc: "Schedule physical or virtual inspection slots synchronized with landlord availability." },
-        { title: "Escrow Deposit & Split Payouts", desc: "Integrated Paystack multi-split checkout for holding caution deposits and executing automated landlord disbursements." },
-        { title: "Direct Landlord Messaging", desc: "Real-time communication enabling prospective tenants to negotiate terms and submit identity verification." },
-        { title: "Digital Tenancy Agreement", desc: "Automated standard tenancy agreement generation with digital signing and PDF download." }
+        { title: "Verified Listings & GPS Search", desc: "Browse high-resolution photo tours of apartments, studio flats, and duplexes with nearby amenities and verified landlord badges." },
+        { title: "In-App Inspection Scheduling", desc: "Select physical or virtual inspection time slots with automatic calendar sync and push notification reminders." },
+        { title: "Secure Paystack Escrow Checkout", desc: "Mobile-optimized card and bank transfer checkout holding rental deposits securely until inspection confirmation." },
+        { title: "Direct In-App Chat & Offers", desc: "Real-time chat enabling tenants to negotiate tenancy terms directly with verified property managers." },
+        { title: "Offline-First Data Caching", desc: "Local SQLite database caching allowing saved property records and leases to be viewed without active mobile data." }
       ],
       architecture: [
-        "Frontend: React + TypeScript with modular UI components, responsive filter drawers, and interactive photo galleries",
-        "Backend: Supabase with PostgreSQL database, Row-Level Security policies for landlord/tenant role isolation",
-        "Payments: Paystack API with verified webhook handlers for recurring rent payments and deposit escrow",
-        "Hosting: Vercel Edge Network with global CDN asset optimization"
+        "Framework: Flutter SDK (Dart) with Clean Architecture and Provider / Riverpod state management",
+        "Backend: Supabase with PostgreSQL database, Row-Level Security policies for tenant and landlord data isolation",
+        "Auth: Biometric login (FaceID / Fingerprint) and Supabase JWT authentication",
+        "Payments: Paystack Mobile SDK & serverless webhooks for escrow payment capture",
+        "CI/CD: Automated build & APK/IPA release pipeline configured with Codemagic"
       ],
-      challenges: "Handling real-time inspection booking slot synchronization and implementing rigorous tenant identity checks to prevent rental fraud.",
-      outcome: "Delivered an intuitive, reliable rental platform that protects tenants, automates rent collection for property managers, and simplifies urban apartment hunting.",
+      challenges: "Ensuring seamless offline-to-online synchronization for chat messages and inspection bookings in areas with fluctuating mobile cellular connectivity.",
+      outcome: "Engineered a fluid, high-conversion mobile app that simplifies apartment hunting, protects tenant security deposits, and automates rent collections.",
       stats: [
-        { label: "Listings Security", value: "100% Verified" },
+        { label: "Platforms", value: "iOS & Android" },
+        { label: "Architecture", value: "Clean Architecture" },
         { label: "Payment Engine", value: "Paystack Escrow" },
-        { label: "Search Speed", value: "< 1s Filters" },
       ]
     }
   },
