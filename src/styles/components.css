@@ -829,6 +829,48 @@
   scrollbar-width: none;
 }
 
+.terminal-dots {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.terminal-dots .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform var(--transition-fast), filter var(--transition-fast);
+}
+
+.terminal-dots .dot:hover {
+  filter: brightness(1.15);
+  transform: scale(1.12);
+}
+
+.terminal-dots .dot-close {
+  background: #ff5f56;
+  border: 1px solid rgba(224, 68, 62, 0.45);
+  color: #4a0002;
+}
+
+.terminal-dots .dot-minimize {
+  background: #ffbd2e;
+  border: 1px solid rgba(222, 161, 35, 0.45);
+  color: #5a3900;
+}
+
+.terminal-dots .dot-maximize {
+  background: #27c93f;
+  border: 1px solid rgba(40, 170, 57, 0.45);
+  color: #004515;
+}
+
 .terminal-header::-webkit-scrollbar {
   display: none;
 }
@@ -897,13 +939,19 @@
   flex: 1;
 }
 
-.code-keyword { color: #FFFFFF; font-weight: 700; }
-.code-fn { color: #CBD5E1; }
-.code-str { color: #94A3B8; }
+.code-keyword { color: #C084FC; font-weight: 600; }
+.code-var { color: #60A5FA; }
+.code-type, .code-fn { color: #FBBF24; font-weight: 500; }
+.code-prop { color: #38BDF8; }
+.code-str { color: #4ADE80; }
+.code-op { color: #94A3B8; }
+.code-bracket { color: #FCD34D; }
 .code-comment { color: #64748B; font-style: italic; }
-.code-prop { color: #F1F5F9; }
-.code-status-ok { color: #FFFFFF; }
-.code-status-edge { color: #94A3B8; }
+.code-status-ok { color: #4ADE80; font-weight: 600; }
+.code-status-edge { color: #38BDF8; font-weight: 500; }
+.code-status-dot { margin-right: 0.25rem; font-size: 0.75rem; }
+.code-status-dot.green { color: #22C55E; }
+.code-status-dot.cyan { color: #38BDF8; }
 .copy-check-icon { color: #22C55E; }
 
 .terminal-output-box {
@@ -918,14 +966,15 @@
   margin-bottom: 2px;
 }
 
+.output-line.cmd { color: #FCD34D; font-weight: 600; }
 .output-line.success { color: #22C55E; }
-.output-line.highlight { color: #E2E8F0; font-weight: 600; }
+.output-line.highlight { color: #38BDF8; font-weight: 600; }
 .output-line.dim { color: #94A3B8; }
 
 .terminal-cmd-prompt {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   margin-top: 1.15rem;
   padding-top: 0.75rem;
   border-top: 1px dashed rgba(255, 255, 255, 0.08);
@@ -934,15 +983,17 @@
   font-size: 0.78rem;
 }
 
-.prompt-arrow { color: #22C55E; font-weight: 700; }
-.prompt-path { color: #FFFFFF; font-weight: 600; }
-.prompt-branch { color: #94A3B8; }
+.prompt-arrow { color: #34D399; font-weight: 700; }
+.prompt-path { color: #38BDF8; font-weight: 600; }
+.prompt-branch { color: #C084FC; }
+.prompt-dollar { color: #FCD34D; font-weight: 700; }
 
 .terminal-cursor {
   display: inline-block;
   width: 7px;
   height: 14px;
-  background: #FFFFFF;
+  background: #38BDF8;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
   animation: blink 1s step-end infinite;
   vertical-align: middle;
 }
@@ -2526,7 +2577,7 @@
    -------------------------------------------------------------------------- */
 .about-bento-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
   align-items: stretch;
   width: 100%;
@@ -3391,19 +3442,31 @@
   color: #1E293B;
 }
 
-[data-theme="light"] .code-keyword { color: #0F172A; }
-[data-theme="light"] .code-fn { color: #334155; }
-[data-theme="light"] .code-str { color: #475569; }
+[data-theme="light"] .code-keyword { color: #7C3AED; }
+[data-theme="light"] .code-var { color: #2563EB; }
+[data-theme="light"] .code-type, [data-theme="light"] .code-fn { color: #D97706; }
+[data-theme="light"] .code-prop { color: #0284C7; }
+[data-theme="light"] .code-str { color: #16A34A; }
+[data-theme="light"] .code-op { color: #64748B; }
+[data-theme="light"] .code-bracket { color: #D97706; }
 [data-theme="light"] .code-comment { color: #94A3B8; }
-[data-theme="light"] .code-prop { color: #0F172A; }
+[data-theme="light"] .code-status-ok { color: #16A34A; }
+[data-theme="light"] .code-status-edge { color: #0284C7; }
 
 [data-theme="light"] .terminal-cmd-prompt {
   border-top-color: rgba(15, 23, 42, 0.08);
   color: #0F172A;
 }
 
+[data-theme="light"] .prompt-arrow { color: #16A34A; }
+[data-theme="light"] .prompt-path { color: #0284C7; }
+[data-theme="light"] .prompt-branch { color: #7C3AED; }
+[data-theme="light"] .prompt-dollar { color: #D97706; }
+[data-theme="light"] .output-line.cmd { color: #B45309; }
+
 [data-theme="light"] .terminal-cursor {
-  background: #0F172A;
+  background: #0284C7;
+  box-shadow: 0 0 6px rgba(2, 132, 199, 0.4);
 }
 
 [data-theme="light"] .project-visual-col,

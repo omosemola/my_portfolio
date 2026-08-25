@@ -152,8 +152,8 @@ export const PROJECTS: Project[] = [
     category: "Marketplace",
     featured: true,
     technologies: ["React", "TypeScript", "Supabase", "PostgreSQL", "Paystack", "Row Level Security", "Vercel"],
-    githubUrl: "https://github.com/omosemola/campus-marketplace",
-    liveUrl: "https://campus-marketplace-demo.vercel.app",
+    githubUrl: "https://github.com/omosemola/light",
+    liveUrl: "https://lightsonmarketplace.com",
     mockupType: "marketplace",
     images: [
       "/projects/marketplace-1.png",
@@ -200,7 +200,7 @@ export const PROJECTS: Project[] = [
     category: "E-Commerce",
     featured: false,
     technologies: ["React", "TypeScript", "Tailwind CSS", "Paystack", "PostgreSQL", "REST APIs", "Vercel"],
-    githubUrl: "https://github.com/omosemola/frankie-styles-ecommerce",
+    githubUrl: "https://github.com/omosemola/frankiestyles",
     liveUrl: "https://frankiestylesng.com",
     mockupType: "ecommerce",
     images: [
@@ -242,39 +242,39 @@ export const PROJECTS: Project[] = [
     }
   },
   {
-    id: "flutter-mobile-app",
-    title: "Cross-Platform Mobile Application",
-    tagline: "Native-feel Flutter mobile app with offline-first data caching and clean REST architecture.",
-    description: "A cross-platform mobile application engineered with Flutter, featuring custom UI components, robust client-side state management, REST API integration, and prepared for real-device testing via Codemagic CI/CD.",
-    category: "Mobile App",
+    id: "rent9ja",
+    title: "Rent9ja — Smart Property & Apartment Rental Platform",
+    tagline: "Modern real estate marketplace connecting tenants with verified rental apartments, scheduled inspections, and escrow payment protection.",
+    description: "A full-stack property rental and apartment marketplace built for Nigerian urban centers. Features verified landlord & property listings, categorized neighborhood discovery, automated inspection booking, tenant identity verification, digital tenancy agreements, and secure Paystack rental payment processing.",
+    category: "Marketplace",
     featured: false,
-    technologies: ["Flutter", "Dart", "REST APIs", "Supabase Auth", "Codemagic", "Git"],
-    githubUrl: "https://github.com/omosemola/flutter-mobile-app",
-    liveUrl: "https://github.com/omosemola/flutter-mobile-app#readme",
+    technologies: ["React", "TypeScript", "Tailwind CSS", "Supabase", "PostgreSQL", "Paystack", "REST APIs", "Vercel"],
+    githubUrl: "https://github.com/omosemola/rent9ja",
+    liveUrl: "https://github.com/omosemola/rent9ja#readme",
     mockupType: "mobile",
     caseStudy: {
-      overview: "A cross-platform mobile application built to provide a fluid, native mobile experience across Android and iOS devices, with a focus on responsive UI, structured state management, and offline resilience.",
-      problem: "Users needed a reliable on-the-go mobile tool that functioned gracefully even under fluctuating mobile network conditions, with quick response times and native mobile ergonomics.",
-      solution: "Developed a Flutter application with declarative state management, local device storage caching, clean layered architecture (UI, Domain, Data), and automated build verification with Codemagic.",
+      overview: "Rent9ja is a digital property rental platform engineered to modernize apartment searching, landlord verification, and lease management in Nigerian metropolitan cities like Lagos, Abuja, and Ibadan. By eliminating unauthorized middlemen agents, verifying landlords, and securing payment deposits in escrow, Rent9ja simplifies finding homes.",
+      problem: "Finding apartments in major Nigerian cities is plagued by unverified agency fees, ghost listings, multiple agents fighting over the same property, and lack of transaction safety for security deposits.",
+      solution: "Engineered a transparent property rental portal featuring verified apartment listings, neighborhood filters, instant inspection date scheduling, direct messaging between tenants and landlords, and automated rent escrow via Paystack.",
       keyFeatures: [
-        { title: "Smooth Native Gestures", desc: "Custom Flutter widgets designed for fluid scrolling and tactile touch feedback." },
-        { title: "REST API Integration", desc: "Type-safe HTTP client with automatic serialization and structured error handling." },
-        { title: "User Authentication", desc: "Secure token storage with automatic session refresh and biometric/password login." },
-        { title: "Offline State Caching", desc: "Local database caching to allow users to access cached records without network connectivity." },
-        { title: "CI/CD Pipeline", desc: "Configured Codemagic workflows for automated testing and APK/IPA build artifact generation." }
+        { title: "Verified Listings & Neighborhood Filters", desc: "Explore self-contained units, 2-bedroom flats, and serviced apartments with verified landlord documents and neighborhood amenities." },
+        { title: "Inspection Booking Engine", desc: "Schedule physical or virtual inspection slots synchronized with landlord availability." },
+        { title: "Escrow Deposit & Split Payouts", desc: "Integrated Paystack multi-split checkout for holding caution deposits and executing automated landlord disbursements." },
+        { title: "Direct Landlord Messaging", desc: "Real-time communication enabling prospective tenants to negotiate terms and submit identity verification." },
+        { title: "Digital Tenancy Agreement", desc: "Automated standard tenancy agreement generation with digital signing and PDF download." }
       ],
       architecture: [
-        "Framework: Flutter SDK (Dart) with clean modular feature architecture",
-        "State Management: Provider / Riverpod pattern for predictable reactive state",
-        "Networking: Dio HTTP client with interceptors for authentication tokens",
-        "CI/CD: Codemagic pipeline connected to GitHub repository"
+        "Frontend: React + TypeScript with modular UI components, responsive filter drawers, and interactive photo galleries",
+        "Backend: Supabase with PostgreSQL database, Row-Level Security policies for landlord/tenant role isolation",
+        "Payments: Paystack API with verified webhook handlers for recurring rent payments and deposit escrow",
+        "Hosting: Vercel Edge Network with global CDN asset optimization"
       ],
-      challenges: "Ensuring state synchronization between local device cache and remote REST endpoints when transitioning from offline mode back to an active network connection.",
-      outcome: "Produced a polished, performant mobile codebase ready for real-device distribution, with clean separation of concerns and maintainable code.",
+      challenges: "Handling real-time inspection booking slot synchronization and implementing rigorous tenant identity checks to prevent rental fraud.",
+      outcome: "Delivered an intuitive, reliable rental platform that protects tenants, automates rent collection for property managers, and simplifies urban apartment hunting.",
       stats: [
-        { label: "Platforms", value: "Android & iOS" },
-        { label: "Architecture", value: "Clean Architecture" },
-        { label: "CI/CD", value: "Codemagic" },
+        { label: "Listings Security", value: "100% Verified" },
+        { label: "Payment Engine", value: "Paystack Escrow" },
+        { label: "Search Speed", value: "< 1s Filters" },
       ]
     }
   },
@@ -286,7 +286,7 @@ export const PROJECTS: Project[] = [
     category: "E-Commerce",
     featured: false,
     technologies: ["React", "TypeScript", "Tailwind CSS", "Paystack", "REST APIs", "Vercel"],
-    githubUrl: "https://github.com/omosemola/pastry-home-store",
+    githubUrl: "https://github.com/omosemola/pastryhomebylayo",
     liveUrl: "https://pastryhomebylayo.shop",
     mockupType: "pastry",
     images: [

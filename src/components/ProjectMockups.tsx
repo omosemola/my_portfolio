@@ -457,38 +457,38 @@ export const ProjectMockup: React.FC<MockupProps> = ({ type }) => {
         <div className="phone-screen-content">
           <div className="mobile-header-bar">
             <div>
-              <div className="mobile-greeting">Welcome back 👋</div>
-              <div className="mobile-app-title">Dashboard Overview</div>
+              <div className="mobile-greeting">Rent9ja Property Hub 🏢</div>
+              <div className="mobile-app-title">Verified Rentals</div>
             </div>
             <div className="mobile-avatar"><User size={14} /></div>
           </div>
 
           {/* Quick Metrics Carousel Card */}
           <div className="mobile-highlight-card">
-            <div className="mobile-card-tag">Flutter Native UI</div>
-            <div className="mobile-card-title">Realtime Sync Active</div>
+            <div className="mobile-card-tag">Verified Apartment</div>
+            <div className="mobile-card-title">2-Bedroom Flat • Lekki Phase 1</div>
             <div className="mobile-sync-status">
               <CheckCircle2 size={12} className="text-emerald" />
-              <span>Offline-first SQLite Caching</span>
+              <span>Inspection Ready • Escrow Protected</span>
             </div>
           </div>
 
           {/* List Feed */}
-          <div className="mobile-feed-title">Recent Transactions</div>
+          <div className="mobile-feed-title">Recent Inspection Bookings</div>
           <div className="mobile-feed-list">
             <div className="mobile-feed-item">
-              <div className="feed-icon blue">⚡</div>
+              <div className="feed-icon blue">🔑</div>
               <div className="feed-info">
-                <div className="feed-title">API Token Refresh</div>
-                <div className="feed-time">2 mins ago</div>
+                <div className="feed-title">Studio Apartment • Yaba</div>
+                <div className="feed-time">Inspection Tomorrow 2 PM</div>
               </div>
               <ChevronRight size={14} className="text-muted" />
             </div>
             <div className="mobile-feed-item">
               <div className="feed-icon green">✓</div>
               <div className="feed-info">
-                <div className="feed-title">Payload Verification</div>
-                <div className="feed-time">15 mins ago</div>
+                <div className="feed-title">Caution Deposit Verified</div>
+                <div className="feed-time">Paystack Escrow Locked</div>
               </div>
               <ChevronRight size={14} className="text-muted" />
             </div>
@@ -497,9 +497,9 @@ export const ProjectMockup: React.FC<MockupProps> = ({ type }) => {
           {/* Bottom App Navigation */}
           <div className="mobile-bottom-nav">
             <div className="nav-tab active">🏠</div>
-            <div className="nav-tab">📊</div>
-            <div className="nav-tab">⚡</div>
-            <div className="nav-tab">⚙️</div>
+            <div className="nav-tab">🔍</div>
+            <div className="nav-tab">📅</div>
+            <div className="nav-tab">👤</div>
           </div>
         </div>
       </div>
