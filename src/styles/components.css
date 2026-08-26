@@ -826,6 +826,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.65rem;
 }
 
 .tech-marquee-label {
@@ -837,6 +838,19 @@
   color: var(--color-text-subtle);
 }
 
+.tech-marquee-hint {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-text-subtle);
+  padding: 0.15rem 0.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
 .tech-marquee-track-wrapper {
   width: 100%;
   overflow: hidden;
@@ -844,6 +858,11 @@
   padding: 0.75rem 0;
   mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 90%, transparent 100%);
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 1) 90%, transparent 100%);
+  cursor: grab;
+}
+
+.tech-marquee-track-wrapper:active {
+  cursor: grabbing;
 }
 
 .tech-marquee-track {
@@ -851,21 +870,16 @@
   align-items: center;
   gap: 3.5rem;
   width: max-content;
-  animation: marqueeScroll 28s linear infinite;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
   will-change: transform;
 }
 
-.tech-marquee-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes marqueeScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.tech-marquee-track:active,
+.tech-marquee-track.is-dragging {
+  cursor: grabbing;
 }
 
 .tech-marquee-item {
@@ -874,7 +888,13 @@
   justify-content: center;
   flex-shrink: 0;
   transition: transform 0.25s var(--ease-smooth);
-  cursor: pointer;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.tech-marquee-item:active {
+  cursor: grabbing;
 }
 
 .tech-logo-glyph {
@@ -893,6 +913,7 @@
 
 .tech-logo-glyph svg {
   display: block;
+  pointer-events: none;
 }
 
 .tech-marquee-item:hover .tech-logo-glyph {
@@ -906,7 +927,6 @@
 @media (max-width: 640px) {
   .tech-marquee-track {
     gap: 2rem;
-    animation-duration: 22s;
   }
   .tech-logo-glyph {
     width: 64px;
