@@ -4636,4 +4636,177 @@
   color: #166534;
 }
 
+/* ==========================================================================
+   Developer Terminal Crosshair HUD (Option 4)
+   ========================================================================== */
+.custom-cursor-container {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  overflow: hidden;
+}
+
+/* Precision Crosshair Target Reticle */
+.dev-crosshair-reticle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  z-index: 1000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, filter 0.2s ease;
+}
+
+.crosshair-center-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #38BDF8;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.9);
+}
+
+.crosshair-arm {
+  position: absolute;
+  background: rgba(56, 189, 248, 0.65);
+  box-shadow: 0 0 4px rgba(56, 189, 248, 0.5);
+}
+
+.arm-top {
+  top: 0;
+  left: 50%;
+  width: 1.5px;
+  height: 5px;
+  transform: translateX(-50%);
+}
+
+.arm-bottom {
+  bottom: 0;
+  left: 50%;
+  width: 1.5px;
+  height: 5px;
+  transform: translateX(-50%);
+}
+
+.arm-left {
+  left: 0;
+  top: 50%;
+  width: 5px;
+  height: 1.5px;
+  transform: translateY(-50%);
+}
+
+.arm-right {
+  right: 0;
+  top: 50%;
+  width: 5px;
+  height: 1.5px;
+  transform: translateY(-50%);
+}
+
+.dev-crosshair-reticle.hovered .crosshair-center-dot {
+  background: #34D399;
+  box-shadow: 0 0 10px rgba(52, 211, 153, 1);
+}
+
+.dev-crosshair-reticle.hovered .crosshair-arm {
+  background: #34D399;
+  box-shadow: 0 0 6px rgba(52, 211, 153, 0.8);
+}
+
+/* Floating Telemetry HUD Badge */
+.dev-hud-telemetry {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(16px, 16px);
+  pointer-events: none;
+  z-index: 999999;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.45rem;
+  background: rgba(7, 10, 18, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #94A3B8;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.dev-hud-telemetry .hud-coord {
+  color: #E2E8F0;
+}
+
+.dev-hud-telemetry .hud-separator {
+  color: rgba(56, 189, 248, 0.4);
+}
+
+.dev-hud-telemetry .hud-status {
+  color: #38BDF8;
+  font-weight: 600;
+}
+
+.dev-hud-telemetry.hovered {
+  border-color: rgba(52, 211, 153, 0.6);
+}
+
+.dev-hud-telemetry.hovered .hud-status {
+  color: #34D399;
+}
+
+/* Light Mode Overrides */
+[data-theme="light"] .crosshair-center-dot {
+  background: #0284C7;
+  box-shadow: 0 0 6px rgba(2, 132, 199, 0.6);
+}
+
+[data-theme="light"] .crosshair-arm {
+  background: rgba(2, 132, 199, 0.7);
+}
+
+[data-theme="light"] .dev-crosshair-reticle.hovered .crosshair-center-dot,
+[data-theme="light"] .dev-crosshair-reticle.hovered .crosshair-arm {
+  background: #059669;
+}
+
+[data-theme="light"] .dev-hud-telemetry {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(15, 23, 42, 0.2);
+  color: #475569;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .dev-hud-telemetry .hud-coord {
+  color: #0F172A;
+}
+
+[data-theme="light"] .dev-hud-telemetry .hud-status {
+  color: #0284C7;
+}
+
+[data-theme="light"] .dev-hud-telemetry.hovered .hud-status {
+  color: #059669;
+}
+
+/* Hide on touch and coarse pointer devices */
+@media (pointer: coarse) or (hover: none) {
+  .custom-cursor-container {
+    display: none !important;
+  }
+}
+
 

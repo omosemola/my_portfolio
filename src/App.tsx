@@ -6,6 +6,7 @@ import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { CaseStudyModal } from './components/CaseStudyModal';
+import { CustomCursor } from './components/CustomCursor';
 import { Project } from './data/portfolioData';
 
 export const App: React.FC = () => {
@@ -96,6 +97,9 @@ export const App: React.FC = () => {
 
       {/* Footer */}
       <Footer />
+
+      {/* Custom Fluid Magnetic Cursor */}
+      <CustomCursor />
 
       {/* Case Study Modal */}
       <CaseStudyModal
