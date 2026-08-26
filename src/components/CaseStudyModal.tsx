@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X, CheckCircle2, AlertCircle, Cpu, Sparkles, Layers, ArrowUpRight } from 'lucide-react';
+import { X, CheckCircle2, AlertCircle, Cpu, Layers, ArrowUpRight, FileText, Image } from 'lucide-react';
 import { Project } from '../data/portfolioData';
 import { ProjectMockup } from './ProjectMockups';
 import { GithubIcon } from './SocialIcons';
@@ -103,7 +103,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           {/* Overview */}
           <div>
             <h3 style={{ fontSize: '0.92rem', color: 'var(--color-text-main)', marginBottom: '0.35rem', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-              <Sparkles size={14} style={{ color: 'var(--color-text-main)' }} />
+              <FileText size={14} style={{ color: 'var(--color-text-main)' }} />
               Executive Overview
             </h3>
             <p style={{ color: 'var(--color-text-body)', lineHeight: 1.5, fontSize: '0.78rem' }}>
@@ -124,7 +124,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
             </div>
 
             <div className="case-card">
-              <div className="case-card-title">
+              <div className="case-card-title success">
                 <CheckCircle2 size={15} />
                 <span>The Engineering Solution</span>
               </div>
@@ -173,7 +173,7 @@ export const CaseStudyModal: React.FC<CaseStudyModalProps> = ({ project, onClose
           {project.images && project.images.length > 0 && (
             <div>
               <h3 style={{ fontSize: '0.92rem', color: 'var(--color-text-main)', marginBottom: '0.65rem', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                <Sparkles size={14} style={{ color: 'var(--color-text-main)' }} />
+                <Image size={14} style={{ color: 'var(--color-text-main)' }} />
                 Production Application Screens
               </h3>
               <div className="case-study-gallery-grid">

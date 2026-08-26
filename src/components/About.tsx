@@ -6,7 +6,7 @@ import {
   Smartphone, 
   Database, 
   GitBranch, 
-  Sparkles 
+  BarChart3 
 } from 'lucide-react';
 import { STATS } from '../data/portfolioData';
 
@@ -92,7 +92,7 @@ export const About: React.FC = () => {
             {/* Impact Metrics (Stats Grid) */}
             <div className="glass-panel about-metrics-card">
               <div className="metrics-card-header">
-                <Sparkles size={16} />
+                <BarChart3 size={16} />
                 <span>Verified Impact Metrics</span>
               </div>
 

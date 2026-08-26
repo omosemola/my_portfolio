@@ -42,7 +42,7 @@ export const Hero: React.FC = () => {
             <div className="hero-actions">
               <a
                 href="#projects"
-                className="btn btn-primary"
+                className="btn btn-primary hero-btn-featured"
                 id="hero-cta-projects"
                 onClick={(e) => {
                   e.preventDefault();
@@ -53,18 +53,23 @@ export const Hero: React.FC = () => {
                 <ArrowRight size={15} />
               </a>
 
-              <a
-                href="#contact"
-                className="btn btn-secondary"
-                id="hero-cta-contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection('contact');
-                }}
-              >
-                <MessageSquare size={15} />
-                <span>Let's Talk</span>
-              </a>
+              <div className="animated-link-wrapper-demo">
+                <div className="animated-link-effect-demo" aria-hidden="true">
+                  <div></div>
+                </div>
+                <a
+                  href="#contact"
+                  className="animated-link-demo"
+                  id="hero-cta-contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection('contact');
+                  }}
+                >
+                  <MessageSquare size={15} />
+                  <span>Let's Talk</span>
+                </a>
+              </div>
             </div>
 
             {/* Quick Navigation Chips */}

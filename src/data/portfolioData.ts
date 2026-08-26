@@ -81,7 +81,7 @@ export const PERSONAL_INFO = {
 };
 
 export const STATS = [
-  { value: "5+ Years", label: "Engineering Journey", desc: "Software dev & frontend engineering since 2021" },
+  { value: "4+ Years", label: "Engineering Journey", desc: "Software dev & frontend engineering since 2021" },
   { value: "100%", label: "Type-Safe & Scalable", desc: "TypeScript, Supabase & clean architectures" },
   { value: "Full Stack", label: "End-to-End Delivery", desc: "UI, DB, Authentication & Payment Gateways" },
   { value: "0ms", label: "Zero Compromise UX", desc: "Fast, accessible, and responsive across devices" },

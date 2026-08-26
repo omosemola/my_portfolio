@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { 
   Wrench, 
   Layers, 
-  Sparkles, 
   ArrowRight, 
   ShieldCheck, 
   Zap, 
@@ -125,7 +124,7 @@ export const Skills: React.FC = () => {
         <div className="tech-master-bento reveal-init delay-100">
           <div className="tech-bento-header">
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-              <Sparkles size={18} style={{ color: '#FFFFFF' }} />
+              <Layers size={18} style={{ color: '#FFFFFF' }} />
               <span className="bento-badge-title">DEFAULT PRODUCTION PIPELINE</span>
             </div>
             <span style={{ fontSize: '0.78rem', color: 'var(--color-text-subtle)', fontFamily: 'var(--font-mono)' }}>

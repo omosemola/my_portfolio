@@ -32,7 +32,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenCaseStu
 
             <h3 className="project-title">{project.title}</h3>
             <p className="project-tagline">{project.tagline}</p>
-            <p className="project-desc">{project.description}</p>
 
             {/* Embedded Architecture Stats Strip */}
             {project.caseStudy.stats && (
@@ -115,7 +114,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenCaseStu
 
           <h3 className="secondary-project-title">{project.title}</h3>
           <p className="project-tagline">{project.tagline}</p>
-          <p className="project-desc">{project.description}</p>
 
           {/* Key Stats Strip */}
           {project.caseStudy.stats && (

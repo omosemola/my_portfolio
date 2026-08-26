@@ -28,7 +28,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenCaseStudy }) => {
             <FolderGit2 size={13} />
             <span>PRODUCTION SOFTWARE SHOWCASE</span>
           </div>
-          <h2 className="section-title">Things I've Built</h2>
+          <h2 className="section-title">Selected Projects</h2>
           <p className="section-desc">
             Full-stack web and mobile applications engineered with type-safe architectures, secure authentication, and resilient payment integrations.
           </p>
