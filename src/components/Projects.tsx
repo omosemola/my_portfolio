@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FolderGit2 } from 'lucide-react';
 import { Project, PROJECTS } from '../data/portfolioData';
 import { ProjectCard } from './ProjectCard';
+import { 
+  MOTION_VIEWPORT, 
+  sectionFadeVariant, 
+  itemFadeVariant 
+} from '../utils/motion';
 
 interface ProjectsProps {
   onOpenCaseStudy: (project: Project) => void;
@@ -23,18 +29,24 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenCaseStudy }) => {
     <section id="projects" className="section-spacing" aria-label="Featured Projects">
       <div className="container-wide">
         {/* Section Header */}
-        <div className="section-header reveal-init">
-          <div className="section-eyebrow">
+        <motion.div 
+          className="section-header"
+          initial="hidden"
+          whileInView="visible"
+          viewport={MOTION_VIEWPORT}
+          variants={sectionFadeVariant}
+        >
+          <motion.div className="section-eyebrow" variants={itemFadeVariant}>
             <FolderGit2 size={13} />
             <span>PRODUCTION SOFTWARE SHOWCASE</span>
-          </div>
-          <h2 className="section-title">Selected Projects</h2>
-          <p className="section-desc">
+          </motion.div>
+          <motion.h2 className="section-title" variants={itemFadeVariant}>Selected Projects</motion.h2>
+          <motion.p className="section-desc" variants={itemFadeVariant}>
             Full-stack web and mobile applications engineered with type-safe architectures, secure authentication, and resilient payment integrations.
-          </p>
+          </motion.p>
 
           {/* Interactive Category Filter Pills */}
-          <div className="projects-filter-bar" style={{ marginTop: '1.75rem' }}>
+          <motion.div className="projects-filter-bar" style={{ marginTop: '1.75rem' }} variants={itemFadeVariant}>
             <div className="projects-filter-pills">
               <button
                 type="button"
@@ -78,34 +90,60 @@ export const Projects: React.FC<ProjectsProps> = ({ onOpenCaseStudy }) => {
                 </span>
               </button>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Projects Layout */}
         <div className="projects-container">
           {/* Primary Featured Flagship Project */}
-          {featuredProject && (
-            <div className="reveal-init delay-100">
-              <ProjectCard
-                project={featuredProject}
-                onOpenCaseStudy={onOpenCaseStudy}
-              />
-            </div>
-          )}
+          <AnimatePresence mode="popLayout">
+            {featuredProject && (
+              <motion.div
+                key={featuredProject.id}
+                layout
+                initial={{ opacity: 0, y: 25, scale: 0.985 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -20, scale: 0.985 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <ProjectCard
+                  project={featuredProject}
+                  onOpenCaseStudy={onOpenCaseStudy}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Secondary Bento Grid Projects */}
-          {secondaryProjects.length > 0 && (
-            <div className={`project-secondary-grid ${!featuredProject ? 'grid-only' : ''}`}>
-              {secondaryProjects.map((project) => (
-                <div key={project.id} className="reveal-visible">
-                  <ProjectCard
-                    project={project}
-                    onOpenCaseStudy={onOpenCaseStudy}
-                  />
-                </div>
-              ))}
-            </div>
-          )}
+          <AnimatePresence mode="popLayout">
+            {secondaryProjects.length > 0 && (
+              <motion.div 
+                key={`grid-${activeCategory}`}
+                className={`project-secondary-grid ${!featuredProject ? 'grid-only' : ''}`}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              >
+                {secondaryProjects.map((project) => (
+                  <motion.div 
+                    key={project.id} 
+                    layout
+                    initial={{ opacity: 0, scale: 0.97 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.97 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <ProjectCard
+                      project={project}
+                      onOpenCaseStudy={onOpenCaseStudy}
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </section>

@@ -54,24 +54,8 @@ export const App: React.FC = () => {
       }
     });
 
-    // Smooth reveal animation on scroll
-    const revealElements = document.querySelectorAll('.reveal-init');
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('reveal-visible');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-
-    revealElements.forEach((el) => revealObserver.observe(el));
-
     return () => {
       sectionObservers.forEach((obs) => obs.disconnect());
-      revealObserver.disconnect();
     };
   }, []);
 

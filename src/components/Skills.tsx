@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Wrench, 
   Layers, 
@@ -29,6 +30,12 @@ import {
   ShieldSecurityIcon, 
   ApiIcon 
 } from './TechIcons';
+import { 
+  MOTION_VIEWPORT, 
+  sectionFadeVariant, 
+  itemFadeVariant, 
+  cardVariant 
+} from '../utils/motion';
 
 // Map tool names to authentic SVG icons
 const getTechIcon = (name: string, size = 22) => {
@@ -109,19 +116,31 @@ export const Skills: React.FC = () => {
     <section id="skills" className="section-spacing" aria-label="Technical Skills and Stack">
       <div className="container-wide">
         {/* Section Header */}
-        <div className="section-header reveal-init">
-          <div className="section-eyebrow">
+        <motion.div 
+          className="section-header"
+          initial="hidden"
+          whileInView="visible"
+          viewport={MOTION_VIEWPORT}
+          variants={sectionFadeVariant}
+        >
+          <motion.div className="section-eyebrow" variants={itemFadeVariant}>
             <Wrench size={13} />
             <span>CORE STACK & TOOLS</span>
-          </div>
-          <h2 className="section-title">Tools I Build With</h2>
-          <p className="section-desc">
+          </motion.div>
+          <motion.h2 className="section-title" variants={itemFadeVariant}>Tools I Build With</motion.h2>
+          <motion.p className="section-desc" variants={itemFadeVariant}>
             A production-proven technology suite selected for speed, architectural integrity, type safety, and real-world scalability.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* 1. Master Production Stack Banner (Bento Style) */}
-        <div className="tech-master-bento reveal-init delay-100">
+        <motion.div 
+          className="tech-master-bento"
+          initial="hidden"
+          whileInView="visible"
+          viewport={MOTION_VIEWPORT}
+          variants={cardVariant}
+        >
           <div className="tech-bento-header">
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
               <Layers size={18} style={{ color: '#FFFFFF' }} />
@@ -181,10 +200,17 @@ export const Skills: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* 2. Category Filter Switcher */}
-        <div className="skills-nav-tabs reveal-init delay-200" role="tablist">
+        <motion.div 
+          className="skills-nav-tabs" 
+          role="tablist"
+          initial="hidden"
+          whileInView="visible"
+          viewport={MOTION_VIEWPORT}
+          variants={itemFadeVariant}
+        >
           <button
             role="tab"
             aria-selected={activeCategoryId === 'all'}
@@ -212,49 +238,72 @@ export const Skills: React.FC = () => {
               <span className="tab-counter">{cat.skills.length}</span>
             </button>
           ))}
-        </div>
+        </motion.div>
 
         {/* 3. Redesigned Premium Skill Cards Grid */}
-        <div className="skills-grid reveal-init delay-300">
-          {displayedSkills.map((skill, idx) => {
-            return (
-              <div key={`${skill.name}-${idx}`} className="skill-card-modern">
-                <div className="skill-card-top-row">
-                  <div className="skill-icon-medallion">
-                    {getTechIcon(skill.name, 24)}
+        <motion.div 
+          className="skills-grid"
+          initial="hidden"
+          whileInView="visible"
+          viewport={MOTION_VIEWPORT}
+          variants={sectionFadeVariant}
+        >
+          <AnimatePresence mode="popLayout">
+            {displayedSkills.map((skill) => {
+              return (
+                <motion.div 
+                  key={`${skill.name}-${activeCategoryId}`} 
+                  layout
+                  className="skill-card-modern"
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  whileHover={{ y: -3 }}
+                >
+                  <div className="skill-card-top-row">
+                    <div className="skill-icon-medallion">
+                      {getTechIcon(skill.name, 24)}
+                    </div>
+                    <div className="skill-mastery-badge">
+                      <span className="mastery-dot"></span>
+                      <span>{skill.level}</span>
+                    </div>
                   </div>
-                  <div className="skill-mastery-badge">
-                    <span className="mastery-dot"></span>
-                    <span>{skill.level}</span>
-                  </div>
-                </div>
 
-                <div className="skill-body-content">
-                  <div className="skill-header-meta">
-                    <h3 className="skill-name-heading">{skill.name}</h3>
-                    <span className="skill-tag-pill">{skill.tag}</span>
+                  <div className="skill-body-content">
+                    <div className="skill-header-meta">
+                      <h3 className="skill-name-heading">{skill.name}</h3>
+                      <span className="skill-tag-pill">{skill.tag}</span>
+                    </div>
+
+                    <p className="skill-practical-note">
+                      {skill.practicalNote}
+                    </p>
                   </div>
 
-                  <p className="skill-practical-note">
-                    {skill.practicalNote}
-                  </p>
-                </div>
-
-                <div className="skill-card-footer">
-                  <span className="skill-cat-label">{skill.categoryName}</span>
-                  <div className="skill-status-bars" title={`Proficiency Level: ${skill.level}`}>
-                    <span className="bar-segment filled"></span>
-                    <span className="bar-segment filled"></span>
-                    <span className={`bar-segment ${skill.level.toLowerCase().includes('expert') || skill.level.toLowerCase().includes('production') ? 'filled' : ''}`}></span>
+                  <div className="skill-card-footer">
+                    <span className="skill-cat-label">{skill.categoryName}</span>
+                    <div className="skill-status-bars" title={`Proficiency Level: ${skill.level}`}>
+                      <span className="bar-segment filled"></span>
+                      <span className="bar-segment filled"></span>
+                      <span className={`bar-segment ${skill.level.toLowerCase().includes('expert') || skill.level.toLowerCase().includes('production') ? 'filled' : ''}`}></span>
+                    </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </motion.div>
 
         {/* 4. Interactive Architecture Inspector */}
-        <div className="tech-arch-inspector reveal-init delay-400">
+        <motion.div 
+          className="tech-arch-inspector"
+          initial="hidden"
+          whileInView="visible"
+          viewport={MOTION_VIEWPORT}
+          variants={cardVariant}
+        >
           <div className="arch-inspector-header">
             <div>
               <div className="section-eyebrow" style={{ marginBottom: '0.5rem' }}>
@@ -308,8 +357,9 @@ export const Skills: React.FC = () => {
               <span><strong>Key Engineering Benefit:</strong> {currentArch.highlight}</span>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 };
+

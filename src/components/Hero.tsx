@@ -1,9 +1,16 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRight, MessageSquare, Mail, Code2, FolderGit2, Wrench, FileText } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { InteractiveTerminal } from './InteractiveTerminal';
 import { TechMarquee } from './TechMarquee';
 import { GithubIcon, TwitterIcon } from './SocialIcons';
+import { 
+  MOTION_VIEWPORT, 
+  sectionFadeVariant, 
+  itemFadeVariant, 
+  slideInRightVariant 
+} from '../utils/motion';
 
 export const Hero: React.FC = () => {
   const scrollToSection = (id: string) => {
@@ -18,28 +25,34 @@ export const Hero: React.FC = () => {
       <div className="container-wide" style={{ position: 'relative', zIndex: 2 }}>
         <div className="hero-grid">
           {/* Left Column: Personal Brand & Intro */}
-          <div className="hero-content reveal-init">
+          <motion.div 
+            className="hero-content"
+            initial="hidden"
+            whileInView="visible"
+            viewport={MOTION_VIEWPORT}
+            variants={sectionFadeVariant}
+          >
             {/* Eyebrow Badge */}
-            <div className="hero-badge-row">
+            <motion.div className="hero-badge-row" variants={itemFadeVariant}>
               <div className="section-eyebrow" style={{ marginBottom: 0 }}>
                 <Code2 size={12} />
                 <span>{PERSONAL_INFO.eyebrow}</span>
               </div>
-            </div>
+            </motion.div>
 
             {/* Main Headline */}
-            <h1 className="hero-title">
+            <motion.h1 className="hero-title" variants={itemFadeVariant}>
               {PERSONAL_INFO.heroHeading}
               <span className="hero-highlight">{PERSONAL_INFO.heroHighlight}</span>
-            </h1>
+            </motion.h1>
 
             {/* Supporting Bio */}
-            <p className="hero-description">
+            <motion.p className="hero-description" variants={itemFadeVariant}>
               {PERSONAL_INFO.heroParagraph}
-            </p>
+            </motion.p>
 
             {/* Call to Action Buttons */}
-            <div className="hero-actions">
+            <motion.div className="hero-actions" variants={itemFadeVariant}>
               <a
                 href="#projects"
                 className="btn btn-primary hero-btn-featured"
@@ -70,10 +83,10 @@ export const Hero: React.FC = () => {
                   <span>Let's Talk</span>
                 </a>
               </div>
-            </div>
+            </motion.div>
 
             {/* Quick Navigation Chips */}
-            <div className="hero-mobile-nav-chips">
+            <motion.div className="hero-mobile-nav-chips" variants={itemFadeVariant}>
               <span className="quick-nav-label">Quick Jump:</span>
               <div className="quick-nav-pills">
                 <button
@@ -112,10 +125,10 @@ export const Hero: React.FC = () => {
                   <span>Contact</span>
                 </button>
               </div>
-            </div>
+            </motion.div>
 
             {/* Social Links Bar */}
-            <div className="hero-socials">
+            <motion.div className="hero-socials" variants={itemFadeVariant}>
               <span className="socials-lead-text">Connect:</span>
               
               <a
@@ -148,20 +161,34 @@ export const Hero: React.FC = () => {
                 <TwitterIcon size={14} />
                 <span>Twitter</span>
               </a>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right Column: Interactive Terminal (Desktop & Mobile Responsive) */}
-          <div className="hero-visual reveal-init delay-100">
+          <motion.div 
+            className="hero-visual"
+            initial="hidden"
+            whileInView="visible"
+            viewport={MOTION_VIEWPORT}
+            variants={slideInRightVariant}
+          >
             <InteractiveTerminal />
-          </div>
+          </motion.div>
         </div>
 
         {/* Horizontal Moving Tech Stack Display Board (Logos Only) */}
-        <div className="hero-marquee-wrapper reveal-init delay-200">
+        <motion.div 
+          className="hero-marquee-wrapper"
+          initial="hidden"
+          whileInView="visible"
+          viewport={MOTION_VIEWPORT}
+          variants={itemFadeVariant}
+        >
           <TechMarquee label="CORE PRODUCTION TECH STACK" />
-        </div>
+        </motion.div>
       </div>
     </section>
   );
 };
+
+export default Hero;

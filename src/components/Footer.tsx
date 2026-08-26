@@ -1,7 +1,9 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { ArrowUp, Mail, FileText, ArrowUpRight } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import { GithubIcon, TwitterIcon } from './SocialIcons';
+import { MOTION_VIEWPORT, sectionFadeVariant, itemFadeVariant } from '../utils/motion';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -16,12 +18,19 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="footer-wrap" aria-label="Site Footer">
+    <motion.footer 
+      className="footer-wrap" 
+      aria-label="Site Footer"
+      initial="hidden"
+      whileInView="visible"
+      viewport={MOTION_VIEWPORT}
+      variants={sectionFadeVariant}
+    >
       <div className="container-wide">
         {/* Main Footer Bento Grid */}
         <div className="footer-grid">
           {/* Column 1: Brand Identity */}
-          <div className="footer-brand-col">
+          <motion.div className="footer-brand-col" variants={itemFadeVariant}>
             <a
               href="#hero"
               className="nav-brand"
@@ -43,10 +52,10 @@ export const Footer: React.FC = () => {
             <p className="footer-brand-bio">
               Software Developer & Digital Product Builder. Designing clean interfaces, reliable databases, and scalable payment pipelines for modern web & mobile products.
             </p>
-          </div>
+          </motion.div>
 
           {/* Column 2: Navigation Links */}
-          <div className="footer-nav-col">
+          <motion.div className="footer-nav-col" variants={itemFadeVariant}>
             <h4 className="footer-col-title">Navigation</h4>
             <ul className="footer-links-list">
               <li>
@@ -109,10 +118,10 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Column 3: Social & Direct Connect */}
-          <div className="footer-connect-col">
+          <motion.div className="footer-connect-col" variants={itemFadeVariant}>
             <h4 className="footer-col-title">Connect</h4>
             <ul className="footer-links-list">
               <li>
@@ -152,7 +161,7 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
             </ul>
-          </div>
+          </motion.div>
         </div>
 
         {/* Bottom Bar: Copyright & Back to Top */}
@@ -175,6 +184,8 @@ export const Footer: React.FC = () => {
           </button>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
+
+export default Footer;

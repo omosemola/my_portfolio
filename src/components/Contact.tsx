@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { MessageSquare, Mail, Send, Check, Copy, CheckCircle2, Download, FileText, History } from 'lucide-react';
 import { PERSONAL_INFO, EXPERIENCE_TIMELINE } from '../data/portfolioData';
+import { 
+  MOTION_VIEWPORT, 
+  sectionFadeVariant, 
+  itemFadeVariant, 
+  slideInLeftVariant, 
+  slideInRightVariant 
+} from '../utils/motion';
 
 interface FormState {
   name: string;
@@ -102,21 +110,33 @@ export const Contact: React.FC = () => {
     <section id="contact" className="section-spacing" aria-label="Contact and Inquiries">
       <div className="container">
         {/* Section Header */}
-        <div className="section-header reveal-init">
-          <div className="section-eyebrow">
+        <motion.div 
+          className="section-header"
+          initial="hidden"
+          whileInView="visible"
+          viewport={MOTION_VIEWPORT}
+          variants={sectionFadeVariant}
+        >
+          <motion.div className="section-eyebrow" variants={itemFadeVariant}>
             <MessageSquare size={12} />
             <span>LET'S WORK TOGETHER</span>
-          </div>
-          <h2 className="section-title">Start a Project or Hire Me</h2>
-          <p className="section-desc">
+          </motion.div>
+          <motion.h2 className="section-title" variants={itemFadeVariant}>Start a Project or Hire Me</motion.h2>
+          <motion.p className="section-desc" variants={itemFadeVariant}>
             Have a product to build or need a software developer for your team? Send a message or download my resume below.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Contact Layout */}
         <div className="contact-grid">
           {/* Left Column: Direct Info, Resume CTA & Experience Summary */}
-          <div className="contact-info-col reveal-init delay-100">
+          <motion.div 
+            className="contact-info-col"
+            initial="hidden"
+            whileInView="visible"
+            viewport={MOTION_VIEWPORT}
+            variants={slideInLeftVariant}
+          >
             {/* Email Box */}
             <div className="contact-card-box">
               <div className="contact-icon-box">
@@ -176,10 +196,17 @@ export const Contact: React.FC = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Contact Form */}
-          <div className="contact-form-card reveal-init delay-200" style={{ padding: '2rem' }}>
+          <motion.div 
+            className="contact-form-card" 
+            style={{ padding: '2rem' }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={MOTION_VIEWPORT}
+            variants={slideInRightVariant}
+          >
             {isSuccess && (
               <div className="form-feedback-toast" role="status">
                 <CheckCircle2 size={20} />
@@ -233,12 +260,14 @@ export const Contact: React.FC = () => {
                 {errors.message && <span className="form-error">{errors.message}</span>}
               </div>
 
-              <button
+              <motion.button
                 type="submit"
                 className="btn btn-primary"
                 style={{ width: '100%' }}
                 disabled={isSubmitting}
                 id="contact-submit-btn"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
               >
                 {isSubmitting ? (
                   <span>Sending...</span>
@@ -248,11 +277,13 @@ export const Contact: React.FC = () => {
                     <span>Send Message</span>
                   </>
                 )}
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 };
+
+export default Contact;
