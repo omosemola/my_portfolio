@@ -66,11 +66,11 @@ export interface ExperienceItem {
 
 export const PERSONAL_INFO = {
   name: "Richard Dairo",
-  role: "Software Developer & Digital Product Builder",
-  eyebrow: "SOFTWARE DEVELOPER",
+  role: "Software Engineer & Digital Product Builder",
+  eyebrow: "SOFTWARE ENGINEER",
   heroHeading: "Building digital products that ",
   heroHighlight: "solve real problems.",
-  heroSubtitle: "Software Developer & Digital Product Builder",
+  heroSubtitle: "Software Engineer & Digital Product Builder",
   heroParagraph: "I design and build modern web applications, marketplaces, and digital products with clean interfaces, reliable functionality, and scalable technologies — from the interface users see to the backend systems that make them work.",
   status: "Available for new projects & opportunities",
   location: "Remote / Global",

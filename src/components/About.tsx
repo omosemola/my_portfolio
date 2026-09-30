@@ -45,7 +45,7 @@ export const About: React.FC = () => {
             Built for Production, Scaled for Growth
           </motion.h2>
           <motion.p className="section-desc" variants={itemFadeVariant}>
-            Software developer blending clean frontend interfaces with resilient backend architecture and secure fintech payment pipelines.
+            Software engineer blending clean frontend interfaces with resilient backend architecture and secure fintech payment pipelines.
           </motion.p>
         </motion.div>
 

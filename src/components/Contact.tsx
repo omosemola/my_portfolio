@@ -123,7 +123,7 @@ export const Contact: React.FC = () => {
           </motion.div>
           <motion.h2 className="section-title" variants={itemFadeVariant}>Start a Project or Hire Me</motion.h2>
           <motion.p className="section-desc" variants={itemFadeVariant}>
-            Have a product to build or need a software developer for your team? Send a message or download my resume below.
+            Have a product to build or need a software engineer for your team? Send a message or download my resume below.
           </motion.p>
         </motion.div>
 

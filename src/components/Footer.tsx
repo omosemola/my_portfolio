@@ -45,12 +45,12 @@ export const Footer: React.FC = () => {
               </div>
               <div className="brand-text">
                 <span className="brand-name">{PERSONAL_INFO.name}</span>
-                <span className="brand-role">SOFTWARE DEVELOPER</span>
+                <span className="brand-role">SOFTWARE ENGINEER</span>
               </div>
             </a>
 
             <p className="footer-brand-bio">
-              Software Developer & Digital Product Builder. Designing clean interfaces, reliable databases, and scalable payment pipelines for modern web & mobile products.
+              Software Engineer & Digital Product Builder. Designing clean interfaces, reliable databases, and scalable payment pipelines for modern web & mobile products.
             </p>
           </motion.div>
 

@@ -125,7 +125,7 @@ export const InteractiveTerminal: React.FC = () => {
             <div className="code-line">
               <span className="code-num">4</span>
               <span className="code-content" style={{ paddingLeft: '1.25rem' }}>
-                <span className="code-prop">role</span><span className="code-op">:</span> <span className="code-str">"Software Developer & Product Builder"</span><span className="code-op">,</span>
+                <span className="code-prop">role</span><span className="code-op">:</span> <span className="code-str">"Software Engineer & Product Builder"</span><span className="code-op">,</span>
               </span>
             </div>
             <div className="code-line">
